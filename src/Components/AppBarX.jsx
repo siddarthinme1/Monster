@@ -56,11 +56,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function AppBarX() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setSideDrawerOpen(!sideDrawerOpen);
   };
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -111,7 +112,8 @@ function AppBarX() {
         </AppBar>
         <SideDrawer
           handleDrawerToggle={handleDrawerToggle}
-          mobileOpen={mobileOpen}
+          sideDrawerOpen={sideDrawerOpen}
+          setSideDrawerOpen={setSideDrawerOpen}
         />
       </Box>
     </div>

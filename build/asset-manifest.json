@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/siddarthinme1/Monster/static/css/main.e6c13ad2.css",
+    "main.js": "/siddarthinme1/Monster/static/js/main.19de3f35.js",
+    "static/js/787.4e61ed83.chunk.js": "/siddarthinme1/Monster/static/js/787.4e61ed83.chunk.js",
+    "index.html": "/siddarthinme1/Monster/index.html",
+    "main.e6c13ad2.css.map": "/siddarthinme1/Monster/static/css/main.e6c13ad2.css.map",
+    "main.19de3f35.js.map": "/siddarthinme1/Monster/static/js/main.19de3f35.js.map",
+    "787.4e61ed83.chunk.js.map": "/siddarthinme1/Monster/static/js/787.4e61ed83.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.19de3f35.js"
+  ]
+}
