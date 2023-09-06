@@ -82,7 +82,7 @@ function AppBarX() {
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              MONSTER
+              MONSTERR
             </Typography>
             <Search>
               <SearchIconWrapper>
