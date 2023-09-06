@@ -4,6 +4,8 @@ import {
   Box,
   IconButton,
   InputBase,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
   alpha,
@@ -57,10 +59,44 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function AppBarX() {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleDrawerToggle = () => {
     setSideDrawerOpen(!sideDrawerOpen);
   };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const mobileMenuId = "primary-search-account-menu-mobile";
+
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      id={mobileMenuId}
+      keepMounted
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem>
+        <Profile />
+      </MenuItem>
+      <MenuItem>
+        <Notification></Notification>
+      </MenuItem>
+    </Menu>
+  );
 
   return (
     <div>
@@ -82,7 +118,7 @@ function AppBarX() {
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              MONSTERR
+              MONSTER
             </Typography>
             <Search>
               <SearchIconWrapper>
@@ -104,17 +140,25 @@ function AppBarX() {
               <Profile />
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <IconButton size="large" color="inherit" edge="end">
+              <IconButton
+                size="large"
+                color="inherit"
+                edge="end"
+                onClick={handleMobileMenuOpen}
+                aria-controls="mobileMenuId"
+              >
                 <MoreVertIcon />
               </IconButton>
             </Box>
           </Toolbar>
         </AppBar>
+
         <SideDrawer
           handleDrawerToggle={handleDrawerToggle}
           sideDrawerOpen={sideDrawerOpen}
           setSideDrawerOpen={setSideDrawerOpen}
         />
+        {renderMobileMenu}
       </Box>
     </div>
   );
