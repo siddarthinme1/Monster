@@ -27,18 +27,15 @@ const NotificationWrapper = styled("div")(({ theme }) => ({
   position: "relative",
   width: "400px",
   height: "500px",
-  marginTop: "56px",
-  padding: "8px",
 }));
 
 const NotificationHeader = styled("div")(({ theme }) => ({
-  position: "fixed",
-  width: "400px",
   backgroundColor: "#fff",
   zIndex: 1000,
   borderRadius: "10px",
   padding: "0px",
   margin: "0px",
+  width: "auto",
 }));
 
 function Notification() {
@@ -69,18 +66,18 @@ function Notification() {
         open={isProfileOpen}
         onClose={handleNotificationClose}
       >
-        <NotificationHeader>
-          <Toolbar sx={{ borderRadius: "0 0 10px 10px" }}>
-            <Typography variant="h4">Notifications</Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <IconButton>
-              <SettingsRoundedIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-        </NotificationHeader>
-
         <NotificationWrapper>
+          <NotificationHeader>
+            <Toolbar>
+              <Typography variant="h4">Notifications</Typography>
+              <Box sx={{ flexGrow: 1 }} />
+              <IconButton>
+                <SettingsRoundedIcon />
+              </IconButton>
+            </Toolbar>
+            <Divider />
+          </NotificationHeader>
+
           <List>
             {notifications.map((notification) => (
               <ListItemButton key={notification.id}>
