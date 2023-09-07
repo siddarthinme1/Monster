@@ -11,7 +11,7 @@ import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import HistoryIcon from "@mui/icons-material/History";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+import MonochromePhotosRoundedIcon from "@mui/icons-material/MonochromePhotosRounded";
 export const profileItems = [
   { id: "1", title: "Profile", photo: <FaceIcon /> },
   { id: "2", title: "My Account", photo: <ManageAccountsIcon /> },
@@ -24,123 +24,90 @@ export const profileItems = [
 export const notifications = [
   {
     id: "1",
-    title: "CareerRide uploaded: 7 Common Interveiw Myths - Jobs Interview",
+    title: "CareerRide uploaded: 7 Common Interview Myths - Jobs Interview",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
-  { id: "2", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
+
+  {
+    id: "2",
+    title: "Sadhguru uploaded: 4 Common Food You Must Avoid",
+    avatar: <MonochromePhotosRoundedIcon />,
+  },
+
   {
     id: "3",
     title:
       "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   {
     id: "4",
     title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common Questions and Answers for Freshers and Experienced",
+      "CareerRide uploaded: Data Analyst Interview : Top 5 Common rs for nd Experienced",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   {
     id: "5",
-    title: "CareerRide uploaded: 7 Common Interveiw Myths - Jobs Interview",
+    title: "CareerRide uploaded: 7 Common Interview Myths - Jobs Interview",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   { id: "6", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
+
   {
     id: "7",
-    title:
-      "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
+    title: "ElectroBOOM uploaded: Wireless Communication ",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   {
     id: "8",
-    title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common Questions and Answers for Freshers and Experienced",
+    title: "CareerRide uploaded: Data Analyst Interview : Top 5 ",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   {
-    id: "1",
-    title: "CareerRide uploaded: 7 Common Interveiw Myths - Jobs Interview",
+    id: "9",
+    title: "New video uploaded: How to Succeed in Your Career",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
-  { id: "2", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
+
   {
-    id: "3",
-    title:
-      "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
+    id: "10",
+    title: "You have a new message from John Doe",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   {
-    id: "4",
-    title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common Questions and Answers for Freshers and Experienced",
+    id: "11",
+    title: "Reminder: Team Meeting at 2 PM",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   {
-    id: "5",
-    title: "CareerRide uploaded: 7 Common Interveiw Myths - Jobs Interview",
+    id: "12",
+    title: "New friend request from Jane Smith",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
-  { id: "6", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
+
   {
-    id: "7",
-    title:
-      "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
+    id: "13",
+    title: "Weather update: Sunny day ahead",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   {
-    id: "8",
-    title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common Questions and Answers for Freshers and Experienced",
+    id: "14",
+    title: "New video uploaded: Cooking Tips and Recipes",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
+
   {
-    id: "1",
-    title: "CareerRide uploaded: 7 Common Interveiw Myths - Jobs Interview",
-  },
-  { id: "2", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
-  {
-    id: "3",
-    title:
-      "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
-  },
-  {
-    id: "4",
-    title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common Questions and Answers for Freshers and Experienced",
-  },
-  {
-    id: "5",
-    title: "CareerRide uploaded: 7 Common Interveiw Myths - Jobs Interview",
-  },
-  { id: "6", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
-  {
-    id: "7",
-    title:
-      "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
-  },
-  {
-    id: "8",
-    title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common Questions and Answers for Freshers and Experienced",
-  },
-  {
-    id: "1",
-    title: "CareerRide uploaded: 7 Common Interveiw Myths - Jobs Interview",
-  },
-  { id: "2", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
-  {
-    id: "3",
-    title:
-      "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
-  },
-  {
-    id: "4",
-    title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common Questions and Answers for Freshers and Experienced",
-  },
-  {
-    id: "5",
-    title: "CareerRide uploaded: 7 Common Interveiw Myths - Jobs Interview",
-  },
-  { id: "6", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
-  {
-    id: "7",
-    title:
-      "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
-  },
-  {
-    id: "8",
-    title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common Questions and Answers for Freshers and Experienced",
+    id: "15",
+    title: "You've earned a new badge: Super Viewer",
+    avatar: <MonochromePhotosRoundedIcon />,
   },
 ];
 

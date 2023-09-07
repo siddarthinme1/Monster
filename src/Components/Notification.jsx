@@ -1,22 +1,44 @@
 import React, { useState } from "react";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import {
+  AppBar,
+  Avatar,
   Badge,
+  Box,
   Divider,
   IconButton,
   List,
   ListItem,
+  ListItemAvatar,
+  ListItemButton,
+  ListItemSecondaryAction,
+  ListItemText,
   Menu,
   MenuItem,
+  Popover,
+  Toolbar,
   Typography,
 } from "@mui/material";
 import { notifications } from "../Data/MonsterData";
 import { styled } from "styled-components";
-
+import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
+import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 const NotificationWrapper = styled("div")(({ theme }) => ({
   position: "relative",
   width: "400px",
-  height: "100%",
+  height: "500px",
+  marginTop: "56px",
+  padding: "8px",
+}));
+
+const NotificationHeader = styled("div")(({ theme }) => ({
+  position: "fixed",
+  width: "400px",
+  backgroundColor: "#fff",
+  zIndex: 1000,
+  borderRadius: "10px",
+  padding: "0px",
+  margin: "0px",
 }));
 
 function Notification() {
@@ -35,7 +57,7 @@ function Notification() {
 
   const renderNotification = (
     <>
-      <Menu
+      <Popover
         anchorEl={anchorElNotif}
         id={notificationId}
         keepMounted
@@ -47,14 +69,33 @@ function Notification() {
         open={isProfileOpen}
         onClose={handleNotificationClose}
       >
-        <Typography variant="h5">Notifications</Typography>
-        <Divider />
+        <NotificationHeader>
+          <Toolbar sx={{ borderRadius: "0 0 10px 10px" }}>
+            <Typography variant="h4">Notifications</Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <IconButton>
+              <SettingsRoundedIcon />
+            </IconButton>
+          </Toolbar>
+          <Divider />
+        </NotificationHeader>
+
         <NotificationWrapper>
-          {notifications.map((notification) => (
-            <MenuItem key={notification.id}>{notification.title}</MenuItem>
-          ))}
+          <List>
+            {notifications.map((notification) => (
+              <ListItemButton key={notification.id}>
+                <ListItemAvatar>
+                  <Avatar>{notification.avatar}</Avatar>
+                </ListItemAvatar>
+                <ListItemText>{notification.title}</ListItemText>
+                <IconButton>
+                  <MoreVertRoundedIcon />
+                </IconButton>
+              </ListItemButton>
+            ))}
+          </List>
         </NotificationWrapper>
-      </Menu>
+      </Popover>
     </>
   );
 
@@ -68,7 +109,7 @@ function Notification() {
         aria-haspopup="true"
         onClick={handleNotificationOpen}
       >
-        <Badge badgeContent={15} color="error">
+        <Badge badgeContent={notifications.length} color="error">
           <NotificationsIcon />
         </Badge>
       </IconButton>

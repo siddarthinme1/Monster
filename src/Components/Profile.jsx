@@ -48,7 +48,7 @@ function Profile() {
           aria-haspopup="true"
           onClick={handleProfileMenuOpen}
         >
-          <AccountCircleIcon />
+          <AccountCircleIcon fontSize="medium" />
         </IconButton>
       </Tooltip>
       {renderMenu}

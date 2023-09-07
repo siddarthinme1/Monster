@@ -19,6 +19,9 @@ import Profile from "./Profile";
 import Notification from "./Notification";
 import SideDrawer from "./SideDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
+import AddIcon from "@mui/icons-material/Add";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import CreateContent from "./CreateContent";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -93,7 +96,10 @@ function AppBarX() {
         <Profile />
       </MenuItem>
       <MenuItem>
-        <Notification></Notification>
+        <Notification />
+      </MenuItem>
+      <MenuItem>
+        <CreateContent />
       </MenuItem>
     </Menu>
   );
@@ -131,11 +137,7 @@ function AppBarX() {
             </Search>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <IconButton size="large" color="inherit">
-                <Badge badgeContent={4} color="error">
-                  <EmailIcon />
-                </Badge>
-              </IconButton>
+              <CreateContent />
               <Notification />
               <Profile />
             </Box>

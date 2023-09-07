@@ -51,6 +51,7 @@ function SideDrawer(props) {
   const handleDrawerClose = () => {
     setSideDrawerOpen(true);
   };
+
   return (
     <>
       <Box
