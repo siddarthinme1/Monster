@@ -25,17 +25,20 @@ import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 const NotificationWrapper = styled("div")(({ theme }) => ({
   position: "relative",
-  width: "350px",
+  width: "400px",
   height: "500px",
+  marginTop: "56px",
+  padding: "8px",
 }));
 
 const NotificationHeader = styled("div")(({ theme }) => ({
+  position: "fixed",
+  width: "400px",
   backgroundColor: "#fff",
   zIndex: 1000,
   borderRadius: "10px",
   padding: "0px",
   margin: "0px",
-  width: "auto",
 }));
 
 function Notification() {
@@ -66,21 +69,21 @@ function Notification() {
         open={isProfileOpen}
         onClose={handleNotificationClose}
       >
-        <NotificationWrapper>
-          <NotificationHeader>
-            <Toolbar>
-              <Typography variant="h4">Notifications</Typography>
-              <Box sx={{ flexGrow: 1 }} />
-              <IconButton>
-                <SettingsRoundedIcon />
-              </IconButton>
-            </Toolbar>
-            <Divider />
-          </NotificationHeader>
+        <NotificationHeader>
+          <Toolbar>
+            <Typography variant="h4">Notifications</Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <IconButton>
+              <SettingsRoundedIcon />
+            </IconButton>
+          </Toolbar>
+          <Divider />
+        </NotificationHeader>
 
+        <NotificationWrapper>
           <List>
             {notifications.map((notification) => (
-              <ListItemButton key={notification.id}>
+              <ListItemButton disableRipple="true" key={notification.id}>
                 <ListItemAvatar>
                   <Avatar>{notification.avatar}</Avatar>
                 </ListItemAvatar>
