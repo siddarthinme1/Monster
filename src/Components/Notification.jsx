@@ -26,7 +26,7 @@ import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 
 const NotificationWrapper = styled("div")(({ theme }) => ({
   position: "relative",
-  width: "400px",
+  width: "350px",
   height: "500px",
 }));
 
