@@ -1,15 +1,31 @@
-import React from "react";
-import { CssBaseline, Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+  CssBaseline,
+  ThemeProvider,
+  Typography,
+  createTheme,
+} from "@mui/material";
 import AppBarX from "../Components/AppBarX";
 import SideDrawer from "../Components/SideDrawer";
 
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
+const lightTheme = createTheme({});
+
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
     <>
-      <CssBaseline />
-      <AppBarX />
-      {/* <SideDrawer /> */}
-      <Typography>Hello</Typography>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        <CssBaseline />
+        <AppBarX setDarkMode={setDarkMode} />
+        <Typography>Hello</Typography>
+      </ThemeProvider>
     </>
   );
 }

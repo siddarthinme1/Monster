@@ -20,7 +20,7 @@ function Profile() {
       anchorEl={anchorElProfile}
       id={menuId}
       keepMounted
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: "top", horizontal: "left" }}
       transformOrigin={{
         vertical: "top",
         horizontal: "right",

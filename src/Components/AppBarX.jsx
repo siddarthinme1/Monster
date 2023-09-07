@@ -14,11 +14,17 @@ import SideDrawer from "./SideDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-function AppBarX() {
+function AppBarX(props) {
+  const { setDarkMode } = props;
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleToggleTheme = () => {
+    setDarkMode((current) => !current);
+  };
 
   const handleDrawerToggle = () => {
     setSideDrawerOpen(!sideDrawerOpen);
@@ -78,12 +84,18 @@ function AppBarX() {
             </Typography>
             <Box sx={{ flexGrow: 1 }} />
             <SeacrhBar />
-
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <CreateContent />
               <Notification />
               <Profile />
+              <IconButton
+                size="large"
+                color="inherit"
+                onClick={handleToggleTheme}
+              >
+                <DarkModeIcon />
+              </IconButton>
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
