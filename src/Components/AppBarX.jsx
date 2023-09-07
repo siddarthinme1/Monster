@@ -15,6 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { DarkMode } from "@mui/icons-material";
 
 function AppBarX(props) {
   const { setDarkMode } = props;
@@ -37,6 +38,13 @@ function AppBarX(props) {
     setMobileMoreAnchorEl(null);
   };
 
+  const DarkModeTheme = (
+    <>
+      <IconButton size="large" color="inherit" onClick={handleToggleTheme}>
+        <DarkModeIcon />
+      </IconButton>
+    </>
+  );
   const mobileMenuId = "primary-search-account-menu-mobile";
 
   const renderMobileMenu = (
@@ -56,6 +64,7 @@ function AppBarX(props) {
         <CreateContent />
         <Notification />
         <Profile />
+        {DarkModeTheme}
       </Box>
     </Menu>
   );
@@ -89,13 +98,7 @@ function AppBarX(props) {
               <CreateContent />
               <Notification />
               <Profile />
-              <IconButton
-                size="large"
-                color="inherit"
-                onClick={handleToggleTheme}
-              >
-                <DarkModeIcon />
-              </IconButton>
+              {DarkModeTheme}
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
