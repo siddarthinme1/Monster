@@ -1,6 +1,5 @@
 import {
   AppBar,
-  Badge,
   Box,
   IconButton,
   InputBase,
@@ -13,14 +12,11 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import EmailIcon from "@mui/icons-material/Email";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Profile from "./Profile";
 import Notification from "./Notification";
 import SideDrawer from "./SideDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
-import AddIcon from "@mui/icons-material/Add";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CreateContent from "./CreateContent";
 
 const Search = styled("div")(({ theme }) => ({
@@ -84,7 +80,7 @@ function AppBarX() {
       anchorEl={mobileMoreAnchorEl}
       id={mobileMenuId}
       keepMounted
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       transformOrigin={{
         vertical: "top",
         horizontal: "right",
@@ -92,15 +88,9 @@ function AppBarX() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <Profile />
-      </MenuItem>
-      <MenuItem>
-        <Notification />
-      </MenuItem>
-      <MenuItem>
-        <CreateContent />
-      </MenuItem>
+      <CreateContent />
+      <Notification />
+      <Profile />
     </Menu>
   );
 
