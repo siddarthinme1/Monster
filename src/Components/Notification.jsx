@@ -28,6 +28,8 @@ const NotificationWrapper = styled("div")(({ theme }) => ({
   position: "relative",
   width: "350px",
   height: "500px",
+  overflowy: "hidden",
+  overflowx: "hidden",
 }));
 
 function Notification() {
@@ -58,16 +60,15 @@ function Notification() {
         open={isProfileOpen}
         onClose={handleNotificationClose}
       >
+        <Toolbar>
+          <Typography variant="h5">Notifications</Typography>
+          <Box sx={{ flexGrow: 1 }} />
+          <IconButton>
+            <SettingsRoundedIcon />
+          </IconButton>
+        </Toolbar>
+        <Divider />
         <NotificationWrapper>
-          <Toolbar>
-            <Typography variant="h5">Notifications</Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <IconButton>
-              <SettingsRoundedIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-
           <List>
             {notifications.map((notification) => (
               <ListItemButton disableRipple="true" key={notification.id}>

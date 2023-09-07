@@ -18,15 +18,16 @@ import Notification from "./Notification";
 import SideDrawer from "./SideDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import CreateContent from "./CreateContent";
+import MicIcon from "@mui/icons-material/Mic";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  borderRadius: theme.shape.borderRadius,
+  borderRadius: "24px 0px 0px  24px",
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginRight: theme.spacing(2),
+  marginRight: "0px",
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
@@ -88,9 +89,11 @@ function AppBarX() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <CreateContent />
-      <Notification />
-      <Profile />
+      <Box>
+        <CreateContent />
+        <Notification />
+        <Profile />
+      </Box>
     </Menu>
   );
 
@@ -116,6 +119,7 @@ function AppBarX() {
             >
               MONSTER
             </Typography>
+            <Box sx={{ flexGrow: 1 }} />
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -125,6 +129,18 @@ function AppBarX() {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
+            <IconButton
+              color="inherit"
+              sx={{
+                backgroundColor: "inherit",
+                borderRadius: "0px 24px 24px 0px",
+              }}
+            >
+              <SearchIcon />
+            </IconButton>
+            <IconButton size="large" color="inherit">
+              <MicIcon />
+            </IconButton>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <CreateContent />
