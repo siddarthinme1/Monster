@@ -6,15 +6,12 @@ import {
   List,
   ListItem,
   ListItemButton,
-  Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ChevronLeftIcon from "@mui/icons-material/ChevronRight";
-import { styled, useTheme } from "@mui/material/styles";
+import React from "react";
+import { styled } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
-import { sideDrawerItmes } from "../Data/MonsterData";
+import { sideDrawerItmes } from "../../Data/MonsterData";
 
 const drawerWidth = 240;
 const drawer = (

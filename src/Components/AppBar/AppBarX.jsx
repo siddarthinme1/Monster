@@ -15,7 +15,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { DarkMode } from "@mui/icons-material";
 
 function AppBarX(props) {
   const { setDarkMode } = props;

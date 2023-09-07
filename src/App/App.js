@@ -5,8 +5,7 @@ import {
   Typography,
   createTheme,
 } from "@mui/material";
-import AppBarX from "../Components/AppBarX";
-import SideDrawer from "../Components/SideDrawer";
+import AppBarX from "../Components/AppBar/AppBarX";
 
 const darkTheme = createTheme({
   palette: {

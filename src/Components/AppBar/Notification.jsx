@@ -1,28 +1,24 @@
 import React, { useState } from "react";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import {
-  AppBar,
   Avatar,
   Badge,
   Box,
   Divider,
   IconButton,
   List,
-  ListItem,
   ListItemAvatar,
   ListItemButton,
-  ListItemSecondaryAction,
   ListItemText,
-  Menu,
-  MenuItem,
   Popover,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { notifications } from "../Data/MonsterData";
+
 import { styled } from "styled-components";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
+import { notifications } from "../../Data/MonsterData";
 
 const NotificationWrapper = styled("div")(({ theme }) => ({
   position: "relative",

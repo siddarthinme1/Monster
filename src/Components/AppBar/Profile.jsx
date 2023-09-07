@@ -1,7 +1,7 @@
 import { IconButton, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
 import React, { useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { profileItems } from "../Data/MonsterData";
+import { profileItems } from "../../Data/MonsterData";
 
 function Profile() {
   const [anchorElProfile, setAnchorElProfile] = useState(null);
