@@ -20,6 +20,7 @@ import React, { forwardRef, useState } from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import Copyright from "./Copyright";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -76,9 +77,9 @@ function SignIn(props) {
 
             <Box
               component="form"
-              onSubmit={handleSubmit}
               noValidate
-              sx={{ mb: 4 }}
+              onSubmit={handleSubmit}
+              sx={{ mb: 3 }}
             >
               <TextField
                 margin="normal"
@@ -125,13 +126,14 @@ function SignIn(props) {
                 </Grid>
                 <Grid sx={{ flexGrow: 1 }} />
                 <Grid item>
-                  <Link onClick={handleSignUp} variant="body2">
+                  <Link href="#" onClick={handleSignUp} variant="body2">
                     Don't have an account? Sign Up
                   </Link>
                 </Grid>
               </Grid>
             </Box>
           </Box>
+          <Copyright sx={{ mb: 3 }} />
         </Container>
       </Dialog>
     </>

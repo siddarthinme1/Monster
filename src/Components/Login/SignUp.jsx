@@ -18,7 +18,7 @@ import React, { forwardRef, useState } from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { Copyright } from "@mui/icons-material";
+import Copyright from "./Copyright";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -66,25 +66,20 @@ function SignUp(props) {
         <Container component="main" maxWidth="sm">
           <Box
             sx={{
-              marginTop: 8,
               display: "flex",
               flexDirection: "column",
+              justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ mb: 1, mt: 0, backgroundColor: "purple" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+              sx={{ mt: 1.5, mb: 3 }}
             >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
@@ -161,7 +156,7 @@ function SignUp(props) {
               </Grid>
             </Box>
           </Box>
-          <Copyright sx={{ mt: 5 }} />
+          <Copyright sx={{ mb: 3 }} />
         </Container>
       </Dialog>
     </>
