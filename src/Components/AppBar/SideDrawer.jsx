@@ -14,6 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { sideDrawerItmes } from "../../Data/MonsterData";
 
 const drawerWidth = 240;
+
 const drawer = (
   <div>
     <List>
@@ -44,10 +45,6 @@ function SideDrawer(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
-  const handleDrawerClose = () => {
-    setSideDrawerOpen(true);
-  };
 
   return (
     <>

@@ -15,7 +15,6 @@ import SideDrawer from "./SideDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 
 function AppBarX(props) {
@@ -24,9 +23,7 @@ function AppBarX(props) {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleToggleTheme = () => {
-    setDarkMode((current) => !current);
-  };
+  
 
   const handleDrawerToggle = () => {
     setSideDrawerOpen(!sideDrawerOpen);
@@ -38,14 +35,6 @@ function AppBarX(props) {
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
-
-  const DarkModeTheme = (
-    <>
-      <IconButton size="large" color="inherit" onClick={handleToggleTheme}>
-        <DarkModeIcon />
-      </IconButton>
-    </>
-  );
 
   const SignIn = (
     <>
@@ -72,8 +61,7 @@ function AppBarX(props) {
       <Box>
         <CreateContent />
         <Notification />
-        <Profile />
-        {DarkModeTheme}
+        <Profile setDarkMode={setDarkMode} />
         {SignIn}
       </Box>
     </Menu>
@@ -107,8 +95,7 @@ function AppBarX(props) {
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <CreateContent />
               <Notification />
-              {DarkModeTheme}
-              <Profile />
+              <Profile setDarkMode={setDarkMode} />
               {SignIn}
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
