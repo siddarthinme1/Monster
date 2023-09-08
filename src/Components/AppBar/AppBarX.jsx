@@ -1,6 +1,7 @@
 import {
   AppBar,
   Box,
+  Button,
   IconButton,
   Menu,
   Toolbar,
@@ -15,9 +16,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 
 function AppBarX(props) {
-  const { setDarkMode } = props;
+  const { setDarkMode, handleSignInOpen } = props;
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -44,6 +46,14 @@ function AppBarX(props) {
       </IconButton>
     </>
   );
+
+  const SignIn = (
+    <>
+      <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
+        <PermIdentityIcon />{" "}
+      </IconButton>
+    </>
+  );
   const mobileMenuId = "primary-search-account-menu-mobile";
 
   const renderMobileMenu = (
@@ -64,6 +74,7 @@ function AppBarX(props) {
         <Notification />
         <Profile />
         {DarkModeTheme}
+        {SignIn}
       </Box>
     </Menu>
   );
@@ -96,8 +107,9 @@ function AppBarX(props) {
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <CreateContent />
               <Notification />
-              <Profile />
               {DarkModeTheme}
+              <Profile />
+              {SignIn}
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
