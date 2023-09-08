@@ -26,22 +26,31 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 function SignIn(props) {
-  const { handleSignInClose, signInPopUp } = props;
+  const { signInPopUp, setSignInPopUp, setSignUpPopUp } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = () => {};
 
+  const handleSignUp = () => {
+    setSignInPopUp(false);
+    setSignUpPopUp(true);
+  };
+
+  const handleSignInClose = () => {
+    setSignInPopUp(false);
+  };
+
   return (
     <>
       <Dialog
         open={signInPopUp}
-        // onClose={handleSignInClose}
         aria-labelledby="sign-in-page"
         aria-describedby="sign-in-page-with-username-and-password"
         TransitionComponent={Transition}
       >
         <Toolbar>
+          <Typography variant="h6">Sign In</Typography>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton
             edge="end"
@@ -61,10 +70,10 @@ function SignIn(props) {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ backgroundColor: "purple" }}>
+            <Avatar sx={{ mb: 1, mt: 0, backgroundColor: "purple" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography>Sign In</Typography>
+
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -116,7 +125,7 @@ function SignIn(props) {
                 </Grid>
                 <Grid sx={{ flexGrow: 1 }} />
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link onClick={handleSignUp} variant="body2">
                     Don't have an account? Sign Up
                   </Link>
                 </Grid>

@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import AppBarX from "../Components/AppBar/AppBarX";
 import SignIn from "../Components/Login/SignIn";
+import SignUp from "../Components/Login/SignUp";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,6 +21,7 @@ const lightTheme = createTheme({});
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [signInPopUp, setSignInPopUp] = useState(false);
+  const [signUpPopUp, setSignUpPopUp] = useState(false);
 
   const handleSignInOpen = () => {
     setSignInPopUp(true);
@@ -27,6 +29,14 @@ function App() {
 
   const handleSignInClose = () => {
     setSignInPopUp(false);
+  };
+
+  const handleSignUpOpen = () => {
+    setSignUpPopUp(true);
+  };
+
+  const handleSignUpClose = () => {
+    setSignUpPopUp(false);
   };
 
   return (
@@ -39,7 +49,13 @@ function App() {
         />
         <SignIn
           signInPopUp={signInPopUp}
-          handleSignInClose={handleSignInClose}
+          setSignInPopUp={setSignInPopUp}
+          setSignUpPopUp={setSignUpPopUp}
+        />
+        <SignUp
+          signUpPopUp={signUpPopUp}
+          setSignInPopUp={setSignInPopUp}
+          setSignUpPopUp={setSignUpPopUp}
         />
       </ThemeProvider>
     </>
