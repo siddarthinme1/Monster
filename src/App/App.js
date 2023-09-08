@@ -47,6 +47,7 @@ function App() {
         <AppBarX
           setDarkMode={setDarkMode}
           handleSignInOpen={handleSignInOpen}
+          darkMode={darkMode}
         />
         <SignIn
           signInPopUp={signInPopUp}

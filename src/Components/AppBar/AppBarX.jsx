@@ -18,12 +18,11 @@ import SeacrhBar from "./SeacrhBar";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 
 function AppBarX(props) {
-  const { setDarkMode, handleSignInOpen } = props;
+  const { setDarkMode, darkMode, handleSignInOpen } = props;
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleDrawerToggle = () => {
     setSideDrawerOpen(!sideDrawerOpen);
@@ -61,7 +60,11 @@ function AppBarX(props) {
       <Box>
         <CreateContent />
         <Notification />
-        <Profile setDarkMode={setDarkMode} />
+        <Profile
+          setDarkMode={setDarkMode}
+          darkMode={darkMode}
+          handleMobileMenuClose={handleMobileMenuClose}
+        />
         {SignIn}
       </Box>
     </Menu>

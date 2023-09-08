@@ -1,4 +1,6 @@
 import {
+  BottomNavigation,
+  BottomNavigationAction,
   Button,
   ButtonGroup,
   Divider,
@@ -25,6 +27,9 @@ function Profile(props) {
   const [anchorElProfile, setAnchorElProfile] = useState(null);
   const isMenuOpen = Boolean(anchorElProfile);
   const [settings, setSettings] = useState(false);
+  const [profile, setProfile] = useState(false);
+  const [myAccount, setMyAccount] = useState(false);
+  const [value, setValue] = useState(0);
 
   const menuId = "primary-search-account-menu";
   const handleMenuClose = () => {
@@ -38,13 +43,21 @@ function Profile(props) {
   const handleClick = (buttonId) => {
     console.log("settings ", settings);
     console.log(buttonId);
-    if (buttonId == 3) {
+    if (buttonId == 1) {
+      setProfile(!profile);
+    } else if (buttonId == 2) {
+      setMyAccount(!myAccount);
+    } else if (buttonId == 3) {
       setSettings(!settings);
     }
   };
 
-  const handleToggleTheme = () => {
-    setDarkMode((current) => !current);
+  const handleLightTheme = () => {
+    setDarkMode(false);
+  };
+
+  const handleDarkTheme = () => {
+    setDarkMode(true);
   };
 
   const handleDrawerToggle = (settings) => (event) => {
@@ -57,7 +70,27 @@ function Profile(props) {
     setSettings(settings);
   };
 
-  const { window } = props;
+  const handleDrawerToggle1 = (settings) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key == "tab" || event.key === "shift")
+    ) {
+      return;
+    }
+    setMyAccount(settings);
+  };
+
+  const handleDrawerToggle2 = (settings) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key == "tab" || event.key === "shift")
+    ) {
+      return;
+    }
+    setProfile(settings);
+  };
+
+  const { window, darkMode, handleMobileMenuClose } = props;
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -79,17 +112,71 @@ function Profile(props) {
     >
       <Toolbar>Settings</Toolbar>
       <Divider />
-      <ButtonGroup aria-label="outlined primary button group">
-        <Button size="large" color="inherit" onClick={handleToggleTheme}>
-          <DarkModeIcon />
-        </Button>
-        <Button size="large" color="inherit">
-          <SettingsBrightnessIcon />
-        </Button>
-        <Button size="large" color="inherit">
-          <LightModeIcon />
-        </Button>
-      </ButtonGroup>
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        sx={{ m: 2 }}
+      >
+        <BottomNavigationAction
+          onClick={handleLightTheme}
+          label="Light"
+          icon={<LightModeIcon />}
+        />
+        <BottomNavigationAction
+          label="System"
+          icon={<SettingsBrightnessIcon />}
+        />
+        <BottomNavigationAction
+          onClick={handleDarkTheme}
+          label="Dark"
+          icon={<DarkModeIcon />}
+        />
+      </BottomNavigation>
+    </Drawer>
+  );
+
+  const MyAccountDrawer = (
+    <Drawer
+      anchor="right"
+      open={myAccount}
+      ModalProps={{ keepMounted: true }}
+      onClose={handleDrawerToggle1(false)}
+      container={container}
+      variant="temporary"
+      sx={{
+        display: { xs: "block", sm: "block" },
+        "& .MuiDrawer-paper": {
+          boxSizing: "border-box",
+          width: 240,
+        },
+      }}
+    >
+      <Toolbar>MyAccount</Toolbar>
+      <Divider />
+    </Drawer>
+  );
+
+  const ProfileDrawer = (
+    <Drawer
+      anchor="right"
+      open={profile}
+      ModalProps={{ keepMounted: true }}
+      onClose={handleDrawerToggle2(false)}
+      container={container}
+      variant="temporary"
+      sx={{
+        display: { xs: "block", sm: "block" },
+        "& .MuiDrawer-paper": {
+          boxSizing: "border-box",
+          width: 240,
+        },
+      }}
+    >
+      <Toolbar>Profile</Toolbar>
+      <Divider />
     </Drawer>
   );
 
@@ -105,6 +192,7 @@ function Profile(props) {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      onBlur={handleMobileMenuClose}
     >
       {profileItems.map((item) => (
         <MenuItem key={item.id} onClick={() => handleClick(item.id)}>
@@ -129,8 +217,10 @@ function Profile(props) {
           <AccountCircleIcon fontSize="medium" />
         </IconButton>
       </Tooltip>
-      {!settings && renderMenu}
+      {!settings && !profile && !myAccount && renderMenu}
       {settingsDrawer}
+      {MyAccountDrawer}
+      {ProfileDrawer}
     </>
   );
 }
