@@ -21,6 +21,7 @@ import { profileItems } from "../../Data/MonsterData";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 function Profile(props) {
   const { setDarkMode } = props;
@@ -214,7 +215,7 @@ function Profile(props) {
           aria-haspopup="true"
           onClick={handleProfileMenuOpen}
         >
-          <AccountCircleIcon fontSize="medium" />
+          <SettingsIcon fontSize="medium" />
         </IconButton>
       </Tooltip>
       {!settings && !profile && !myAccount && renderMenu}
