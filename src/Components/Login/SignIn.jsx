@@ -1,29 +1,26 @@
 import {
-  AppBar,
   Avatar,
   Box,
   Button,
   Checkbox,
   Container,
   Dialog,
-  DialogTitle,
   FormControlLabel,
   Grid,
   IconButton,
   Link,
-  Slide,
   TextField,
   Toolbar,
   Typography,
+  Zoom,
 } from "@mui/material";
 import React, { forwardRef, useState } from "react";
-import CancelIcon from "@mui/icons-material/Cancel";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Copyright from "./Copyright";
 
 const Transition = forwardRef(function Transition(props, ref) {
-  return <Slide direction="down" ref={ref} {...props} />;
+  return <Zoom ref={ref} {...props} />;
 });
 
 function SignIn(props) {

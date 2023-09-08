@@ -9,6 +9,7 @@ import {
 import AppBarX from "../Components/AppBar/AppBarX";
 import SignIn from "../Components/Login/SignIn";
 import SignUp from "../Components/Login/SignUp";
+import AboutPage from "../Components/Pages/AboutPage";
 
 const darkTheme = createTheme({
   palette: {
@@ -57,6 +58,7 @@ function App() {
           setSignInPopUp={setSignInPopUp}
           setSignUpPopUp={setSignUpPopUp}
         />
+        {/* <AboutPage /> */}
       </ThemeProvider>
     </>
   );
