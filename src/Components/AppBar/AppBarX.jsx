@@ -7,22 +7,27 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Profile from "./Profile";
+import Settings from "./Settings";
 import Notification from "./Notification";
 import SideDrawer from "./SideDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import AppBarContext from "../../Context/AppBarContext";
 
-function AppBarX(props) {
-  const { setDarkMode, darkMode, handleSignInOpen } = props;
+function AppBarX() {
+  const { setSignInPopUp } = useContext(AppBarContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleSignInOpen = () => {
+    setSignInPopUp(true);
+  };
 
   const handleDrawerToggle = () => {
     setSideDrawerOpen(!sideDrawerOpen);
@@ -38,10 +43,11 @@ function AppBarX(props) {
   const SignIn = (
     <>
       <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
-        <PermIdentityIcon />{" "}
+        <PermIdentityIcon />
       </IconButton>
     </>
   );
+
   const mobileMenuId = "primary-search-account-menu-mobile";
 
   const renderMobileMenu = (
@@ -60,11 +66,7 @@ function AppBarX(props) {
       <Box>
         <CreateContent />
         <Notification />
-        <Profile
-          setDarkMode={setDarkMode}
-          darkMode={darkMode}
-          handleMobileMenuClose={handleMobileMenuClose}
-        />
+        <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
         {SignIn}
       </Box>
     </Menu>
@@ -98,7 +100,7 @@ function AppBarX(props) {
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <CreateContent />
               <Notification />
-              <Profile setDarkMode={setDarkMode} />
+              <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
               {SignIn}
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   CssBaseline,
@@ -10,6 +10,7 @@ import AppBarX from "../Components/AppBar/AppBarX";
 import SignIn from "../Components/Login/SignIn";
 import SignUp from "../Components/Login/SignUp";
 import AboutPage from "../Components/Pages/AboutPage";
+import AppBarContext from "../Context/AppBarContext";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,45 +21,15 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({});
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [signInPopUp, setSignInPopUp] = useState(false);
-  const [signUpPopUp, setSignUpPopUp] = useState(false);
-
-  const handleSignInOpen = () => {
-    setSignInPopUp(true);
-  };
-
-  const handleSignInClose = () => {
-    setSignInPopUp(false);
-  };
-
-  const handleSignUpOpen = () => {
-    setSignUpPopUp(true);
-  };
-
-  const handleSignUpClose = () => {
-    setSignUpPopUp(false);
-  };
+  const { darkMode } = useContext(AppBarContext);
 
   return (
     <>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
-        <AppBarX
-          setDarkMode={setDarkMode}
-          handleSignInOpen={handleSignInOpen}
-          darkMode={darkMode}
-        />
-        <SignIn
-          signInPopUp={signInPopUp}
-          setSignInPopUp={setSignInPopUp}
-          setSignUpPopUp={setSignUpPopUp}
-        />
-        <SignUp
-          signUpPopUp={signUpPopUp}
-          setSignInPopUp={setSignInPopUp}
-          setSignUpPopUp={setSignUpPopUp}
-        />
+        <AppBarX />
+        <SignIn />
+        <SignUp />
         {/* <AboutPage /> */}
       </ThemeProvider>
     </>

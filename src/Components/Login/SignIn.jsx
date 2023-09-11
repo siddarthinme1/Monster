@@ -14,17 +14,19 @@ import {
   Typography,
   Zoom,
 } from "@mui/material";
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useContext, useState } from "react";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Copyright from "./Copyright";
+import AppBarContext from "../../Context/AppBarContext";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Zoom ref={ref} {...props} />;
 });
 
 function SignIn(props) {
-  const { signInPopUp, setSignInPopUp, setSignUpPopUp } = props;
+  const { setSignInPopUp, setSignUpPopUp, signInPopUp } =
+    useContext(AppBarContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

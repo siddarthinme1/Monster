@@ -3,36 +3,55 @@ import {
   BottomNavigationAction,
   Button,
   ButtonGroup,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Divider,
   Drawer,
+  Grid,
   IconButton,
+  Link,
   List,
   ListItem,
   ListItemButton,
   Menu,
   MenuItem,
+  Rating,
+  TextField,
   Toolbar,
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useState, KeyboardEvent } from "react";
+import React, { useState, KeyboardEvent, useContext } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { profileItems } from "../../Data/MonsterData";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import SettingsIcon from "@mui/icons-material/Settings";
+import AppBarContext from "../../Context/AppBarContext";
+import ReviewsIcon from "@mui/icons-material/Reviews";
 
-function Profile(props) {
-  const { setDarkMode } = props;
+function Settings(props) {
+  const { setDarkMode, settings, setSettings } = useContext(AppBarContext);
+  const [rateUs, setrateUs] = useState(false);
   const [anchorElProfile, setAnchorElProfile] = useState(null);
   const isMenuOpen = Boolean(anchorElProfile);
-  const [settings, setSettings] = useState(false);
+  const { window, setMobileMoreAnchorEl } = props;
   const [profile, setProfile] = useState(false);
   const [myAccount, setMyAccount] = useState(false);
   const [value, setValue] = useState(0);
 
   const menuId = "primary-search-account-menu";
+
+  const handleClickRateUs = () => {
+    setrateUs(true);
+  };
+
+  const handleCloseRateUs = () => {
+    setrateUs(false);
+  };
   const handleMenuClose = () => {
     setAnchorElProfile(null);
   };
@@ -42,16 +61,48 @@ function Profile(props) {
   };
 
   const handleClick = (buttonId) => {
-    console.log("settings ", settings);
-    console.log(buttonId);
+    setMobileMoreAnchorEl(null);
     if (buttonId == 1) {
       setProfile(!profile);
     } else if (buttonId == 2) {
       setMyAccount(!myAccount);
     } else if (buttonId == 3) {
       setSettings(!settings);
+    } else if (buttonId == 4) {
+      setSettings(!settings);
+    } else if (buttonId == 5) {
+      setSettings(!settings);
+    } else if (buttonId == 6) {
+      handleClickRateUs();
     }
   };
+
+  const RateUsDialog = (
+    <Dialog
+      open={rateUs}
+      onClose={handleCloseRateUs}
+      aria-labelledby="alert-rateus"
+      aria-describedby="alert-rateus-outof-five-star"
+    >
+      <DialogTitle id="alert-rateus-title">
+        <Typography variant="h4">Enjoying the App?</Typography>
+      </DialogTitle>
+      <DialogContent>
+        <Grid container>
+          <Grid item>
+            <DialogContentText> Your opinion matters to us</DialogContentText>
+          </Grid>
+          <Grid item>
+            <Rating name="size-medium" defaultValue={2} size="large" />
+          </Grid>
+          <Grid>
+            <TextField></TextField>
+          </Grid>
+        </Grid>
+      </DialogContent>
+      <Button onClick={handleCloseRateUs}>Send feedback</Button>
+    </Dialog>
+  );
 
   const handleLightTheme = () => {
     setDarkMode(false);
@@ -91,7 +142,6 @@ function Profile(props) {
     setProfile(settings);
   };
 
-  const { window, darkMode, handleMobileMenuClose } = props;
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -193,7 +243,6 @@ function Profile(props) {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-      onBlur={handleMobileMenuClose}
     >
       {profileItems.map((item) => (
         <MenuItem key={item.id} onClick={() => handleClick(item.id)}>
@@ -222,8 +271,9 @@ function Profile(props) {
       {settingsDrawer}
       {MyAccountDrawer}
       {ProfileDrawer}
+      {RateUsDialog}
     </>
   );
 }
 
-export default Profile;
+export default Settings;

@@ -22,7 +22,7 @@ export const profileItems = [
   { id: "1", title: "Profile", photo: <FaceIcon /> },
   { id: "2", title: "My Account", photo: <ManageAccountsIcon /> },
   { id: "3", title: "Settings", photo: <SettingsIcon /> },
-  { id: "4", title: "Location", photo: <LanguageIcon /> },
+  { id: "4", title: "Location: India", photo: <LanguageIcon /> },
   { id: "5", title: "Help", photo: <HelpIcon /> },
   { id: "6", title: "Send Feedback", photo: <FeedbackIcon /> },
 ];
