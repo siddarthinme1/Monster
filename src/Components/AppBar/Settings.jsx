@@ -32,26 +32,30 @@ import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AppBarContext from "../../Context/AppBarContext";
 import ReviewsIcon from "@mui/icons-material/Reviews";
+import SendIcon from "@mui/icons-material/Send";
 
 function Settings(props) {
-  const { setDarkMode, settings, setSettings } = useContext(AppBarContext);
-  const [rateUs, setrateUs] = useState(false);
-  const [anchorElProfile, setAnchorElProfile] = useState(null);
-  const isMenuOpen = Boolean(anchorElProfile);
   const { window, setMobileMoreAnchorEl } = props;
+
+  const { setDarkMode, settings, setSettings } = useContext(AppBarContext);
+  const [anchorElProfile, setAnchorElProfile] = useState(null);
+
   const [profile, setProfile] = useState(false);
   const [myAccount, setMyAccount] = useState(false);
+  const [location, setLocation] = useState(false);
+  const [help, setHelp] = useState(false);
+  const [rateUs, setRateUs] = useState(false);
+
   const [value, setValue] = useState(0);
+
+  const isMenuOpen = Boolean(anchorElProfile);
 
   const menuId = "primary-search-account-menu";
 
-  const handleClickRateUs = () => {
-    setrateUs(true);
+  const handleCloseRateUs = () => {
+    setRateUs(false);
   };
 
-  const handleCloseRateUs = () => {
-    setrateUs(false);
-  };
   const handleMenuClose = () => {
     setAnchorElProfile(null);
   };
@@ -69,11 +73,11 @@ function Settings(props) {
     } else if (buttonId == 3) {
       setSettings(!settings);
     } else if (buttonId == 4) {
-      setSettings(!settings);
+      setLocation(!location);
     } else if (buttonId == 5) {
-      setSettings(!settings);
+      setHelp(!help);
     } else if (buttonId == 6) {
-      handleClickRateUs();
+      setRateUs(true);
     }
   };
 
@@ -88,19 +92,11 @@ function Settings(props) {
         <Typography variant="h4">Enjoying the App?</Typography>
       </DialogTitle>
       <DialogContent>
-        <Grid container>
-          <Grid item>
-            <DialogContentText> Your opinion matters to us</DialogContentText>
-          </Grid>
-          <Grid item>
-            <Rating name="size-medium" defaultValue={2} size="large" />
-          </Grid>
-          <Grid>
-            <TextField></TextField>
-          </Grid>
-        </Grid>
+        <Typography variant="h5">Your opinion matters to us</Typography>
+        <Rating name="size-medium" defaultValue={2} size="large" />
       </DialogContent>
-      <Button onClick={handleCloseRateUs}>Send feedback</Button>
+      <TextField multiline rows={4} sx={{ m: 2 }}></TextField>
+      <Button onClick={handleCloseRateUs}>Send Feedback</Button>
     </Dialog>
   );
 
@@ -112,34 +108,24 @@ function Settings(props) {
     setDarkMode(true);
   };
 
-  const handleDrawerToggle = (settings) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key == "tab" || event.key === "shift")
-    ) {
-      return;
-    }
+  const handleDrawerSettings = (settings) => () => {
     setSettings(settings);
   };
 
-  const handleDrawerToggle1 = (settings) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key == "tab" || event.key === "shift")
-    ) {
-      return;
-    }
-    setMyAccount(settings);
+  const handleDrawerMyAccount = (myAccount) => () => {
+    setMyAccount(myAccount);
   };
 
-  const handleDrawerToggle2 = (settings) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key == "tab" || event.key === "shift")
-    ) {
-      return;
-    }
-    setProfile(settings);
+  const handleDrawerProfile = (profile) => () => {
+    setProfile(profile);
+  };
+
+  const handleDrawerLocation = (location) => () => {
+    setLocation(location);
+  };
+
+  const handleDrawerHelp = (help) => () => {
+    setHelp(help);
   };
 
   const container =
@@ -150,7 +136,7 @@ function Settings(props) {
       anchor="right"
       open={settings}
       ModalProps={{ keepMounted: true }}
-      onClose={handleDrawerToggle(false)}
+      onClose={handleDrawerSettings(false)}
       container={container}
       variant="temporary"
       sx={{
@@ -194,7 +180,7 @@ function Settings(props) {
       anchor="right"
       open={myAccount}
       ModalProps={{ keepMounted: true }}
-      onClose={handleDrawerToggle1(false)}
+      onClose={handleDrawerMyAccount(false)}
       container={container}
       variant="temporary"
       sx={{
@@ -215,7 +201,7 @@ function Settings(props) {
       anchor="right"
       open={profile}
       ModalProps={{ keepMounted: true }}
-      onClose={handleDrawerToggle2(false)}
+      onClose={handleDrawerProfile(false)}
       container={container}
       variant="temporary"
       sx={{
@@ -227,6 +213,48 @@ function Settings(props) {
       }}
     >
       <Toolbar>Profile</Toolbar>
+      <Divider />
+    </Drawer>
+  );
+
+  const LocationDrawer = (
+    <Drawer
+      anchor="right"
+      open={location}
+      ModalProps={{ keepMounted: true }}
+      onClose={handleDrawerLocation(false)}
+      container={container}
+      variant="temporary"
+      sx={{
+        display: { xs: "block", sm: "block" },
+        "& .MuiDrawer-paper": {
+          boxSizing: "border-box",
+          width: 240,
+        },
+      }}
+    >
+      <Toolbar>Location</Toolbar>
+      <Divider />
+    </Drawer>
+  );
+
+  const HelpDrawer = (
+    <Drawer
+      anchor="right"
+      open={help}
+      ModalProps={{ keepMounted: true }}
+      onClose={handleDrawerHelp(false)}
+      container={container}
+      variant="temporary"
+      sx={{
+        display: { xs: "block", sm: "block" },
+        "& .MuiDrawer-paper": {
+          boxSizing: "border-box",
+          width: 240,
+        },
+      }}
+    >
+      <Toolbar>Help</Toolbar>
       <Divider />
     </Drawer>
   );
@@ -267,10 +295,18 @@ function Settings(props) {
           <SettingsIcon fontSize="medium" />
         </IconButton>
       </Tooltip>
-      {!settings && !profile && !myAccount && renderMenu}
+      {!settings &&
+        !profile &&
+        !myAccount &&
+        !location &&
+        !help &&
+        !rateUs &&
+        renderMenu}
       {settingsDrawer}
       {MyAccountDrawer}
       {ProfileDrawer}
+      {LocationDrawer}
+      {HelpDrawer}
       {RateUsDialog}
     </>
   );
