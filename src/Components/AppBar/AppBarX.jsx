@@ -17,6 +17,8 @@ import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AppBarContext from "../../Context/AppBarContext";
+import GoogleSignOut from "../Login/GoogleSignOut";
+import SignIn from "../Login/SignIn";
 
 function AppBarX() {
   const { setSignInPopUp } = useContext(AppBarContext);
@@ -40,11 +42,12 @@ function AppBarX() {
     setMobileMoreAnchorEl(null);
   };
 
-  const SignIn = (
+  const SignInPop = (
     <>
       <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
         <PermIdentityIcon />
       </IconButton>
+      <SignIn />
     </>
   );
 
@@ -64,10 +67,14 @@ function AppBarX() {
       onClose={handleMobileMenuClose}
     >
       <Box>
-        <CreateContent />
-        <Notification />
-        <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
-        {SignIn}
+        <>
+          <CreateContent />
+          <Notification />
+          <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
+        </>
+
+        {SignInPop}
+        {<GoogleSignOut />}
       </Box>
     </Menu>
   );
@@ -101,7 +108,8 @@ function AppBarX() {
               <CreateContent />
               <Notification />
               <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
-              {SignIn}
+
+              {SignInPop}
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton

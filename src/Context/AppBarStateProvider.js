@@ -7,6 +7,7 @@ const AppBarStateProvider = (props) => {
   const [signInPopUp, setSignInPopUp] = useState(false);
   const [signUpPopUp, setSignUpPopUp] = useState(false);
   const [location, setLocation] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <AppBarContext.Provider
       value={{
@@ -20,6 +21,8 @@ const AppBarStateProvider = (props) => {
         setSignUpPopUp,
         location,
         setLocation,
+        isAuthenticated,
+        setIsAuthenticated,
       }}
     >
       {props.children}

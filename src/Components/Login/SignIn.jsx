@@ -19,12 +19,15 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Copyright from "./Copyright";
 import AppBarContext from "../../Context/AppBarContext";
+import GoogleSignOut from "./GoogleSignOut";
+import GoogleSignIn from "./GoogleSignIn";
+import SignUp from "./SignUp";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Zoom ref={ref} {...props} />;
 });
 
-function SignIn(props) {
+function SignIn() {
   const { setSignInPopUp, setSignUpPopUp, signInPopUp } =
     useContext(AppBarContext);
   const [email, setEmail] = useState("");
@@ -117,7 +120,11 @@ function SignIn(props) {
               >
                 Sign In
               </Button>
+
               <Grid container>
+                <Grid item sm={12} sx={{ m: 1 }}>
+                  <GoogleSignIn />
+                </Grid>
                 <Grid item>
                   <Link href="#" variant="body2">
                     Forgot Password
@@ -135,6 +142,7 @@ function SignIn(props) {
           <Copyright sx={{ mb: 3 }} />
         </Container>
       </Dialog>
+      <SignUp />
     </>
   );
 }

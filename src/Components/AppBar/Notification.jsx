@@ -68,7 +68,7 @@ function Notification() {
         <NotificationWrapper>
           <List>
             {notifications.map((notification) => (
-              <ListItemButton disableRipple="true" key={notification.id}>
+              <ListItemButton disableRipple key={notification.id}>
                 <ListItemAvatar>
                   <Avatar>{notification.avatar}</Avatar>
                 </ListItemAvatar>

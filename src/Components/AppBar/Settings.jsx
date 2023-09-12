@@ -19,6 +19,8 @@ import {
   MenuItem,
   Rating,
   TextField,
+  ToggleButton,
+  ToggleButtonGroup,
   Toolbar,
   Tooltip,
   Typography,
@@ -46,7 +48,7 @@ function Settings(props) {
   const [help, setHelp] = useState(false);
   const [rateUs, setRateUs] = useState(false);
 
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("light");
 
   const isMenuOpen = Boolean(anchorElProfile);
 
@@ -149,29 +151,26 @@ function Settings(props) {
     >
       <Toolbar>Settings</Toolbar>
       <Divider />
-      <BottomNavigation
-        showLabels
+      <ToggleButtonGroup
+        color="primary"
         value={value}
+        exclusive
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
-        sx={{ m: 2 }}
+        aria-label="theme"
+        sx={{ ml: 6, mr: 6, mt: 2, mb: 2 }}
       >
-        <BottomNavigationAction
-          onClick={handleLightTheme}
-          label="Light"
-          icon={<LightModeIcon />}
-        />
-        <BottomNavigationAction
-          label="System"
-          icon={<SettingsBrightnessIcon />}
-        />
-        <BottomNavigationAction
-          onClick={handleDarkTheme}
-          label="Dark"
-          icon={<DarkModeIcon />}
-        />
-      </BottomNavigation>
+        <ToggleButton value="light" onClick={handleLightTheme}>
+          <LightModeIcon />
+        </ToggleButton>
+        <ToggleButton value="system">
+          <SettingsBrightnessIcon />
+        </ToggleButton>
+        <ToggleButton value="dark" onClick={handleDarkTheme}>
+          <DarkModeIcon />
+        </ToggleButton>
+      </ToggleButtonGroup>
     </Drawer>
   );
 

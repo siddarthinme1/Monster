@@ -161,6 +161,7 @@ function SignUp() {
           <Copyright sx={{ mb: 3 }} />
         </Container>
       </Dialog>
+      
     </>
   );
 }
