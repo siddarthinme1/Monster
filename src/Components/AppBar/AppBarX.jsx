@@ -3,8 +3,10 @@ import {
   Box,
   IconButton,
   Menu,
+  Slide,
   Toolbar,
   Typography,
+  useScrollTrigger,
 } from "@mui/material";
 import React, { useState, useContext } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -19,6 +21,8 @@ import AppBarContext from "../../Context/AppBarContext";
 import SignIn from "../Login/SignIn";
 
 function AppBarX() {
+  const trigger = useScrollTrigger();
+
   const { setSignInPopUp } = useContext(AppBarContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -79,48 +83,50 @@ function AppBarX() {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open-drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
-            >
-              MONSTER
-            </Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <SeacrhBar />
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <CreateContent />
-              <Notification />
-              <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
-
-              {SignInPop}
-            </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+        <Slide appear={false} direction="down" in={!trigger}>
+          <AppBar>
+            <Toolbar>
               <IconButton
-                size="large"
                 color="inherit"
-                edge="end"
-                onClick={handleMobileMenuOpen}
-                aria-controls="mobileMenuId"
+                aria-label="open-drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2 }}
               >
-                <MoreVertIcon />
+                <MenuIcon />
               </IconButton>
-            </Box>
-          </Toolbar>
-        </AppBar>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ display: { xs: "none", sm: "block" } }}
+              >
+                MONSTER
+              </Typography>
+              <Box sx={{ flexGrow: 1 }} />
+              <SeacrhBar />
+              <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                <CreateContent />
+                <Notification />
+                <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
+
+                {SignInPop}
+              </Box>
+              <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  size="large"
+                  color="inherit"
+                  edge="end"
+                  onClick={handleMobileMenuOpen}
+                  aria-controls="mobileMenuId"
+                >
+                  <MoreVertIcon />
+                </IconButton>
+              </Box>
+            </Toolbar>
+          </AppBar>
+        </Slide>
 
         <SideDrawer
           handleDrawerToggle={handleDrawerToggle}

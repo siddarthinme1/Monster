@@ -2,9 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import {
   Button,
   CssBaseline,
+  Slide,
   ThemeProvider,
   Typography,
   createTheme,
+  useScrollTrigger,
 } from "@mui/material";
 import AppBarX from "../Components/AppBar/AppBarX";
 import SignIn from "../Components/Login/SignIn";
@@ -42,7 +44,9 @@ function App() {
     <>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
+
         <AppBarX />
+
         <LabelBottomNavigation />
         <CardPage />
       </ThemeProvider>
