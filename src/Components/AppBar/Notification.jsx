@@ -5,17 +5,16 @@ import {
   Badge,
   Box,
   Divider,
-  Grow,
   IconButton,
   List,
   ListItemAvatar,
   ListItemButton,
   ListItemText,
+  ListSubheader,
   Popover,
   Toolbar,
   Typography,
 } from "@mui/material";
-
 import { styled } from "styled-components";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
@@ -67,6 +66,9 @@ function Notification() {
         <Divider />
         <NotificationWrapper>
           <List>
+            <ListSubheader sx={{ bgcolor: "background.paper" }}>
+              Today
+            </ListSubheader>
             {notifications.map((notification) => (
               <ListItemButton disableRipple key={notification.id}>
                 <ListItemAvatar>

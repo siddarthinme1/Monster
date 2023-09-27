@@ -1,7 +1,6 @@
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   Menu,
   Toolbar,
@@ -17,7 +16,6 @@ import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AppBarContext from "../../Context/AppBarContext";
-import GoogleSignOut from "../Login/GoogleSignOut";
 import SignIn from "../Login/SignIn";
 
 function AppBarX() {
@@ -74,7 +72,6 @@ function AppBarX() {
         </>
 
         {SignInPop}
-        {<GoogleSignOut />}
       </Box>
     </Menu>
   );

@@ -14,6 +14,8 @@ import AppBarContext from "../Context/AppBarContext";
 import { gapi } from "gapi-script";
 import GoogleLogin from "react-google-login";
 import GoogleSignIn from "../Components/Login/GoogleSignIn";
+import LabelBottomNavigation from "../Components/BottomNavigation/BottomNavigation";
+import CardPage from "../Components/Pages/CardPage";
 
 const clientId =
   "650114961683-4quord8pl0v8n0gpnvp8funhja8ijcf8.apps.googleusercontent.com";
@@ -41,6 +43,8 @@ function App() {
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
         <AppBarX />
+        <LabelBottomNavigation />
+        <CardPage />
       </ThemeProvider>
     </>
   );

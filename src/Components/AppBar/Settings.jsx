@@ -1,20 +1,11 @@
 import {
-  BottomNavigation,
-  BottomNavigationAction,
   Button,
-  ButtonGroup,
   Dialog,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Divider,
   Drawer,
-  Grid,
   IconButton,
-  Link,
-  List,
-  ListItem,
-  ListItemButton,
   Menu,
   MenuItem,
   Rating,
@@ -25,16 +16,13 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useState, KeyboardEvent, useContext } from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import React, { useState, useContext } from "react";
 import { profileItems } from "../../Data/MonsterData";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AppBarContext from "../../Context/AppBarContext";
-import ReviewsIcon from "@mui/icons-material/Reviews";
-import SendIcon from "@mui/icons-material/Send";
 
 function Settings(props) {
   const { window, setMobileMoreAnchorEl } = props;
