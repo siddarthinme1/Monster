@@ -97,8 +97,6 @@ function CardPage() {
 
       <CardContent>
         <Typography paragraph>{cardData[index].description}</Typography>
-
-        {/* Add any additional content you want to display */}
       </CardContent>
     </Dialog>
   );
@@ -113,7 +111,7 @@ function CardPage() {
                 <CardActionArea onClick={() => handleOpenRecipe(index)}>
                   <CardHeader
                     avatar={
-                      <Avatar sx={{ bgcolor: "pink" }} aria-label="recipe">
+                      <Avatar sx={{ bgcolor: "secondary" }} aria-label="recipe">
                         {card.avatar}
                       </Avatar>
                     }

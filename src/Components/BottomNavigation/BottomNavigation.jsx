@@ -5,10 +5,12 @@ import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Paper, Slide, useScrollTrigger } from "@mui/material";
 import ArchiveIcon from "@mui/icons-material/Archive";
+import AppBarContext from "../../Context/AppBarContext";
 
 function LabelBottomNavigation() {
+  const { trigger } = React.useContext(AppBarContext);
+
   const [value, setValue] = React.useState("recents");
-  const trigger = useScrollTrigger();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

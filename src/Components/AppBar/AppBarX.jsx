@@ -21,8 +21,7 @@ import AppBarContext from "../../Context/AppBarContext";
 import SignIn from "../Login/SignIn";
 
 function AppBarX() {
-  const trigger = useScrollTrigger();
-  const { setSignInPopUp } = useContext(AppBarContext);
+  const { setSignInPopUp, trigger } = useContext(AppBarContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 

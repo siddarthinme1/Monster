@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import AppBarContext from "./AppBarContext";
+import { useScrollTrigger } from "@mui/material";
 
 const AppBarStateProvider = (props) => {
+  const trigger = useScrollTrigger();
+
   const [darkMode, setDarkMode] = useState(false);
   const [settings, setSettings] = useState(false);
   const [signInPopUp, setSignInPopUp] = useState(false);
@@ -23,6 +26,7 @@ const AppBarStateProvider = (props) => {
         setLocation,
         isAuthenticated,
         setIsAuthenticated,
+        trigger,
       }}
     >
       {props.children}
