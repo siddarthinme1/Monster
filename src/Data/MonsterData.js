@@ -144,7 +144,7 @@ export const cardData = [
       "This paneer butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "2",
     avatar: "SK",
     title: "Kaju Masala",
     subheader: "July 07, 2023",
@@ -153,7 +153,7 @@ export const cardData = [
       "This Kaju butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "3",
     avatar: "RR",
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
@@ -162,7 +162,7 @@ export const cardData = [
       "This paneer butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "4",
     avatar: "SK",
     title: "Kaju Masala",
     subheader: "July 07, 2023",
@@ -171,7 +171,7 @@ export const cardData = [
       "This Kaju butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "5",
     avatar: "RR",
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
@@ -180,7 +180,7 @@ export const cardData = [
       "This paneer butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "6",
     avatar: "SK",
     title: "Kaju Masala",
     subheader: "July 07, 2023",
@@ -189,7 +189,7 @@ export const cardData = [
       "This Kaju butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "7",
     avatar: "RR",
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
@@ -198,7 +198,7 @@ export const cardData = [
       "This paneer butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "8",
     avatar: "SK",
     title: "Kaju Masala",
     subheader: "July 07, 2023",
@@ -207,7 +207,7 @@ export const cardData = [
       "This Kaju butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "9",
     avatar: "RR",
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
@@ -216,7 +216,7 @@ export const cardData = [
       "This paneer butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "10",
     avatar: "SK",
     title: "Kaju Masala",
     subheader: "July 07, 2023",
@@ -225,7 +225,7 @@ export const cardData = [
       "This Kaju butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "11",
     avatar: "RR",
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
@@ -234,7 +234,7 @@ export const cardData = [
       "This paneer butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "12",
     avatar: "SK",
     title: "Kaju Masala",
     subheader: "July 07, 2023",
@@ -243,7 +243,7 @@ export const cardData = [
       "This Kaju butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "13",
     avatar: "RR",
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
@@ -252,7 +252,7 @@ export const cardData = [
       "This paneer butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "14",
     avatar: "SK",
     title: "Kaju Masala",
     subheader: "July 07, 2023",
@@ -261,7 +261,7 @@ export const cardData = [
       "This Kaju butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "15",
     avatar: "RR",
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
@@ -270,7 +270,7 @@ export const cardData = [
       "This paneer butter masala is a curry lover's dream!! Soft paneer dunked in a creamy, silky, super flavourful and delicious curry.",
   },
   {
-    id: "1",
+    id: "16",
     avatar: "SK",
     title: "Kaju Masala",
     subheader: "July 07, 2023",
