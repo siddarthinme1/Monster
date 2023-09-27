@@ -1,21 +1,12 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import {
-  Button,
   CssBaseline,
-  Slide,
   ThemeProvider,
-  Typography,
   createTheme,
-  useScrollTrigger,
 } from "@mui/material";
 import AppBarX from "../Components/AppBar/AppBarX";
-import SignIn from "../Components/Login/SignIn";
-import SignUp from "../Components/Login/SignUp";
-import AboutPage from "../Components/Pages/AboutPage";
 import AppBarContext from "../Context/AppBarContext";
 import { gapi } from "gapi-script";
-import GoogleLogin from "react-google-login";
-import GoogleSignIn from "../Components/Login/GoogleSignIn";
 import LabelBottomNavigation from "../Components/BottomNavigation/BottomNavigation";
 import CardPage from "../Components/Pages/CardPage";
 

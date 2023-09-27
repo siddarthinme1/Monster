@@ -136,6 +136,7 @@ const actions = [
 export const cardData = [
   {
     id: "1",
+    liked: true,
     avatar: "RR",
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
@@ -146,6 +147,7 @@ export const cardData = [
   {
     id: "2",
     avatar: "SK",
+    liked: false,
     title: "Kaju Masala",
     subheader: "July 07, 2023",
     image: "../../Images/paneerButter.jpg",
@@ -155,6 +157,7 @@ export const cardData = [
   {
     id: "3",
     avatar: "RR",
+    liked: false,
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
     image: "../../Images/paneerButter.jpg",
@@ -164,6 +167,7 @@ export const cardData = [
   {
     id: "4",
     avatar: "SK",
+    liked: false,
     title: "Kaju Masala",
     subheader: "July 07, 2023",
     image: "../../Images/paneerButter.jpg",
@@ -173,6 +177,7 @@ export const cardData = [
   {
     id: "5",
     avatar: "RR",
+    liked: false,
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
     image: "../../Images/paneerButter.jpg",
@@ -182,6 +187,7 @@ export const cardData = [
   {
     id: "6",
     avatar: "SK",
+    liked: false,
     title: "Kaju Masala",
     subheader: "July 07, 2023",
     image: "../../Images/paneerButter.jpg",
@@ -191,6 +197,7 @@ export const cardData = [
   {
     id: "7",
     avatar: "RR",
+    liked: false,
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
     image: "../../Images/paneerButter.jpg",
@@ -200,6 +207,7 @@ export const cardData = [
   {
     id: "8",
     avatar: "SK",
+    liked: false,
     title: "Kaju Masala",
     subheader: "July 07, 2023",
     image: "../../Images/paneerButter.jpg",
@@ -209,6 +217,7 @@ export const cardData = [
   {
     id: "9",
     avatar: "RR",
+    liked: false,
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
     image: "../../Images/paneerButter.jpg",
@@ -218,6 +227,7 @@ export const cardData = [
   {
     id: "10",
     avatar: "SK",
+    liked: false,
     title: "Kaju Masala",
     subheader: "July 07, 2023",
     image: "../../Images/paneerButter.jpg",
@@ -227,6 +237,7 @@ export const cardData = [
   {
     id: "11",
     avatar: "RR",
+    liked: false,
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
     image: "../../Images/paneerButter.jpg",
@@ -236,6 +247,7 @@ export const cardData = [
   {
     id: "12",
     avatar: "SK",
+    liked: false,
     title: "Kaju Masala",
     subheader: "July 07, 2023",
     image: "../../Images/paneerButter.jpg",
@@ -245,6 +257,7 @@ export const cardData = [
   {
     id: "13",
     avatar: "RR",
+    liked: false,
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
     image: "../../Images/paneerButter.jpg",
@@ -254,6 +267,7 @@ export const cardData = [
   {
     id: "14",
     avatar: "SK",
+    liked: false,
     title: "Kaju Masala",
     subheader: "July 07, 2023",
     image: "../../Images/paneerButter.jpg",
@@ -263,6 +277,7 @@ export const cardData = [
   {
     id: "15",
     avatar: "RR",
+    liked: false,
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
     image: "../../Images/paneerButter.jpg",
@@ -272,6 +287,7 @@ export const cardData = [
   {
     id: "16",
     avatar: "SK",
+    liked: false,
     title: "Kaju Masala",
     subheader: "July 07, 2023",
     image: "../../Images/paneerButter.jpg",
