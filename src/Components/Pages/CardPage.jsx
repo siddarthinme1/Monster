@@ -59,7 +59,7 @@ function CardPage() {
 
   return (
     <CardWrapper>
-      <Grid container spacing="auto">
+      <Grid container spacing="auto" justifyContent="center">
         {cardData.map((cardData, index) => (
           <Grid item key={index}>
             <Card sx={{ m: "10px", maxWidth: "345px" }}>
