@@ -44,9 +44,7 @@ function App() {
     <>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
-
         <AppBarX />
-
         <LabelBottomNavigation />
         <CardPage />
       </ThemeProvider>
