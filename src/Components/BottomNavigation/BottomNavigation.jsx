@@ -6,6 +6,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Paper, Slide, useScrollTrigger } from "@mui/material";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import AppBarContext from "../../Context/AppBarContext";
+import HomeIcon from "@mui/icons-material/Home";
+import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 
 function LabelBottomNavigation() {
   const { trigger } = React.useContext(AppBarContext);
@@ -34,10 +36,10 @@ function LabelBottomNavigation() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Home" icon={<HomeIcon />} />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
-          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+          <BottomNavigationAction label="Library" icon={<LibraryBooksIcon />} />
         </BottomNavigation>
       </Paper>
     </Slide>

@@ -15,6 +15,13 @@ import {
   Dialog,
   AppBar,
   Toolbar,
+  List,
+  Box,
+  ListItem,
+  Checkbox,
+  ListItemText,
+  ListItemButton,
+  Divider,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -30,21 +37,23 @@ const ExpandMore = styled((props) => {
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-
   marginLeft: "auto",
-
   transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
 }));
 
 const CardWrapper = styled("div")(({ theme }) => ({
-  marginTop: "80px",
-
+  marginTop: "60px",
   display: "flex",
+  [theme.breakpoints.up("sm")]: {
+    marginTop: "80px",
+  },
 }));
 
 function CardPage() {
+  const [checked, setChecked] = React.useState([1]);
+
   const [expandedStates, setExpandedStates] = useState(
     Array(cardData.length).fill(false)
   );
@@ -75,6 +84,19 @@ function CardPage() {
     setOpenRecipe((prevStates) =>
       prevStates.map((state, i) => (i === selectedCardIndex ? false : state))
     );
+  };
+
+  const handleToggle = (value) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
   };
 
   const RecipeDialog = ({ index }) => (
@@ -108,28 +130,33 @@ function CardPage() {
           {cardData.map((card, index) => (
             <Grid item key={index}>
               <Card sx={{ m: "10px", maxWidth: "345px" }}>
+                <CardHeader
+                  avatar={
+                    <Avatar sx={{ bgcolor: "secondary" }} aria-label="recipe">
+                      {card.avatar}
+                    </Avatar>
+                  }
+                  action={
+                    <IconButton>
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title={card.title}
+                  subheader={card.subheader}
+                />
                 <CardActionArea onClick={() => handleOpenRecipe(index)}>
-                  <CardHeader
-                    avatar={
-                      <Avatar sx={{ bgcolor: "secondary" }} aria-label="recipe">
-                        {card.avatar}
-                      </Avatar>
-                    }
-                    action={
-                      <IconButton>
-                        <MoreVertIcon />
-                      </IconButton>
-                    }
-                    title={card.title}
-                    subheader={card.subheader}
-                  />
                   <CardMedia
                     component="img"
                     height="194"
-                    image={require("../../Images/paneerButter.jpg")}
+                    image={card.image}
                     alt={card.title}
                   />
-                  <CardContent>
+                  <CardContent
+                    sx={{
+                      overflow: "auto",
+                      height: 100,
+                    }}
+                  >
                     <Typography variant="body2" color="text.secondary">
                       {card.description}
                     </Typography>
@@ -160,7 +187,53 @@ function CardPage() {
                   unmountOnExit
                 >
                   <CardContent>
-                    <Typography paragraph>Method:</Typography>
+                    <Typography variant="h6">Ingredients:</Typography>
+                    <Box>
+                      <List
+                        sx={{
+                          width: "100%",
+                          maxWidth: 360,
+                          bgcolor: "background.paper",
+                          position: "relative",
+                          overflow: "auto",
+                          maxHeight: 150,
+                          "& ul": { padding: 0 },
+                        }}
+                        subheader={<li />}
+                      >
+                        {Array.isArray(card.ingredients) &&
+                          card.ingredients.map((ingredient, index) => {
+                            const labelId = `checkbox-list-secondary-label-${index}`;
+                            return (
+                              <ListItem
+                                key={index}
+                                secondaryAction={
+                                  <Checkbox
+                                    edge="end"
+                                    onChange={handleToggle(index)}
+                                    checked={checked.indexOf(index) !== -1}
+                                    inputProps={{
+                                      "aria-labelledby": labelId,
+                                    }}
+                                  />
+                                }
+                                disablePadding
+                              >
+                                <ListItemButton
+                                  role={undefined}
+                                  onClick={handleToggle(index)}
+                                  dense
+                                >
+                                  <ListItemText
+                                    id={labelId}
+                                    primary={ingredient}
+                                  />
+                                </ListItemButton>
+                              </ListItem>
+                            );
+                          })}
+                      </List>
+                    </Box>
                   </CardContent>
                 </Collapse>
               </Card>

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
@@ -12,7 +12,7 @@ import AppBarContext from "../../Context/AppBarContext";
 import { Slide } from "@mui/material";
 
 const actions = [
-  { icon: <FileCopyIcon />, name: "Copy" },
+  { icon: <AddIcon />, name: "Add" },
   { icon: <SaveIcon />, name: "Save" },
   { icon: <PrintIcon />, name: "Print" },
   { icon: <ShareIcon />, name: "Share" },
@@ -29,6 +29,7 @@ export default function SpeedDialX() {
   const handleClose = () => {
     setOpen(false);
   };
+
   return (
     <Slide appear={false} direction="left" in={!trigger}>
       <SpeedDial
