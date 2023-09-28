@@ -34,7 +34,9 @@ function App() {
         <CssBaseline />
         <AppBarX />
         <SpeedDialX />
+
         <CardPage />
+
         <LabelBottomNavigation />
       </ThemeProvider>
     </>

@@ -24,15 +24,12 @@ const NotificationWrapper = styled("div")(({ theme }) => ({
   position: "relative",
   width: "350px",
   height: "500px",
-  overflowy: "hidden",
-  overflowx: "hidden",
+  overflow: "auto",
 }));
 
 function Notification() {
   const [anchorElNotif, setAnchorElNotif] = useState(null);
-
   const isProfileOpen = Boolean(anchorElNotif);
-
   const notificationId = "primary-notification";
   const handleNotificationClose = () => {
     setAnchorElNotif(null);
@@ -56,19 +53,29 @@ function Notification() {
         open={isProfileOpen}
         onClose={handleNotificationClose}
       >
-        <Toolbar>
-          <Typography variant="h5">Notifications</Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <IconButton>
-            <SettingsRoundedIcon />
-          </IconButton>
-        </Toolbar>
-        <Divider />
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 1,
+            backgroundColor: "white",
+          }}
+        >
+          <Toolbar>
+            <Typography variant="h5">Notifications</Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <IconButton>
+              <SettingsRoundedIcon />
+            </IconButton>
+          </Toolbar>
+          <Divider />
+        </div>
+
         <NotificationWrapper>
           <List>
-            <ListSubheader sx={{ bgcolor: "background.paper" }}>
+            {/* <ListSubheader sx={{ bgcolor: "background.paper" }}>
               Today
-            </ListSubheader>
+            </ListSubheader> */}
             {notifications.map((notification) => (
               <ListItemButton disableRipple key={notification.id}>
                 <ListItemAvatar>
