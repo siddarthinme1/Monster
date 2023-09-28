@@ -1,34 +1,34 @@
 import React, { useState } from "react";
+
 import AppBarContext from "./AppBarContext";
+
 import { useScrollTrigger } from "@mui/material";
 
 const AppBarStateProvider = (props) => {
   const trigger = useScrollTrigger();
+  const [state, setState] = useState({
+    darkMode: false,
+    settings: false,
+    signInPopUp: false,
+    signUpPopUp: false,
+    location: null,
+    isAuthenticated: false,
+  });
 
-  const [darkMode, setDarkMode] = useState(false);
-  const [settings, setSettings] = useState(false);
-  const [signInPopUp, setSignInPopUp] = useState(false);
-  const [signUpPopUp, setSignUpPopUp] = useState(false);
-  const [location, setLocation] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const value = {
+    trigger,
+    ...state,
+    setDarkMode: (darkMode) => setState({ ...state, darkMode }),
+    setSettings: (settings) => setState({ ...state, settings }),
+    setSignInPopUp: (signInPopUp) => setState({ ...state, signInPopUp }),
+    setSignUpPopUp: (signUpPopUp) => setState({ ...state, signUpPopUp }),
+    setLocation: (location) => setState({ ...state, location }),
+    setIsAuthenticated: (isAuthenticated) =>
+      setState({ ...state, isAuthenticated }),
+  };
+
   return (
-    <AppBarContext.Provider
-      value={{
-        darkMode,
-        setDarkMode,
-        settings,
-        setSettings,
-        signInPopUp,
-        setSignInPopUp,
-        signUpPopUp,
-        setSignUpPopUp,
-        location,
-        setLocation,
-        isAuthenticated,
-        setIsAuthenticated,
-        trigger,
-      }}
-    >
+    <AppBarContext.Provider value={value}>
       {props.children}
     </AppBarContext.Provider>
   );

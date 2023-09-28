@@ -52,7 +52,11 @@ const CardWrapper = styled("div")(({ theme }) => ({
 }));
 
 function CardPage() {
-  const [checked, setChecked] = React.useState([1]);
+  const [checked, setChecked] = useState([1]);
+  const [showFav, setShowFav] = useState(false);
+  const [likedCards, setLikedCards] = useState(
+    Array(cardData.length).fill(false)
+  );
 
   const [expandedStates, setExpandedStates] = useState(
     Array(cardData.length).fill(false)
@@ -72,7 +76,6 @@ function CardPage() {
 
   const handleOpenRecipe = (index) => {
     setSelectedCardIndex(index);
-
     setOpenRecipe((prevStates) =>
       prevStates.map((state, i) => (i === index ? true : false))
     );
@@ -80,23 +83,26 @@ function CardPage() {
 
   const handleCloseRecipe = () => {
     setSelectedCardIndex(null);
-
     setOpenRecipe((prevStates) =>
       prevStates.map((state, i) => (i === selectedCardIndex ? false : state))
     );
   };
 
-  const handleToggle = (value) => () => {
+  const handleToggleCheckbox = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
-
     if (currentIndex === -1) {
       newChecked.push(value);
     } else {
       newChecked.splice(currentIndex, 1);
     }
-
     setChecked(newChecked);
+  };
+
+  const handleFavoriteClick = (index) => {
+    const updatedCardData = [...likedCards];
+    updatedCardData[index] = !updatedCardData[index];
+    setLikedCards(updatedCardData);
   };
 
   const RecipeDialog = ({ index }) => (
@@ -116,7 +122,6 @@ function CardPage() {
           </Typography>
         </Toolbar>
       </AppBar>
-
       <CardContent>
         <Typography paragraph>{cardData[index].description}</Typography>
       </CardContent>
@@ -150,6 +155,7 @@ function CardPage() {
                     height="194"
                     image={card.image}
                     alt={card.title}
+                    sx={{ "&:hover": { transform: "scale3d(1.05, 1.05, 1)" } }}
                   />
                   <CardContent
                     sx={{
@@ -164,7 +170,10 @@ function CardPage() {
                 </CardActionArea>
 
                 <CardActions disableSpacing>
-                  <IconButton color={card.liked ? "secondary" : "none"}>
+                  <IconButton
+                    color={likedCards[index] ? "secondary" : "default"}
+                    onClick={() => handleFavoriteClick(index)}
+                  >
                     <FavoriteIcon />
                   </IconButton>
                   <IconButton>
@@ -212,7 +221,7 @@ function CardPage() {
                                 secondaryAction={
                                   <Checkbox
                                     edge="end"
-                                    onChange={handleToggle(index)}
+                                    onChange={handleToggleCheckbox(index)}
                                     checked={checked.indexOf(index) !== -1}
                                     inputProps={{
                                       "aria-labelledby": labelId,
@@ -223,7 +232,7 @@ function CardPage() {
                               >
                                 <ListItemButton
                                   role={undefined}
-                                  onClick={handleToggle(index)}
+                                  onClick={handleToggleCheckbox(index)}
                                   dense
                                 >
                                   <ListItemText
