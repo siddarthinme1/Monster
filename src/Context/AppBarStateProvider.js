@@ -13,6 +13,8 @@ const AppBarStateProvider = (props) => {
     signUpPopUp: false,
     location: null,
     isAuthenticated: false,
+    showCardPage: true,
+    showAboutPage: false,
   });
 
   const value = {
@@ -25,6 +27,8 @@ const AppBarStateProvider = (props) => {
     setLocation: (location) => setState({ ...state, location }),
     setIsAuthenticated: (isAuthenticated) =>
       setState({ ...state, isAuthenticated }),
+    setShowCardPage: (showCardPage) => setState({ ...state, showCardPage }),
+    setShowAboutPage: (showAboutPage) => setState({ ...state, showAboutPage }),
   };
 
   return (

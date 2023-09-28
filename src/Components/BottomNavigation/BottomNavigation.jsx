@@ -9,13 +9,27 @@ import HomeIcon from "@mui/icons-material/Home";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 
 function LabelBottomNavigation() {
-  const { trigger } = React.useContext(AppBarContext);
+  const {
+    trigger,
+    setShowCardPage,
+    setShowAboutPage,
+    showCardPage,
+    showAboutPage,
+  } = React.useContext(AppBarContext);
 
   const [value, setValue] = React.useState("recents");
 
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);
   // };
+
+  const handleShowHome = () => {
+    setShowCardPage(true);
+  };
+
+  const handleShowAbout = () => {
+    setShowCardPage(false);
+  };
 
   return (
     <Slide appear={false} direction="up" in={!trigger}>
@@ -35,9 +49,17 @@ function LabelBottomNavigation() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+          <BottomNavigationAction
+            onClick={handleShowHome}
+            label="Home"
+            icon={<HomeIcon />}
+          />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+          <BottomNavigationAction
+            onClick={handleShowAbout}
+            label="About"
+            icon={<ArchiveIcon />}
+          />
           <BottomNavigationAction label="Library" icon={<LibraryBooksIcon />} />
         </BottomNavigation>
       </Paper>
