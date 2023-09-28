@@ -9,7 +9,6 @@ import {
   Grid,
   IconButton,
   Link,
-  Slide,
   TextField,
   Toolbar,
   Typography,

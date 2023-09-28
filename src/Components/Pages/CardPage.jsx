@@ -21,13 +21,13 @@ import {
   Checkbox,
   ListItemText,
   ListItemButton,
-  Divider,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import CloseIcon from "@mui/icons-material/Close";
+import CommentIcon from "@mui/icons-material/Comment";
 import { styled } from "@mui/material/styles";
 import { cardData } from "../../Data/MonsterData";
 
@@ -167,7 +167,9 @@ function CardPage() {
                   <IconButton color={card.liked ? "secondary" : "none"}>
                     <FavoriteIcon />
                   </IconButton>
-
+                  <IconButton>
+                    <CommentIcon />
+                  </IconButton>
                   <IconButton>
                     <ShareIcon />
                   </IconButton>

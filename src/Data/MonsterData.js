@@ -135,7 +135,7 @@ export const cardData = [
     subheader: "September 15, 2022",
     image: require("./Images/buns.jpg"),
     description:
-      "Bangalore Muns is a deep-fried bread originating from the Udupi-Mangalore region of Karnataka, India, and part of Mangalorean cuisine or Udupi cuisine. The buns are mild sweet, soft fluffy puris with all purpose flour and banana being the main ingredients.",
+      "Mangalore Muns is a deep-fried bread originating from the Udupi-Mangalore region of Karnataka, India, and part of Mangalorean cuisine or Udupi cuisine. The buns are mild sweet, soft fluffy puris with all purpose flour and banana being the main ingredients.",
     procedure: "Keep",
     ingredients: [
       "banana",
@@ -180,7 +180,7 @@ export const cardData = [
   {
     id: "3",
     avatar: "RR",
-    liked: false,
+    liked: true,
     title: "Paneer Butter Masala",
     subheader: "September 15, 2022",
     image: require("./Images/paneerButter.jpg"),

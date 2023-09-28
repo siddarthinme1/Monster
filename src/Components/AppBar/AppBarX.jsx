@@ -6,7 +6,6 @@ import {
   Slide,
   Toolbar,
   Typography,
-  useScrollTrigger,
 } from "@mui/material";
 import React, { useState, useContext } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";

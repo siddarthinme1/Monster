@@ -1,9 +1,8 @@
 import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Paper, Slide, useScrollTrigger } from "@mui/material";
+import { Paper, Slide } from "@mui/material";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import AppBarContext from "../../Context/AppBarContext";
 import HomeIcon from "@mui/icons-material/Home";
@@ -14,9 +13,9 @@ function LabelBottomNavigation() {
 
   const [value, setValue] = React.useState("recents");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
 
   return (
     <Slide appear={false} direction="up" in={!trigger}>
