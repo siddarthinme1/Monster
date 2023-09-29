@@ -8,6 +8,10 @@ import ShareIcon from "@mui/icons-material/Share";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import AppBarContext from "../../Context/AppBarContext";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import {
   Slide,
   Dialog,
@@ -15,6 +19,7 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  Avatar,
 } from "@mui/material";
 
 const actions = [
@@ -29,6 +34,7 @@ export default function SpeedDialX() {
   const [currentPage, setCurrentPage] = useState("default");
   const [dialogOpen, setDialogOpen] = useState(false);
   const { trigger } = React.useContext(AppBarContext);
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -49,13 +55,20 @@ export default function SpeedDialX() {
   const renderPage = () => {
     switch (currentPage) {
       case "Add":
-        return <div>Add Page Content</div>;
+        return <div>Add Page</div>;
       case "Save":
         return <div>Save Page Content</div>;
       case "Print":
         return <div>Print Page Content</div>;
       case "Share":
-        return <div>Share Page Content</div>;
+        return (
+          <div>
+            <WhatsAppIcon color="inherit" fontSize="large" />
+            <TwitterIcon color="inherit" fontSize="large" />
+            <FacebookIcon color="inherit" fontSize="large" />
+            <InstagramIcon color="inherit" fontSize="large" />
+          </div>
+        );
       default:
         return <div>Default Page Content</div>;
     }
@@ -64,7 +77,6 @@ export default function SpeedDialX() {
   return (
     <Slide appear={false} direction="left" in={!trigger}>
       <div>
-        {renderPage}
         <SpeedDial
           ariaLabel="SpeedDial example"
           sx={{ position: "fixed", bottom: 75, right: 16 }}
@@ -83,9 +95,10 @@ export default function SpeedDialX() {
           ))}
         </SpeedDial>
         <Dialog open={dialogOpen} onClose={handleDialogClose}>
-          <DialogTitle>{currentPage} Dialog</DialogTitle>
+          <DialogTitle>{currentPage}</DialogTitle>
           <DialogContent>
             <div>Content for {currentPage}</div>
+            {renderPage()}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleDialogClose}>Close</Button>
