@@ -92,30 +92,38 @@ export default function SpeedDialX() {
               <TwitterIcon color="inherit" fontSize="large" />
               <FacebookIcon color="inherit" fontSize="large" />
               <InstagramIcon color="inherit" fontSize="large" />
-              <GitHubIcon color="inherit" fontSize="large" />
+              <GitHubIcon
+                color="inherit"
+                fontSize="large"
+                sx={{ display: { xs: "none", sm: "block" } }}
+              />
             </Box>
             <Box
               sx={{
                 borderRadius: 4,
                 padding: 2,
-                border: "1px solid black",
-                m: 4,
+                border: { xs: "none", sm: "1px solid black" },
               }}
             >
               <Grid container alignItems="center" spacing={2}>
                 <Grid item>
-                  <Typography type="text" value={text} onChange={inputHandler}>
+                  <Typography
+                    type="text"
+                    value={text}
+                    onChange={inputHandler}
+                    sx={{ display: { xs: "none", sm: "block" } }}
+                  >
                     {text}
                   </Typography>
                 </Grid>
+
                 <Grid item>
                   <IconButton onClick={copy}>
-                    <ContentCopyIcon color="inherit" />
+                    <GitHubIcon color="inherit" fontSize="large" />
                   </IconButton>
                 </Grid>
               </Grid>
             </Box>
-            <Divider />
           </div>
         );
       default:
