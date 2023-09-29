@@ -135,7 +135,7 @@ export const cardData = [
     subheader: "September 20, 2022",
     image: require("./Images/spaghetti.jpg"),
     description:
-      "Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.",
+      "Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.",
     procedure: "Cook",
     ingredients: [
       "spaghetti",

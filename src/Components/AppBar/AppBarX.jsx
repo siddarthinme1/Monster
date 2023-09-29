@@ -72,7 +72,6 @@ function AppBarX() {
           <Notification />
           <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
         </>
-
         {SignInPop}
       </Box>
     </Menu>

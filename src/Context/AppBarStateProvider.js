@@ -2,12 +2,13 @@ import React, { useState } from "react";
 
 import AppBarContext from "./AppBarContext";
 
-import { useScrollTrigger } from "@mui/material";
+import { createTheme, useScrollTrigger } from "@mui/material";
 
 const AppBarStateProvider = (props) => {
   const trigger = useScrollTrigger();
   const [state, setState] = useState({
     darkMode: false,
+    theme: "",
     settings: false,
     signInPopUp: false,
     signUpPopUp: false,
@@ -20,6 +21,7 @@ const AppBarStateProvider = (props) => {
   const value = {
     trigger,
     ...state,
+    setTheme: (theme) => setState({ ...state, theme }),
     setDarkMode: (darkMode) => setState({ ...state, darkMode }),
     setSettings: (settings) => setState({ ...state, settings }),
     setSignInPopUp: (signInPopUp) => setState({ ...state, signInPopUp }),

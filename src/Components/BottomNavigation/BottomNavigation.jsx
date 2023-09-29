@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext, useState } from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -7,17 +7,12 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import AppBarContext from "../../Context/AppBarContext";
 import HomeIcon from "@mui/icons-material/Home";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+import InfoIcon from "@mui/icons-material/Info";
 
 function LabelBottomNavigation() {
-  const {
-    trigger,
-    setShowCardPage,
-    setShowAboutPage,
-    showCardPage,
-    showAboutPage,
-  } = React.useContext(AppBarContext);
+  const { trigger, setShowCardPage } = useContext(AppBarContext);
 
-  const [value, setValue] = React.useState("recents");
+  const [value, setValue] = useState(0);
 
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);
@@ -55,12 +50,12 @@ function LabelBottomNavigation() {
             icon={<HomeIcon />}
           />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Library" icon={<LibraryBooksIcon />} />
           <BottomNavigationAction
             onClick={handleShowAbout}
             label="About"
-            icon={<ArchiveIcon />}
+            icon={<InfoIcon />}
           />
-          <BottomNavigationAction label="Library" icon={<LibraryBooksIcon />} />
         </BottomNavigation>
       </Paper>
     </Slide>

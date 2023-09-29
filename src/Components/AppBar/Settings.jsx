@@ -1,5 +1,7 @@
 import {
+  Box,
   Button,
+  Chip,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -16,7 +18,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { profileItems } from "../../Data/MonsterData";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -41,6 +43,18 @@ function Settings(props) {
   const isMenuOpen = Boolean(anchorElProfile);
 
   const menuId = "primary-search-account-menu";
+
+  var [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    var timer = setInterval(() => setDate(new Date()), 1000);
+    return function cleanup() {
+      clearInterval(timer);
+    };
+  });
+
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   const handleCloseRateUs = () => {
     setRateUs(false);
@@ -71,25 +85,6 @@ function Settings(props) {
     }
   };
 
-  const RateUsDialog = (
-    <Dialog
-      open={rateUs}
-      onClose={handleCloseRateUs}
-      aria-labelledby="alert-rateus"
-      aria-describedby="alert-rateus-outof-five-star"
-    >
-      <DialogTitle id="alert-rateus-title">
-        <Typography variant="h4">Enjoying the App?</Typography>
-      </DialogTitle>
-      <DialogContent>
-        <Typography variant="h5">Your opinion matters to us</Typography>
-        <Rating name="size-medium" defaultValue={2} size="large" />
-      </DialogContent>
-      <TextField multiline rows={4} sx={{ m: 2 }}></TextField>
-      <Button onClick={handleCloseRateUs}>Send Feedback</Button>
-    </Dialog>
-  );
-
   const handleLightTheme = () => {
     setDarkMode(false);
   };
@@ -118,8 +113,24 @@ function Settings(props) {
     setHelp(help);
   };
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const RateUsDialog = (
+    <Dialog
+      open={rateUs}
+      onClose={handleCloseRateUs}
+      aria-labelledby="alert-rateus"
+      aria-describedby="alert-rateus-outof-five-star"
+    >
+      <DialogTitle id="alert-rateus-title">
+        <Typography variant="h4">Enjoying the App?</Typography>
+      </DialogTitle>
+      <DialogContent>
+        <Typography variant="h5">Your opinion matters to us</Typography>
+        <Rating name="size-medium" defaultValue={2} size="large" />
+      </DialogContent>
+      <TextField multiline rows={4} sx={{ m: 2 }}></TextField>
+      <Button onClick={handleCloseRateUs}>Send Feedback</Button>
+    </Dialog>
+  );
 
   const settingsDrawer = (
     <Drawer
@@ -222,6 +233,11 @@ function Settings(props) {
     >
       <Toolbar>Location</Toolbar>
       <Divider />
+      <Box sx={{ m: 5 }}>
+        <Chip
+          label={date.toLocaleTimeString() + " " + date.toLocaleDateString()}
+        />
+      </Box>
     </Drawer>
   );
 

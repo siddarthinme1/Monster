@@ -54,10 +54,10 @@ const CardWrapper = styled("div")(({ theme }) => ({
 
 function CardPage() {
   const [checked, setChecked] = useState([1]);
-  const [showFav, setShowFav] = useState(false);
   const [likedCards, setLikedCards] = useState(
     Array(cardData.length).fill(false)
   );
+  console.log(likedCards);
 
   const [expandedStates, setExpandedStates] = useState(
     Array(cardData.length).fill(false)
