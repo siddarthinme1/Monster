@@ -12,6 +12,9 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
 import {
   Slide,
   Dialog,
@@ -19,7 +22,12 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Avatar,
+  Typography,
+  Chip,
+  Box,
+  Grid,
+  IconButton,
+  Divider,
 } from "@mui/material";
 
 const actions = [
@@ -34,7 +42,6 @@ export default function SpeedDialX() {
   const [currentPage, setCurrentPage] = useState("default");
   const [dialogOpen, setDialogOpen] = useState(false);
   const { trigger } = React.useContext(AppBarContext);
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -52,6 +59,16 @@ export default function SpeedDialX() {
     setDialogOpen(false);
   };
 
+  const [text, setText] = useState("https://siddarthinme1.github.io/Monster/");
+
+  const inputHandler = (event) => {
+    setText(event.target.value);
+  };
+
+  const copy = async () => {
+    await navigator.clipboard.writeText(text);
+  };
+
   const renderPage = () => {
     switch (currentPage) {
       case "Add":
@@ -63,10 +80,42 @@ export default function SpeedDialX() {
       case "Share":
         return (
           <div>
-            <WhatsAppIcon color="inherit" fontSize="large" />
-            <TwitterIcon color="inherit" fontSize="large" />
-            <FacebookIcon color="inherit" fontSize="large" />
-            <InstagramIcon color="inherit" fontSize="large" />
+            <Box
+              sx={{
+                borderRadius: 4,
+                padding: 2,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <WhatsAppIcon color="inherit" fontSize="large" />
+              <TwitterIcon color="inherit" fontSize="large" />
+              <FacebookIcon color="inherit" fontSize="large" />
+              <InstagramIcon color="inherit" fontSize="large" />
+              <GitHubIcon color="inherit" fontSize="large" />
+            </Box>
+            <Box
+              sx={{
+                borderRadius: 4,
+                padding: 2,
+                border: "1px solid black",
+                m: 4,
+              }}
+            >
+              <Grid container alignItems="center" spacing={2}>
+                <Grid item>
+                  <Typography type="text" value={text} onChange={inputHandler}>
+                    {text}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <IconButton onClick={copy}>
+                    <ContentCopyIcon color="inherit" />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Box>
+            <Divider />
           </div>
         );
       default:
@@ -96,10 +145,7 @@ export default function SpeedDialX() {
         </SpeedDial>
         <Dialog open={dialogOpen} onClose={handleDialogClose}>
           <DialogTitle>{currentPage}</DialogTitle>
-          <DialogContent>
-            <div>Content for {currentPage}</div>
-            {renderPage()}
-          </DialogContent>
+          <DialogContent>{renderPage()}</DialogContent>
           <DialogActions>
             <Button onClick={handleDialogClose}>Close</Button>
           </DialogActions>
