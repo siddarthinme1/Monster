@@ -98,7 +98,7 @@ function AppBarX() {
                 component="div"
                 sx={{ display: { xs: "none", sm: "block" } }}
               >
-                MONSTER
+                PLATE PALETTE
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
               <SeacrhBar />

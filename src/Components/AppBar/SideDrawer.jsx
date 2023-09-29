@@ -78,7 +78,7 @@ function SideDrawer(props) {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ ml: 2 }}>
-              MONSTER
+              PLATE PALETTE
             </Typography>
           </DrawerHeader>
           <Divider />
