@@ -1,4 +1,7 @@
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
   Chip,
@@ -25,6 +28,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AppBarContext from "../../Context/AppBarContext";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function Settings(props) {
   const { window, setMobileMoreAnchorEl } = props;
@@ -194,6 +198,12 @@ function Settings(props) {
     </Drawer>
   );
 
+  const [expanded, setExpanded] = useState(false);
+
+  const handleChangeProfile = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   const ProfileDrawer = (
     <Drawer
       anchor="right"
@@ -212,6 +222,28 @@ function Settings(props) {
     >
       <Toolbar>Profile</Toolbar>
       <Divider />
+      <Accordion
+        expanded={expanded === "panel1"}
+        onChange={handleChangeProfile("panel1")}
+      >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>Personal Details</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>Siddarood Karachuri</Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel2"}
+        onChange={handleChangeProfile("panel2")}
+      >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>Profile Details</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>Siddarood</Typography>
+        </AccordionDetails>
+      </Accordion>
     </Drawer>
   );
 

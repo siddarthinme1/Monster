@@ -107,7 +107,6 @@ function AppBarX() {
                 <CreateContent />
                 <Notification />
                 <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
-
                 {SignInPop}
               </Box>
               <Box sx={{ display: { xs: "flex", md: "none" } }}>

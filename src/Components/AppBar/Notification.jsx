@@ -31,6 +31,7 @@ function Notification() {
   const [anchorElNotif, setAnchorElNotif] = useState(null);
   const isProfileOpen = Boolean(anchorElNotif);
   const notificationId = "primary-notification";
+
   const handleNotificationClose = () => {
     setAnchorElNotif(null);
   };

@@ -22,6 +22,9 @@ import {
   ListItemText,
   ListItemButton,
   Chip,
+  Menu,
+  Popover,
+  Divider,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -31,6 +34,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import CommentIcon from "@mui/icons-material/Comment";
 import { styled } from "@mui/material/styles";
 import { cardData } from "../../Data/MonsterData";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ReportIcon from "@mui/icons-material/Report";
+import NotInterestedIcon from "@mui/icons-material/NotInterested";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -57,7 +63,6 @@ function CardPage() {
   const [likedCards, setLikedCards] = useState(
     Array(cardData.length).fill(false)
   );
-  console.log(likedCards);
 
   const [expandedStates, setExpandedStates] = useState(
     Array(cardData.length).fill(false)
@@ -129,6 +134,44 @@ function CardPage() {
     </Dialog>
   );
 
+  const moreId = "more-option-for-card";
+  const [cardAnchorEl, setCardAnchorEl] = useState(null);
+
+  const isMoreOpen = Boolean(cardAnchorEl);
+
+  const handleMoreOpen = (event) => {
+    setCardAnchorEl(event.currentTarget);
+  };
+
+  const handleMoreClose = () => {
+    setCardAnchorEl(false);
+  };
+
+  const renderMoreMenu = (
+    <Popover
+      anchorEl={cardAnchorEl}
+      id={moreId}
+      keepMounted
+      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+      transformOrigin={{
+        vertical: "bottom",
+        horizontal: "right",
+      }}
+      open={isMoreOpen}
+      onClose={handleMoreClose}
+    >
+      <IconButton>
+        <DeleteIcon />
+      </IconButton>
+      <IconButton>
+        <ReportIcon />
+      </IconButton>
+      <IconButton>
+        <NotInterestedIcon />
+      </IconButton>
+    </Popover>
+  );
+
   return (
     <>
       <CardWrapper>
@@ -144,7 +187,7 @@ function CardPage() {
                   }
                   action={
                     <IconButton>
-                      <MoreVertIcon />
+                      <MoreVertIcon onClick={handleMoreOpen} />
                     </IconButton>
                   }
                   title={card.title}
@@ -253,6 +296,7 @@ function CardPage() {
             </Grid>
           ))}
         </Grid>
+        {renderMoreMenu}
       </CardWrapper>
     </>
   );
