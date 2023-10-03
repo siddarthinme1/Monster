@@ -41,7 +41,7 @@ const shareIcons = [
   {
     icon: <WhatsAppIcon fontSize="large" />,
     name: "WhatsApp",
-    url: "https://wa.me/",
+    url: "https://wa.me/send?text=GFG Example for whatsapp sharing",
   },
   {
     icon: <TwitterIcon fontSize="large" />,
