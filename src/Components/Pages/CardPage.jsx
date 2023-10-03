@@ -152,23 +152,24 @@ function CardPage() {
       anchorEl={cardAnchorEl}
       id={moreId}
       keepMounted
-      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-      transformOrigin={{
-        vertical: "bottom",
-        horizontal: "right",
-      }}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMoreOpen}
       onClose={handleMoreClose}
     >
-      <IconButton>
-        <DeleteIcon />
-      </IconButton>
-      <IconButton>
-        <ReportIcon />
-      </IconButton>
-      <IconButton>
-        <NotInterestedIcon />
-      </IconButton>
+      <List>
+        <ListItemButton>
+          <DeleteIcon />
+        </ListItemButton>
+
+        <ListItemButton>
+          <ReportIcon />
+        </ListItemButton>
+
+        <ListItemButton>
+          <NotInterestedIcon />
+        </ListItemButton>
+      </List>
     </Popover>
   );
 
