@@ -37,6 +37,14 @@ const actions = [
   { icon: <ShareIcon />, name: "Share" },
 ];
 
+const shareIcons = [
+  { icon: <WhatsAppIcon fontSize="large" />, name: "Add" },
+  { icon: <TwitterIcon fontSize="large" />, name: "Save" },
+  { icon: <FacebookIcon fontSize="large" />, name: "Print" },
+  { icon: <InstagramIcon fontSize="large" />, name: "Share" },
+  { icon: <GitHubIcon fontSize="large" />, name: "Share" },
+];
+
 export default function SpeedDialX() {
   const [open, setOpen] = React.useState(false);
   const [currentPage, setCurrentPage] = useState("default");
@@ -69,6 +77,10 @@ export default function SpeedDialX() {
     await navigator.clipboard.writeText(text);
   };
 
+  const handleShare = () => {
+    window.open("https://wa.me/");
+  };
+
   const renderPage = () => {
     switch (currentPage) {
       case "Add":
@@ -88,41 +100,39 @@ export default function SpeedDialX() {
                 justifyContent: "center",
               }}
             >
-              <WhatsAppIcon color="inherit" fontSize="large" />
-              <TwitterIcon color="inherit" fontSize="large" />
-              <FacebookIcon color="inherit" fontSize="large" />
-              <InstagramIcon color="inherit" fontSize="large" />
-              <GitHubIcon
-                color="inherit"
-                fontSize="large"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              />
+              {shareIcons.map((shareIcon, index) => (
+                <IconButton
+                  key={index}
+                  color="inherit"
+                  fontSize="large"
+                  onClick={handleShare}
+                >
+                  {shareIcon.icon}
+                </IconButton>
+              ))}
             </Box>
             <Box
               sx={{
                 borderRadius: 4,
                 padding: 2,
+                display: "flex",
+                alignItems: "center",
                 border: { xs: "none", sm: "1px solid black" },
               }}
             >
-              <Grid container alignItems="center" spacing={2}>
-                <Grid item>
-                  <Typography
-                    type="text"
-                    value={text}
-                    onChange={inputHandler}
-                    sx={{ display: { xs: "none", sm: "block" } }}
-                  >
-                    {text}
-                  </Typography>
-                </Grid>
+              <Typography
+                type="text"
+                value={text}
+                noWrap
+                onChange={inputHandler}
+                sx={{ flex: 1, overflow: "hidden" }}
+              >
+                {text}
+              </Typography>
 
-                <Grid item>
-                  <IconButton onClick={copy}>
-                    <GitHubIcon color="inherit" fontSize="large" />
-                  </IconButton>
-                </Grid>
-              </Grid>
+              <IconButton onClick={copy} color="inherit">
+                <ContentCopyIcon />
+              </IconButton>
             </Box>
           </div>
         );
