@@ -8,6 +8,7 @@ import AppBarContext from "../../Context/AppBarContext";
 import HomeIcon from "@mui/icons-material/Home";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import InfoIcon from "@mui/icons-material/Info";
+import SpeedDialX from "../SpeedDial/SpeedDialX";
 
 function LabelBottomNavigation() {
   const { trigger, setShowCardPage } = useContext(AppBarContext);
@@ -57,6 +58,7 @@ function LabelBottomNavigation() {
             icon={<InfoIcon />}
           />
         </BottomNavigation>
+        <SpeedDialX />
       </Paper>
     </Slide>
   );

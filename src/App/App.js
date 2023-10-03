@@ -35,7 +35,6 @@ function App() {
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
         <AppBarX />
-        <SpeedDialX />
         {showCardPage ? <CardPage /> : <AboutPage />}
         <LabelBottomNavigation />
       </ThemeProvider>
