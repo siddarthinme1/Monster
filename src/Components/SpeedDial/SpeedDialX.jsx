@@ -38,11 +38,31 @@ const actions = [
 ];
 
 const shareIcons = [
-  { icon: <WhatsAppIcon fontSize="large" />, name: "Add" },
-  { icon: <TwitterIcon fontSize="large" />, name: "Save" },
-  { icon: <FacebookIcon fontSize="large" />, name: "Print" },
-  { icon: <InstagramIcon fontSize="large" />, name: "Share" },
-  { icon: <GitHubIcon fontSize="large" />, name: "Share" },
+  {
+    icon: <WhatsAppIcon fontSize="large" />,
+    name: "WhatsApp",
+    url: "https://wa.me/",
+  },
+  {
+    icon: <TwitterIcon fontSize="large" />,
+    name: "Twitter",
+    url: "https://twitter.com",
+  },
+  {
+    icon: <FacebookIcon fontSize="large" />,
+    name: "Facebook",
+    url: "https://facebook.com",
+  },
+  {
+    icon: <InstagramIcon fontSize="large" />,
+    name: "Instagram",
+    url: "https://instagram.com",
+  },
+  {
+    icon: <GitHubIcon fontSize="large" />,
+    name: "Github",
+    url: "https://github.com",
+  },
 ];
 
 export default function SpeedDialX() {
@@ -77,8 +97,8 @@ export default function SpeedDialX() {
     await navigator.clipboard.writeText(text);
   };
 
-  const handleShare = () => {
-    window.open("https://wa.me/");
+  const handleShare = (url) => {
+    window.open(url);
   };
 
   const renderPage = () => {
@@ -105,7 +125,7 @@ export default function SpeedDialX() {
                   key={index}
                   color="inherit"
                   fontSize="large"
-                  onClick={handleShare}
+                  onClick={() => handleShare(shareIcon.url)}
                 >
                   {shareIcon.icon}
                 </IconButton>
