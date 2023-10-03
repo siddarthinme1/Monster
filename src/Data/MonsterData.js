@@ -5,7 +5,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import HelpIcon from "@mui/icons-material/Help";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import HomeIcon from "@mui/icons-material/Home";
-
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import HistoryIcon from "@mui/icons-material/History";
@@ -30,93 +30,94 @@ export const profileItems = [
 export const notifications = [
   {
     id: "1",
-    title: "CareerRide uploaded: 7 Common Interview Myths - Jobs Interview",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "New Recipe Uploaded: Spaghetti Carbonara",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "2",
-    title: "Sadhguru uploaded: 4 Common Food You Must Avoid",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Cooking Tips: How to Grill the Perfect Steak",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "3",
-    title:
-      "ElectroBOOM uploaded: Wireless Communication with a Cup of Balls, Coherer Effect",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Dessert Ideas: Chocolate Fondue Night",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "4",
-    title:
-      "CareerRide uploaded: Data Analyst Interview : Top 5 Common rs for nd Experienced",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Healthy Eating: Nutritional Benefits of Avocado",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "5",
-    title: "CareerRide uploaded: 7 Common Interview Myths - Jobs Interview",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "New Recipe Uploaded: Tasty Vegetarian Stir-fry",
+    avatar: <RestaurantMenuIcon />,
   },
 
-  { id: "6", title: "Sadhguru uploaded: 4 Common Food You Must Avoid" },
+  {
+    id: "6",
+    title: "Cooking Tips: How to Bake the Perfect Bread",
+    avatar: <RestaurantMenuIcon />,
+  },
 
   {
     id: "7",
-    title: "ElectroBOOM uploaded: Wireless Communication ",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Special Event: Wine Tasting Night at Our Restaurant",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "8",
-    title: "CareerRide uploaded: Data Analyst Interview : Top 5 ",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Food Festival Alert: Taste of the World - Coming Soon!",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "9",
-    title: "New video uploaded: How to Succeed in Your Career",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "New Food Blog Post: Top 10 Breakfast Recipes",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "10",
-    title: "You have a new message from John Doe",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Cooking Class Reminder: Italian Cuisine Workshop",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "11",
-    title: "Reminder: Team Meeting at 2 PM",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Featured Chef of the Month: Meet Chef Julia",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "12",
-    title: "New friend request from Jane Smith",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Healthy Eating Challenge: Week 1 - Eat More Greens",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "13",
-    title: "Weather update: Sunny day ahead",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "New Food Delivery Service: Delicious Meals to Your Door",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "14",
-    title: "New video uploaded: Cooking Tips and Recipes",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Cooking Competition: Join and Win Exciting Prizes!",
+    avatar: <RestaurantMenuIcon />,
   },
 
   {
     id: "15",
-    title: "You've earned a new badge: Super Viewer",
-    avatar: <MonochromePhotosRoundedIcon />,
+    title: "Foodie's Paradise: Explore the Best Eateries in Town",
+    avatar: <RestaurantMenuIcon />,
   },
 ];
-
 export const sideDrawerItmes = [
   { id: "1", title: "Home", icon: <HomeIcon /> },
   { id: "2", title: "Shorts", icon: <ElectricBoltIcon /> },

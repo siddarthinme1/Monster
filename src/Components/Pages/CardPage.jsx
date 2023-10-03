@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Avatar,
@@ -25,6 +25,8 @@ import {
   Menu,
   Popover,
   Divider,
+  Stack,
+  Skeleton,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -60,6 +62,7 @@ const CardWrapper = styled("div")(({ theme }) => ({
 
 function CardPage() {
   const [checked, setChecked] = useState([1]);
+  const [isLoading, setIsLoading] = useState(true);
   const [likedCards, setLikedCards] = useState(
     Array(cardData.length).fill(false)
   );
@@ -73,6 +76,14 @@ function CardPage() {
   );
 
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleExpandClick = (index) => {
     setExpandedStates((prevStates) =>
@@ -175,130 +186,167 @@ function CardPage() {
 
   return (
     <>
-      <CardWrapper>
-        <Grid container spacing="auto" justifyContent="center">
-          {cardData.map((card, index) => (
-            <Grid item key={index}>
-              <Card sx={{ m: "10px", maxWidth: "345px" }}>
+      {isLoading ? (
+        <CardWrapper>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={4} lg={3}>
+              <Card>
+                <Skeleton animation="wave" variant="rectangular" height={150} />
+
                 <CardHeader
                   avatar={
-                    <Avatar sx={{ bgcolor: "secondary" }} aria-label="recipe">
-                      {card.avatar}
-                    </Avatar>
+                    <Skeleton
+                      animation="wave"
+                      variant="circular"
+                      width={40}
+                      height={40}
+                    />
                   }
-                  action={
-                    <IconButton>
-                      <MoreVertIcon onClick={handleMoreOpen} />
-                    </IconButton>
+                  title={
+                    <Skeleton animation="wave" variant="text" width={120} />
                   }
-                  title={card.title}
-                  subheader={card.subheader}
+                  subheader={
+                    <Skeleton animation="wave" variant="text" width={80} />
+                  }
                 />
-                <CardActionArea onClick={() => handleOpenRecipe(index)}>
-                  <CardMedia
-                    component="img"
-                    height="194"
-                    image={card.image}
-                    alt={card.title}
-                    sx={{ "&:hover": { transform: "scale3d(1.05, 1.05, 1)" } }}
-                  />
-                  <CardContent
-                    sx={{
-                      overflow: "auto",
-                      height: 100,
-                    }}
-                  >
-                    <Typography variant="body2" color="text.secondary">
-                      {card.description}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
 
-                <CardActions disableSpacing>
-                  <IconButton
-                    color={likedCards[index] ? "secondary" : "default"}
-                    onClick={() => handleFavoriteClick(index)}
-                  >
-                    <FavoriteIcon />
-                  </IconButton>
-                  <IconButton>
-                    <CommentIcon />
-                  </IconButton>
-                  <IconButton>
-                    <ShareIcon />
-                  </IconButton>
-
-                  <ExpandMore
-                    expand={expandedStates[index]}
-                    onClick={() => handleExpandClick(index)}
-                    aria-expanded={expandedStates[index]}
-                  >
-                    <ExpandMoreIcon />
-                  </ExpandMore>
-                </CardActions>
-
-                <Collapse
-                  in={expandedStates[index]}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <CardContent>
-                    <Typography variant="h6">Ingredients:</Typography>
-                    <Box>
-                      <List
-                        sx={{
-                          width: "100%",
-                          maxWidth: 360,
-                          bgcolor: "background.paper",
-                          position: "relative",
-                          overflow: "auto",
-                          maxHeight: 150,
-                          "& ul": { padding: 0 },
-                        }}
-                        subheader={<li />}
-                      >
-                        {Array.isArray(card.ingredients) &&
-                          card.ingredients.map((ingredient, index) => {
-                            const labelId = `checkbox-list-secondary-label-${index}`;
-                            return (
-                              <ListItem
-                                key={index}
-                                secondaryAction={
-                                  <Checkbox
-                                    edge="end"
-                                    onChange={handleToggleCheckbox(index)}
-                                    checked={checked.indexOf(index) !== -1}
-                                    inputProps={{
-                                      "aria-labelledby": labelId,
-                                    }}
-                                  />
-                                }
-                                disablePadding
-                              >
-                                <ListItemButton
-                                  role={undefined}
-                                  onClick={handleToggleCheckbox(index)}
-                                  dense
-                                >
-                                  <ListItemText
-                                    id={labelId}
-                                    primary={ingredient}
-                                  />
-                                </ListItemButton>
-                              </ListItem>
-                            );
-                          })}
-                      </List>
-                    </Box>
-                  </CardContent>
-                </Collapse>
+                <CardContent>
+                  <Skeleton animation="wave" variant="text" />
+                  <Skeleton animation="wave" variant="text" />
+                  <Skeleton animation="wave" variant="text" width="80%" />
+                </CardContent>
               </Card>
-              {selectedCardIndex === index && <RecipeDialog index={index} />}
             </Grid>
-          ))}
-        </Grid>
-        {renderMoreMenu}
-      </CardWrapper>
+          </Grid>
+        </CardWrapper>
+      ) : (
+        <CardWrapper>
+          <Grid container spacing="auto" justifyContent="center">
+            {cardData.map((card, index) => (
+              <Grid item key={index}>
+                <Card sx={{ m: "10px", maxWidth: "345px" }}>
+                  <CardHeader
+                    avatar={
+                      <Avatar sx={{ bgcolor: "secondary" }} aria-label="recipe">
+                        {card.avatar}
+                      </Avatar>
+                    }
+                    action={
+                      <IconButton>
+                        <MoreVertIcon onClick={handleMoreOpen} />
+                      </IconButton>
+                    }
+                    title={card.title}
+                    subheader={card.subheader}
+                  />
+                  <CardActionArea onClick={() => handleOpenRecipe(index)}>
+                    <CardMedia
+                      component="img"
+                      height="194"
+                      image={card.image}
+                      alt={card.title}
+                      sx={{
+                        "&:hover": { transform: "scale3d(1.05, 1.05, 1)" },
+                      }}
+                    />
+                    <CardContent
+                      sx={{
+                        overflow: "auto",
+                        height: 100,
+                      }}
+                    >
+                      <Typography variant="body2" color="text.secondary">
+                        {card.description}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+
+                  <CardActions disableSpacing>
+                    <IconButton
+                      color={likedCards[index] ? "secondary" : "default"}
+                      onClick={() => handleFavoriteClick(index)}
+                    >
+                      <FavoriteIcon />
+                    </IconButton>
+                    <IconButton>
+                      <CommentIcon />
+                    </IconButton>
+                    <IconButton>
+                      <ShareIcon />
+                    </IconButton>
+
+                    <ExpandMore
+                      expand={expandedStates[index]}
+                      onClick={() => handleExpandClick(index)}
+                      aria-expanded={expandedStates[index]}
+                    >
+                      <ExpandMoreIcon />
+                    </ExpandMore>
+                  </CardActions>
+
+                  <Collapse
+                    in={expandedStates[index]}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    <CardContent>
+                      <Typography variant="h6">Ingredients:</Typography>
+                      <Box>
+                        <List
+                          sx={{
+                            width: "100%",
+                            maxWidth: 360,
+                            bgcolor: "background.paper",
+                            position: "relative",
+                            overflow: "auto",
+                            maxHeight: 150,
+                            "& ul": { padding: 0 },
+                          }}
+                          subheader={<li />}
+                        >
+                          {Array.isArray(card.ingredients) &&
+                            card.ingredients.map((ingredient, index) => {
+                              const labelId = `checkbox-list-secondary-label-${index}`;
+                              return (
+                                <ListItem
+                                  key={index}
+                                  secondaryAction={
+                                    <Checkbox
+                                      edge="end"
+                                      onChange={handleToggleCheckbox(index)}
+                                      checked={checked.indexOf(index) !== -1}
+                                      inputProps={{
+                                        "aria-labelledby": labelId,
+                                      }}
+                                    />
+                                  }
+                                  disablePadding
+                                >
+                                  <ListItemButton
+                                    role={undefined}
+                                    onClick={handleToggleCheckbox(index)}
+                                    dense
+                                  >
+                                    <ListItemText
+                                      id={labelId}
+                                      primary={ingredient}
+                                    />
+                                  </ListItemButton>
+                                </ListItem>
+                              );
+                            })}
+                        </List>
+                      </Box>
+                    </CardContent>
+                  </Collapse>
+                </Card>
+                {selectedCardIndex === index && <RecipeDialog index={index} />}
+              </Grid>
+            ))}
+          </Grid>
+          {renderMoreMenu}
+        </CardWrapper>
+      )}
     </>
   );
 }
