@@ -188,35 +188,45 @@ function CardPage() {
     <>
       {isLoading ? (
         <CardWrapper>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4} lg={3}>
-              <Card>
-                <Skeleton animation="wave" variant="rectangular" height={150} />
+          <Grid container spacing="auto" justifyContent="center">
+            {Array.from({ length: cardData.length }).map((_, index) => (
+              <Grid item key={index}>
+                <Card sx={{ m: "10px", maxWidth: "345px" }}>
+                  <CardHeader
+                    avatar={
+                      <Skeleton
+                        animation="wave"
+                        variant="circular"
+                        width={40}
+                        height={40}
+                      />
+                    }
+                    title={
+                      <Skeleton animation="wave" variant="text" width={120} />
+                    }
+                    subheader={
+                      <Skeleton animation="wave" variant="text" width={80} />
+                    }
+                  />
 
-                <CardHeader
-                  avatar={
-                    <Skeleton
-                      animation="wave"
-                      variant="circular"
-                      width={40}
-                      height={40}
-                    />
-                  }
-                  title={
-                    <Skeleton animation="wave" variant="text" width={120} />
-                  }
-                  subheader={
-                    <Skeleton animation="wave" variant="text" width={80} />
-                  }
-                />
+                  <Skeleton
+                    animation="wave"
+                    variant="rectangular"
+                    width="345px"
+                    height="211px"
+                  />
 
-                <CardContent>
-                  <Skeleton animation="wave" variant="text" />
-                  <Skeleton animation="wave" variant="text" />
-                  <Skeleton animation="wave" variant="text" width="80%" />
-                </CardContent>
-              </Card>
-            </Grid>
+                  <CardContent>
+                    <Skeleton animation="wave" variant="text" />
+                    <Skeleton animation="wave" variant="text" />
+                    <Skeleton animation="wave" variant="text" width="80%" />
+                  </CardContent>
+                  <CardActions>
+                    <Skeleton animation="wave" variant="circular" />
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
         </CardWrapper>
       ) : (
