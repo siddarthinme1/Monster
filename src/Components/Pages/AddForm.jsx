@@ -7,6 +7,7 @@ import {
   Button,
   Chip,
   IconButton,
+  Stack,
 } from "@mui/material";
 import styled from "styled-components";
 
@@ -41,14 +42,20 @@ function AddForm() {
           <TextField label="Recipe Name" variant="outlined" fullWidth />
         </Grid>
 
-        <Grid item xs={10}>
-          <TextField
-            label="Ingredients"
-            variant="outlined"
-            fullWidth
-            value={ingredientInput}
-            onChange={(e) => setIngredientInput(e.target.value)}
-          />
+        <Grid item xs={12}>
+          <Stack direction="row" spacing={1} alignItems="center">
+            <TextField
+              label="Ingredients"
+              variant="outlined"
+              fullWidth
+              value={ingredientInput}
+              onChange={(e) => setIngredientInput(e.target.value)}
+            />
+
+            <Button variant="outlined" onClick={handleAddIngredient}>
+              <AddBoxIcon />
+            </Button>
+          </Stack>
           {ingredients.map((ingredient, index) => (
             <Chip
               key={index}
@@ -57,11 +64,6 @@ function AddForm() {
               sx={{ margin: "5px" }}
             />
           ))}
-        </Grid>
-        <Grid item xs={1} sx={{ m: 1 }}>
-          <Button variant="outlined" onClick={handleAddIngredient}>
-            <AddBoxIcon />
-          </Button>
         </Grid>
 
         <Grid item xs={12}>
