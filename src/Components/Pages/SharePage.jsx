@@ -6,7 +6,6 @@ import { shareIcons } from "../../Data/MonsterData";
 
 function SharePage() {
   const [text, setText] = useState("https://siddarthinme1.github.io/Monster/");
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const inputHandler = (event) => {
     setText(event.target.value);
