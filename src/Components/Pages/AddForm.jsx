@@ -44,7 +44,7 @@ function AddForm() {
             label="Ingredients"
             variant="outlined"
             fullWidth
-            onKeyPress={handleAddIngredient}
+            onKeyDown={handleAddIngredient}
           />
         </Grid>
 

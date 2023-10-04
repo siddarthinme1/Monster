@@ -318,7 +318,7 @@ function Settings(props) {
 
   return (
     <>
-      <Tooltip title="Profile">
+      <Tooltip title="Settings">
         <IconButton
           size="large"
           color="inherit"
