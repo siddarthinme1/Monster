@@ -39,6 +39,7 @@ import { cardData } from "../../Data/MonsterData";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReportIcon from "@mui/icons-material/Report";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
+import BottomDrawer from "../BottomNavigation/BottomDrawer";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -76,6 +77,14 @@ function CardPage() {
   );
 
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+
+  const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
+  const [selectedContent, setSelectedContent] = useState(null);
+
+  const toggleBottomDrawer = (content) => {
+    setIsDrawerBottomOpen(!isDrawerBottomOpen);
+    setSelectedContent(content);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -279,9 +288,11 @@ function CardPage() {
                       <FavoriteIcon />
                     </IconButton>
                     <IconButton>
-                      <CommentIcon />
+                      <CommentIcon
+                        onClick={() => toggleBottomDrawer("comments")}
+                      />
                     </IconButton>
-                    <IconButton>
+                    <IconButton onClick={() => toggleBottomDrawer("share")}>
                       <ShareIcon />
                     </IconButton>
 
@@ -355,6 +366,11 @@ function CardPage() {
             ))}
           </Grid>
           {renderMoreMenu}
+          <BottomDrawer
+            toggleBottomDrawer={toggleBottomDrawer}
+            isDrawerBottomOpen={isDrawerBottomOpen}
+            drawerContent={selectedContent}
+          />
         </CardWrapper>
       )}
     </>
