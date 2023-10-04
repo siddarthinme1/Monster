@@ -479,8 +479,8 @@ export const cardData = [
 export const initialFieldValues = {
   liked: false,
   recipeName: "",
-  ingredients: {},
-  instructions: {},
+  ingredients: [],
+  instructions: "",
   preperationTime: "",
   cookingTime: "",
   servings: "",

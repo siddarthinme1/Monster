@@ -32,6 +32,7 @@ export default function SpeedDialX() {
   const [currentPage, setCurrentPage] = useState("default");
   const [dialogOpen, setDialogOpen] = useState(false);
   const { trigger } = React.useContext(AppBarContext);
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -84,7 +85,7 @@ export default function SpeedDialX() {
             />
           ))}
         </SpeedDial>
-        <Dialog open={dialogOpen} onClose={handleDialogClose}>
+        <Dialog open={dialogOpen} /*onClose={handleDialogClose}*/>
           <DialogTitle>{currentPage}</DialogTitle>
           <DialogContent>{renderPage()}</DialogContent>
           <DialogActions>

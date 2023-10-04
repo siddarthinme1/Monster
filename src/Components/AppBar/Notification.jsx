@@ -52,7 +52,7 @@ function Notification() {
           horizontal: "right",
         }}
         open={isProfileOpen}
-        onClose={handleNotificationClose}
+        onBlur={handleNotificationClose}
       >
         <div
           style={{

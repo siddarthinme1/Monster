@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import {
-  Grid,
-  TextField,
-  Button,
-  Chip,
-  Stack,
-} from "@mui/material";
+import { Grid, TextField, Button, Chip, Stack } from "@mui/material";
 import styled from "styled-components";
 import UploadIcon from "@mui/icons-material/Upload";
+import { initialFieldValues } from "../../Data/MonsterData";
 
 const FormWrapper = styled("form")(({ theme }) => ({
   marginTop: "20px",
@@ -29,6 +24,21 @@ const VisuallyHiddenInput = styled("input")({
 function AddForm() {
   const [ingredients, setIngredients] = useState([]);
   const [ingredientInput, setIngredientInput] = useState("");
+  const [values, setValues] = useState(initialFieldValues);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+    console.log(values);
+    // if (validateOnChange) validate({ [name]: value });
+  };
+
+  const resetForm = () => {
+    setValues(initialFieldValues);
+  };
 
   const handleAddIngredient = () => {
     if (ingredientInput.trim() !== "") {
@@ -37,17 +47,26 @@ function AddForm() {
     }
   };
 
+  console.log(ingredients);
   const handleDeleteIngredient = (index) => {
     const updatedIngredients = [...ingredients];
     updatedIngredients.splice(index, 1);
     setIngredients(updatedIngredients);
+    console.log(ingredients);
   };
 
   return (
     <FormWrapper>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <TextField label="Recipe Name" variant="outlined" fullWidth />
+          <TextField
+            label="Recipe Name"
+            variant="outlined"
+            fullWidth
+            name="recipeName"
+            value={values.recipeName}
+            onChange={handleInputChange}
+          />
         </Grid>
 
         <Grid item xs={12}>
@@ -64,6 +83,7 @@ function AddForm() {
               <AddBoxIcon sx={{ m: 0.5 }} fontSize="large" />
             </Button>
           </Stack>
+
           {ingredients.map((ingredient, index) => (
             <Chip
               key={index}
@@ -81,23 +101,54 @@ function AddForm() {
             fullWidth
             multiline
             rows={6}
+            name="instructions"
+            value={values.instructions}
+            onChange={handleInputChange}
           />
         </Grid>
 
         <Grid item xs={12}>
-          <TextField label="Preparation Time" variant="outlined" fullWidth />
+          <TextField
+            label="Preparation Time"
+            variant="outlined"
+            fullWidth
+            name="preperationTime"
+            value={values.preperationTime}
+            onChange={handleInputChange}
+          />
         </Grid>
 
         <Grid item xs={12}>
-          <TextField label="Cooking Time" variant="outlined" fullWidth />
+          <TextField
+            label="Cooking Time"
+            variant="outlined"
+            fullWidth
+            name="cookingTime"
+            value={values.cookingTime}
+            onChange={handleInputChange}
+          />
         </Grid>
 
         <Grid item xs={12}>
-          <TextField label="Servings" variant="outlined" fullWidth />
+          <TextField
+            label="Servings"
+            variant="outlined"
+            fullWidth
+            name="servings"
+            value={values.servings}
+            onChange={handleInputChange}
+          />
         </Grid>
 
         <Grid item xs={12}>
-          <TextField label="Calories" variant="outlined" fullWidth />
+          <TextField
+            label="Calories"
+            variant="outlined"
+            fullWidth
+            name="calories"
+            value={values.calories}
+            onChange={handleInputChange}
+          />
         </Grid>
         <Grid item xs={12}>
           <Stack direction="row" spacing={2} alignItems="center">
@@ -109,6 +160,11 @@ function AddForm() {
               Upload image
               <VisuallyHiddenInput type="file" />
             </Button>
+
+            <Button variant="contained" color="warning" onClick={resetForm}>
+              Reset
+            </Button>
+
             <Button variant="contained" color="success">
               Add Recipe
             </Button>
