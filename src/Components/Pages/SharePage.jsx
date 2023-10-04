@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
-import { Typography, Box, IconButton } from "@mui/material";
+import { Typography, Box, IconButton, useMediaQuery } from "@mui/material";
 import { shareIcons } from "../../Data/MonsterData";
 
 function SharePage() {
   const [text, setText] = useState("https://siddarthinme1.github.io/Monster/");
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const inputHandler = (event) => {
     setText(event.target.value);
@@ -56,7 +57,6 @@ function SharePage() {
         >
           {text}
         </Typography>
-
         <IconButton onClick={copy} color="inherit">
           <ContentCopyIcon />
         </IconButton>

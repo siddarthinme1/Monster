@@ -10,7 +10,11 @@ function BottomDrawer(props) {
 
   const renderContent = () => {
     if (props.drawerContent === "share" && isMobile) {
-      return <SharePage />;
+      return (
+        <Box sx={{ m: "auto", display: "flex", alignContent: "center" }}>
+          <SharePage />
+        </Box>
+      );
     } else if (props.drawerContent === "comments" && isMobile) {
       return <CommentsPage />;
     } else {
@@ -32,7 +36,7 @@ function BottomDrawer(props) {
       <Box
         sx={{
           width: 250,
-          height: 250,
+          height: 200,
           padding: 2,
           textAlign: "center",
         }}
