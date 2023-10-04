@@ -1,25 +1,36 @@
 import React, { useState } from "react";
-
-import { FormControl, Grid, TextField, Button, Chip } from "@mui/material";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import {
+  FormControl,
+  Grid,
+  TextField,
+  Button,
+  Chip,
+  IconButton,
+} from "@mui/material";
 import styled from "styled-components";
 
-const FormWrapper = styled("div")(({ theme }) => ({
+const FormWrapper = styled("form")(({ theme }) => ({
   marginTop: "20px",
 }));
 
 function AddForm() {
   const [ingredients, setIngredients] = useState([]);
+  const [ingredientInput, setIngredientInput] = useState("");
 
-  const handleAddIngredient = (event) => {
-    if (event.key === "Enter" && event.target.value.trim() !== "") {
-      setIngredients([...ingredients, event.target.value.trim()]);
-      event.target.value = "";
+  const handleAddIngredient = () => {
+    if (ingredientInput.trim() !== "") {
+      setIngredients([...ingredients, ingredientInput.trim()]);
+
+      setIngredientInput(""); // Clear the input field
     }
   };
 
   const handleDeleteIngredient = (index) => {
     const updatedIngredients = [...ingredients];
+
     updatedIngredients.splice(index, 1);
+
     setIngredients(updatedIngredients);
   };
 
@@ -30,22 +41,27 @@ function AddForm() {
           <TextField label="Recipe Name" variant="outlined" fullWidth />
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid item xs={10}>
+          <TextField
+            label="Ingredients"
+            variant="outlined"
+            fullWidth
+            value={ingredientInput}
+            onChange={(e) => setIngredientInput(e.target.value)}
+          />
           {ingredients.map((ingredient, index) => (
             <Chip
               key={index}
               label={ingredient}
               onDelete={() => handleDeleteIngredient(index)}
-              style={{ marginRight: "8px", marginBottom: "8px" }}
+              sx={{ margin: "5px" }}
             />
           ))}
-
-          <TextField
-            label="Ingredients"
-            variant="outlined"
-            fullWidth
-            onKeyDown={handleAddIngredient}
-          />
+        </Grid>
+        <Grid item xs={1} sx={{ m: 1 }}>
+          <Button variant="outlined" onClick={handleAddIngredient}>
+            <AddBoxIcon />
+          </Button>
         </Grid>
 
         <Grid item xs={12}>
