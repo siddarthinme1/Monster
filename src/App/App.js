@@ -7,6 +7,7 @@ import LabelBottomNavigation from "../Components/BottomNavigation/BottomNavigati
 import CardPage from "../Components/Pages/CardPage";
 import SpeedDialX from "../Components/SpeedDial/SpeedDialX";
 import AboutPage from "../Components/Pages/AboutPage";
+import AddForm from "../Components/Pages/AddForm";
 
 const clientId =
   "650114961683-4quord8pl0v8n0gpnvp8funhja8ijcf8.apps.googleusercontent.com";

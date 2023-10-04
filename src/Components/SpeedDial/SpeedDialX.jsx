@@ -29,6 +29,7 @@ import {
   IconButton,
   Divider,
 } from "@mui/material";
+import AddForm from "../Pages/AddForm";
 
 const actions = [
   { icon: <AddIcon />, name: "Add" },
@@ -104,7 +105,11 @@ export default function SpeedDialX() {
   const renderPage = () => {
     switch (currentPage) {
       case "Add":
-        return <div>Add Page</div>;
+        return (
+          <div>
+            <AddForm />
+          </div>
+        );
       case "Save":
         return <div>Save Page Content</div>;
       case "Print":
