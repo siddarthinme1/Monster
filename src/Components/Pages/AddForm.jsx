@@ -1,19 +1,30 @@
 import React, { useState } from "react";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import {
-  FormControl,
   Grid,
   TextField,
   Button,
   Chip,
-  IconButton,
   Stack,
 } from "@mui/material";
 import styled from "styled-components";
+import UploadIcon from "@mui/icons-material/Upload";
 
 const FormWrapper = styled("form")(({ theme }) => ({
   marginTop: "20px",
 }));
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 function AddForm() {
   const [ingredients, setIngredients] = useState([]);
@@ -22,16 +33,13 @@ function AddForm() {
   const handleAddIngredient = () => {
     if (ingredientInput.trim() !== "") {
       setIngredients([...ingredients, ingredientInput.trim()]);
-
-      setIngredientInput(""); // Clear the input field
+      setIngredientInput("");
     }
   };
 
   const handleDeleteIngredient = (index) => {
     const updatedIngredients = [...ingredients];
-
     updatedIngredients.splice(index, 1);
-
     setIngredients(updatedIngredients);
   };
 
@@ -52,8 +60,8 @@ function AddForm() {
               onChange={(e) => setIngredientInput(e.target.value)}
             />
 
-            <Button variant="outlined" onClick={handleAddIngredient}>
-              <AddBoxIcon />
+            <Button onClick={handleAddIngredient} color="inherit">
+              <AddBoxIcon sx={{ m: 0.5 }} fontSize="large" />
             </Button>
           </Stack>
           {ingredients.map((ingredient, index) => (
@@ -92,9 +100,19 @@ function AddForm() {
           <TextField label="Calories" variant="outlined" fullWidth />
         </Grid>
         <Grid item xs={12}>
-          <Button variant="contained" color="success">
-            Add Recipe
-          </Button>
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Button
+              component="label"
+              variant="contained"
+              startIcon={<UploadIcon />}
+            >
+              Upload image
+              <VisuallyHiddenInput type="file" />
+            </Button>
+            <Button variant="contained" color="success">
+              Add Recipe
+            </Button>
+          </Stack>
         </Grid>
       </Grid>
     </FormWrapper>

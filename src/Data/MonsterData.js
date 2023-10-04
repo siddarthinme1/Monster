@@ -12,6 +12,12 @@ import HistoryIcon from "@mui/icons-material/History";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MonochromePhotosRoundedIcon from "@mui/icons-material/MonochromePhotosRounded";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 // import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
 // import SaveIcon from "@mui/icons-material/Save";
@@ -467,5 +473,45 @@ export const cardData = [
       "Pancakes are a breakfast favorite! These fluffy and golden pancakes are perfect with maple syrup and a pat of butter.",
     procedure: "Cook",
     ingredients: ["flour", "milk", "eggs", "baking powder", "maple syrup"],
+  },
+];
+
+export const initialFieldValues = {
+  liked: false,
+  recipeName: "",
+  ingredients: {},
+  instructions: {},
+  preperationTime: "",
+  cookingTime: "",
+  servings: "",
+  calories: "",
+  image: "",
+};
+
+export const shareIcons = [
+  {
+    icon: <WhatsAppIcon fontSize="large" />,
+    name: "WhatsApp",
+    url: "https://wa.me/send?text=GFG Example for whatsapp sharing",
+  },
+  {
+    icon: <TwitterIcon fontSize="large" />,
+    name: "Twitter",
+    url: "https://twitter.com",
+  },
+  {
+    icon: <FacebookIcon fontSize="large" />,
+    name: "Facebook",
+    url: "https://facebook.com",
+  },
+  {
+    icon: <InstagramIcon fontSize="large" />,
+    name: "Instagram",
+    url: "https://instagram.com",
+  },
+  {
+    icon: <GitHubIcon fontSize="large" />,
+    name: "Github",
+    url: "https://github.com",
   },
 ];

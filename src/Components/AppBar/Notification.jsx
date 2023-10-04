@@ -59,7 +59,7 @@ function Notification() {
             position: "sticky",
             top: 0,
             zIndex: 1,
-            backgroundColor: "white",
+            backgroundColor: "inherit",
           }}
         >
           <Toolbar>
@@ -74,9 +74,9 @@ function Notification() {
 
         <NotificationWrapper>
           <List>
-            {/* <ListSubheader sx={{ bgcolor: "background.paper" }}>
+            <ListSubheader sx={{ bgcolor: "background.paper" }}>
               Today
-            </ListSubheader> */}
+            </ListSubheader>
             {notifications.map((notification) => (
               <ListItemButton disableRipple key={notification.id}>
                 <ListItemAvatar>

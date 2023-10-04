@@ -3,17 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {
-  Avatar,
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Link,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { Copyright } from "@mui/icons-material";
+import { Avatar, Box, Typography } from "@mui/material";
 
 const defaultTheme = createTheme();
 

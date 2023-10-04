@@ -8,12 +8,6 @@ import ShareIcon from "@mui/icons-material/Share";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import AppBarContext from "../../Context/AppBarContext";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import GitHubIcon from "@mui/icons-material/GitHub";
 
 import {
   Slide,
@@ -22,48 +16,15 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Typography,
-  Chip,
-  Box,
-  Grid,
-  IconButton,
-  Divider,
 } from "@mui/material";
 import AddForm from "../Pages/AddForm";
+import SharePage from "../Pages/SharePage";
 
 const actions = [
   { icon: <AddIcon />, name: "Add" },
   { icon: <SaveIcon />, name: "Save" },
   { icon: <PrintIcon />, name: "Print" },
   { icon: <ShareIcon />, name: "Share" },
-];
-
-const shareIcons = [
-  {
-    icon: <WhatsAppIcon fontSize="large" />,
-    name: "WhatsApp",
-    url: "https://wa.me/send?text=GFG Example for whatsapp sharing",
-  },
-  {
-    icon: <TwitterIcon fontSize="large" />,
-    name: "Twitter",
-    url: "https://twitter.com",
-  },
-  {
-    icon: <FacebookIcon fontSize="large" />,
-    name: "Facebook",
-    url: "https://facebook.com",
-  },
-  {
-    icon: <InstagramIcon fontSize="large" />,
-    name: "Instagram",
-    url: "https://instagram.com",
-  },
-  {
-    icon: <GitHubIcon fontSize="large" />,
-    name: "Github",
-    url: "https://github.com",
-  },
 ];
 
 export default function SpeedDialX() {
@@ -88,79 +49,16 @@ export default function SpeedDialX() {
     setDialogOpen(false);
   };
 
-  const [text, setText] = useState("https://siddarthinme1.github.io/Monster/");
-
-  const inputHandler = (event) => {
-    setText(event.target.value);
-  };
-
-  const copy = async () => {
-    await navigator.clipboard.writeText(text);
-  };
-
-  const handleShare = (url) => {
-    window.open(url);
-  };
-
   const renderPage = () => {
     switch (currentPage) {
       case "Add":
-        return (
-          <div>
-            <AddForm />
-          </div>
-        );
+        return <AddForm />;
       case "Save":
         return <div>Save Page Content</div>;
       case "Print":
         return <div>Print Page Content</div>;
       case "Share":
-        return (
-          <div>
-            <Box
-              sx={{
-                borderRadius: 4,
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              {shareIcons.map((shareIcon, index) => (
-                <IconButton
-                  key={index}
-                  color="inherit"
-                  fontSize="large"
-                  onClick={() => handleShare(shareIcon.url)}
-                >
-                  {shareIcon.icon}
-                </IconButton>
-              ))}
-            </Box>
-            <Box
-              sx={{
-                borderRadius: 4,
-                padding: 2,
-                display: "flex",
-                alignItems: "center",
-                border: { xs: "none", sm: "1px solid black" },
-              }}
-            >
-              <Typography
-                type="text"
-                value={text}
-                noWrap
-                onChange={inputHandler}
-                sx={{ flex: 1, overflow: "hidden" }}
-              >
-                {text}
-              </Typography>
-
-              <IconButton onClick={copy} color="inherit">
-                <ContentCopyIcon />
-              </IconButton>
-            </Box>
-          </div>
-        );
+        return <SharePage />;
       default:
         return <div>Default Page Content</div>;
     }
