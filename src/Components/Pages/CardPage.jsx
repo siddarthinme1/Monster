@@ -39,6 +39,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ReportIcon from "@mui/icons-material/Report";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
+import CommentsPage from "./CommentsPage";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -82,16 +83,16 @@ function CardPage() {
   const [selectedContent, setSelectedContent] = useState(null);
 
   const closeBottomDrawer = (content) => {
-    if (isMobile) {
-      setIsDrawerBottomOpen(false);
-    }
+    // if (isMobile) {
+    setIsDrawerBottomOpen(false);
+    // }
   };
 
   const openBottomDrawer = (content) => {
-    if (isMobile) {
-      setIsDrawerBottomOpen(true);
-      setSelectedContent(content);
-    }
+    // if (isMobile) {
+    setIsDrawerBottomOpen(true);
+    setSelectedContent(content);
+    // }
   };
 
   useEffect(() => {
@@ -234,7 +235,7 @@ function CardPage() {
       anchorEl={cardAnchorEl}
       id={moreId}
       keepMounted
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      anchorOrigin={{ vertical: "top", horizontal: "left" }}
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMoreOpen}
       onClose={handleMoreClose}
@@ -269,23 +270,26 @@ function CardPage() {
               position: "relative",
               overflow: "auto",
               maxHeight: 150,
+
               "& ul": { padding: 0 },
             }}
             subheader={<li />}
           >
             {Array.isArray(card.ingredients) &&
-              card.ingredients.map((ingredient, ingredientIndex) => {
-                const labelId = `checkbox-list-secondary-label-${ingredientIndex}`;
+              card.ingredients.map((ingredient, index) => {
+                const labelId = `checkbox-list-secondary-label-${index}`;
 
                 return (
                   <ListItem
-                    key={ingredientIndex}
+                    key={index}
                     secondaryAction={
                       <Checkbox
                         edge="end"
                         onChange={handleToggleCheckbox(index)}
                         checked={checked.indexOf(index) !== -1}
-                        inputProps={{ "aria-labelledby": labelId }}
+                        inputProps={{
+                          "aria-labelledby": labelId,
+                        }}
                       />
                     }
                     disablePadding
@@ -416,6 +420,13 @@ function CardPage() {
                         <ShareIcon />
                       </IconButton>
                     </Tooltip>
+                    {/* <Collapse
+                      in={isDrawerBottomOpen}
+                      timeout="auto"
+                      unmountOnExit
+                    >
+                      {<CommentsPage />}
+                    </Collapse> */}
 
                     <ExpandMore
                       expand={expandedStates[index]}
