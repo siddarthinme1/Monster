@@ -55,6 +55,7 @@ function BottomDrawer(props) {
         onClose={props.closeBottomDrawer}
         onOpen={props.openBottomDrawer}
         swipeAreaWidth={56}
+        disableSwipeToOpen={true}
         ModalProps={{ keepMounted: true }}
       >
         <StyledBox
