@@ -126,10 +126,10 @@ export const notifications = [
 ];
 export const sideDrawerItmes = [
   { id: "1", title: "Home", icon: <HomeIcon /> },
-  { id: "2", title: "Shorts", icon: <ElectricBoltIcon /> },
+  { id: "2", title: "Random", icon: <ElectricBoltIcon /> },
   { id: "3", title: "Library", icon: <LibraryBooksIcon /> },
   { id: "4", title: "History", icon: <HistoryIcon /> },
-  { id: "5", title: "Watch later", icon: <WatchLaterIcon /> },
+  { id: "5", title: "Save later", icon: <WatchLaterIcon /> },
   { id: "6", title: "Show more", icon: <ExpandMoreIcon /> },
 ];
 
