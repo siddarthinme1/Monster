@@ -28,6 +28,8 @@ import {
   Stack,
   Skeleton,
   useMediaQuery,
+  Slide,
+  useScrollTrigger,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -158,9 +160,42 @@ function CardPage() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <CardContent>
-        <Typography paragraph>{cardData[index].description}</Typography>
-      </CardContent>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Box
+            display="block"
+            component="img"
+            sx={{
+              height: 250,
+              width: 350,
+              borderRadius: 4,
+              margin: "0 auto",
+              padding: "10px",
+            }}
+            alt="Recipe Image"
+            src={cardData[index].image}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <CardContent>
+            <Typography variant="h6">Ingredients:</Typography>
+            <List>
+              {Array.isArray(cardData[index].ingredients) &&
+                cardData[index].ingredients.map((ingredient, index) => (
+                  <ListItem dense>{ingredient}</ListItem>
+                ))}
+            </List>
+          </CardContent>
+        </Grid>
+        <Grid item xs={12}>
+          <CardContent>
+            <Typography variant="h6">Instructions</Typography>
+            <Typography sx={{ mt: 2 }} paragraph>
+              {cardData[index].description}
+            </Typography>
+          </CardContent>
+        </Grid>
+      </Grid>
     </Dialog>
   );
 
