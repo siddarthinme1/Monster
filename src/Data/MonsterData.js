@@ -490,7 +490,7 @@ export const shareIcons = [
   {
     icon: <WhatsAppIcon fontSize="large" />,
     name: "WhatsApp",
-    url: "https://wa.me/send?text=GFG Example for whatsapp sharing",
+    url: "whatsapp://send?text= Please Visit https://siddarthinme1.github.io/Monster/",
   },
   {
     icon: <TwitterIcon fontSize="large" />,
