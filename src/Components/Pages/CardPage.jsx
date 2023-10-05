@@ -255,6 +255,57 @@ function CardPage() {
     </Popover>
   );
 
+  const RenderIngredients = (card, index) => {
+    return (
+      <CardContent>
+        <Typography variant="h6">Ingredients:</Typography>
+
+        <Box>
+          <List
+            sx={{
+              width: "100%",
+              maxWidth: 360,
+              bgcolor: "background.paper",
+              position: "relative",
+              overflow: "auto",
+              maxHeight: 150,
+              "& ul": { padding: 0 },
+            }}
+            subheader={<li />}
+          >
+            {Array.isArray(card.ingredients) &&
+              card.ingredients.map((ingredient, ingredientIndex) => {
+                const labelId = `checkbox-list-secondary-label-${ingredientIndex}`;
+
+                return (
+                  <ListItem
+                    key={ingredientIndex}
+                    secondaryAction={
+                      <Checkbox
+                        edge="end"
+                        onChange={handleToggleCheckbox(index)}
+                        checked={checked.indexOf(index) !== -1}
+                        inputProps={{ "aria-labelledby": labelId }}
+                      />
+                    }
+                    disablePadding
+                  >
+                    <ListItemButton
+                      role={undefined}
+                      onClick={handleToggleCheckbox(index)}
+                      dense
+                    >
+                      <ListItemText id={labelId} primary={ingredient} />
+                    </ListItemButton>
+                  </ListItem>
+                );
+              })}
+          </List>
+        </Box>
+      </CardContent>
+    );
+  };
+
   return (
     <>
       {isLoading ? (
@@ -380,55 +431,7 @@ function CardPage() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <CardContent>
-                      <Typography variant="h6">Ingredients:</Typography>
-                      <Box>
-                        <List
-                          sx={{
-                            width: "100%",
-                            maxWidth: 360,
-                            bgcolor: "background.paper",
-                            position: "relative",
-                            overflow: "auto",
-                            maxHeight: 150,
-                            "& ul": { padding: 0 },
-                          }}
-                          subheader={<li />}
-                        >
-                          {Array.isArray(card.ingredients) &&
-                            card.ingredients.map((ingredient, index) => {
-                              const labelId = `checkbox-list-secondary-label-${index}`;
-                              return (
-                                <ListItem
-                                  key={index}
-                                  secondaryAction={
-                                    <Checkbox
-                                      edge="end"
-                                      onChange={handleToggleCheckbox(index)}
-                                      checked={checked.indexOf(index) !== -1}
-                                      inputProps={{
-                                        "aria-labelledby": labelId,
-                                      }}
-                                    />
-                                  }
-                                  disablePadding
-                                >
-                                  <ListItemButton
-                                    role={undefined}
-                                    onClick={handleToggleCheckbox(index)}
-                                    dense
-                                  >
-                                    <ListItemText
-                                      id={labelId}
-                                      primary={ingredient}
-                                    />
-                                  </ListItemButton>
-                                </ListItem>
-                              );
-                            })}
-                        </List>
-                      </Box>
-                    </CardContent>
+                    {RenderIngredients(card, index)}
                   </Collapse>
                 </Card>
                 {selectedCardIndex === index && <RecipeDialog index={index} />}
