@@ -1,20 +1,15 @@
 import React from "react";
-
 import { Box, SwipeableDrawer, Typography, useMediaQuery } from "@mui/material";
-
 import SharePage from "../Pages/SharePage";
-
 import CommentsPage from "../Pages/CommentsPage";
-
 import styled from "styled-components";
-
 import { Global } from "@emotion/react";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   backgroundColor: "inherit",
 }));
 
-function BottomDrawer(props) {
+function BottomDrawerMobile(props) {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const renderContent = () => {
@@ -81,4 +76,4 @@ function BottomDrawer(props) {
   );
 }
 
-export default BottomDrawer;
+export default BottomDrawerMobile;

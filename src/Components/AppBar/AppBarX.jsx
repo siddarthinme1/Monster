@@ -1,7 +1,6 @@
 import {
   AppBar,
   Box,
-  Chip,
   IconButton,
   Menu,
   Slide,
@@ -19,8 +18,7 @@ import SeacrhBar from "./SeacrhBar";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AppBarContext from "../../Context/AppBarContext";
 import SignIn from "../Login/SignIn";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import SpeedDialX from "../SpeedDial/SpeedDialX";
+
 function AppBarX() {
   const { setSignInPopUp, trigger } = useContext(AppBarContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);

@@ -27,6 +27,7 @@ import {
   Divider,
   Stack,
   Skeleton,
+  useMediaQuery,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -39,7 +40,7 @@ import { cardData } from "../../Data/MonsterData";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReportIcon from "@mui/icons-material/Report";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
-import BottomDrawer from "../BottomNavigation/BottomDrawer";
+import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -63,6 +64,7 @@ const CardWrapper = styled("div")(({ theme }) => ({
 
 function CardPage() {
   const [checked, setChecked] = useState([1]);
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [isLoading, setIsLoading] = useState(true);
   const [likedCards, setLikedCards] = useState(
     Array(cardData.length).fill(false)
@@ -82,12 +84,16 @@ function CardPage() {
   const [selectedContent, setSelectedContent] = useState(null);
 
   const closeBottomDrawer = (content) => {
-    setIsDrawerBottomOpen(false);
+    if (isMobile) {
+      setIsDrawerBottomOpen(false);
+    }
   };
 
   const openBottomDrawer = (content) => {
-    setIsDrawerBottomOpen(true);
-    setSelectedContent(content);
+    if (isMobile) {
+      setIsDrawerBottomOpen(true);
+      setSelectedContent(content);
+    }
   };
 
   useEffect(() => {
@@ -370,7 +376,8 @@ function CardPage() {
             ))}
           </Grid>
           {renderMoreMenu}
-          <BottomDrawer
+
+          <BottomDrawerMobile
             openBottomDrawer={openBottomDrawer}
             closeBottomDrawer={closeBottomDrawer}
             isDrawerBottomOpen={isDrawerBottomOpen}

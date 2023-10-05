@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import AppBarContext from "./AppBarContext";
 
-import { createTheme, useScrollTrigger } from "@mui/material";
+import { useMediaQuery, useScrollTrigger } from "@mui/material";
 
 const AppBarStateProvider = (props) => {
   const trigger = useScrollTrigger();
