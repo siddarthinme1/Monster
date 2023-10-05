@@ -39,7 +39,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 function SideDrawer(props) {
-  const { handleDrawerToggle, sideDrawerOpen, setSideDrawerOpen } = props;
+  const { handleDrawerToggle, sideDrawerOpen } = props;
 
   const { window } = props;
 

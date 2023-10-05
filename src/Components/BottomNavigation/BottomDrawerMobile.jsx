@@ -10,7 +10,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 function BottomDrawerMobile(props) {
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  // const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const renderContent = () => {
     if (props.drawerContent === "share") {

@@ -1,14 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { Chip, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import AppBarX from "../Components/AppBar/AppBarX";
 import AppBarContext from "../Context/AppBarContext";
 import { gapi } from "gapi-script";
 import LabelBottomNavigation from "../Components/BottomNavigation/BottomNavigation";
 import CardPage from "../Components/Pages/CardPage";
-import SpeedDialX from "../Components/SpeedDial/SpeedDialX";
 import AboutPage from "../Components/Pages/AboutPage";
-import AddForm from "../Components/Pages/AddForm";
-import BottomDrawer from "../Components/BottomNavigation/BottomDrawerMobile";
 
 const clientId =
   "650114961683-4quord8pl0v8n0gpnvp8funhja8ijcf8.apps.googleusercontent.com";
@@ -22,7 +19,7 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({});
 
 function App() {
-  const { darkMode, isAuthenticated, showCardPage, showAboutPage } =
+  const { darkMode, showCardPage } =
     useContext(AppBarContext);
   useEffect(() => {
     function start() {

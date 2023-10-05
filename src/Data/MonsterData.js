@@ -11,12 +11,10 @@ import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import HistoryIcon from "@mui/icons-material/History";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MonochromePhotosRoundedIcon from "@mui/icons-material/MonochromePhotosRounded";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 // import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";

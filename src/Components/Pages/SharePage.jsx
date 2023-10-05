@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
-import { Typography, Box, IconButton, useMediaQuery } from "@mui/material";
+import { Typography, Box, IconButton } from "@mui/material";
 import { shareIcons } from "../../Data/MonsterData";
 
 function SharePage() {

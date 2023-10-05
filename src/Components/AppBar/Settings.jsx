@@ -74,17 +74,17 @@ function Settings(props) {
 
   const handleClick = (buttonId) => {
     setMobileMoreAnchorEl(null);
-    if (buttonId == 1) {
+    if (buttonId === "1") {
       setProfile(!profile);
-    } else if (buttonId == 2) {
+    } else if (buttonId === "2") {
       setMyAccount(!myAccount);
-    } else if (buttonId == 3) {
+    } else if (buttonId === "3") {
       setSettings(!settings);
-    } else if (buttonId == 4) {
+    } else if (buttonId === "4") {
       setLocation(!location);
-    } else if (buttonId == 5) {
+    } else if (buttonId === "5") {
       setHelp(!help);
-    } else if (buttonId == 6) {
+    } else if (buttonId === "6") {
       setRateUs(true);
     }
   };
