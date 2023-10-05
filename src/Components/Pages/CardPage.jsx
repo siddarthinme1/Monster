@@ -157,10 +157,11 @@ function CardPage() {
         </Toolbar>
       </AppBar>
       <SpeedDial
+        onClick={handleCloseRecipe}
         ariaLabel="SpeedDial Close Recipe"
         sx={{ position: "absolute", bottom: 16, right: 16 }}
-        icon={<HighlightOffIcon onClick={handleCloseRecipe} />}
-      ></SpeedDial>
+        icon={<CloseIcon />}
+      />
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box
