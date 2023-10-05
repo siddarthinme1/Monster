@@ -25,6 +25,7 @@ import {
   Skeleton,
   useMediaQuery,
   SpeedDial,
+  Tooltip,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -156,12 +157,14 @@ function CardPage() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <SpeedDial
-        onClick={handleCloseRecipe}
-        ariaLabel="SpeedDial Close Recipe"
-        sx={{ position: "fixed", bottom: 75, right: 16 }}
-        icon={<CloseIcon />}
-      />
+      <Tooltip title="close">
+        <SpeedDial
+          onClick={handleCloseRecipe}
+          ariaLabel="SpeedDial Close Recipe"
+          sx={{ position: "fixed", bottom: 75, right: 16 }}
+          icon={<CloseIcon />}
+        />
+      </Tooltip>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box
@@ -298,9 +301,11 @@ function CardPage() {
                       </Avatar>
                     }
                     action={
-                      <IconButton>
-                        <MoreVertIcon onClick={handleMoreOpen} />
-                      </IconButton>
+                      <Tooltip title="More">
+                        <IconButton>
+                          <MoreVertIcon onClick={handleMoreOpen} />
+                        </IconButton>
+                      </Tooltip>
                     }
                     title={card.title}
                     subheader={card.subheader}
@@ -328,20 +333,26 @@ function CardPage() {
                   </CardActionArea>
 
                   <CardActions disableSpacing>
-                    <IconButton
-                      color={likedCards[index] ? "secondary" : "default"}
-                      onClick={() => handleFavoriteClick(index)}
-                    >
-                      <FavoriteIcon />
-                    </IconButton>
-                    <IconButton>
-                      <CommentIcon
-                        onClick={() => openBottomDrawer("comments")}
-                      />
-                    </IconButton>
-                    <IconButton onClick={() => openBottomDrawer("share")}>
-                      <ShareIcon />
-                    </IconButton>
+                    <Tooltip title="Like">
+                      <IconButton
+                        color={likedCards[index] ? "secondary" : "default"}
+                        onClick={() => handleFavoriteClick(index)}
+                      >
+                        <FavoriteIcon />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Comment">
+                      <IconButton>
+                        <CommentIcon
+                          onClick={() => openBottomDrawer("comments")}
+                        />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Share">
+                      <IconButton onClick={() => openBottomDrawer("share")}>
+                        <ShareIcon />
+                      </IconButton>
+                    </Tooltip>
 
                     <ExpandMore
                       expand={expandedStates[index]}
