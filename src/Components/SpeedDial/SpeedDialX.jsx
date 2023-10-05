@@ -75,6 +75,7 @@ export default function SpeedDialX() {
           onClose={handleClose}
           onOpen={handleOpen}
           open={open}
+          direction="left"
         >
           {actions.map((action) => (
             <SpeedDialAction
