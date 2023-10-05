@@ -19,8 +19,7 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({});
 
 function App() {
-  const { darkMode, showCardPage } =
-    useContext(AppBarContext);
+  const { darkMode, showCardPage } = useContext(AppBarContext);
   useEffect(() => {
     function start() {
       gapi.auth2.init({ clientId: clientId, scope: "" });

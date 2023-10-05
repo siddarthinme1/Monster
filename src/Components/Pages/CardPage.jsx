@@ -24,6 +24,7 @@ import {
   Popover,
   Skeleton,
   useMediaQuery,
+  SpeedDial,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -37,6 +38,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ReportIcon from "@mui/icons-material/Report";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -141,19 +143,24 @@ function CardPage() {
     <Dialog fullScreen open={openRecipe[index]} onClose={handleCloseRecipe}>
       <AppBar sx={{ position: "relative" }}>
         <Toolbar>
+          <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+            {cardData[index].title}
+          </Typography>
           <IconButton
-            edge="start"
+            edge="end"
             color="inherit"
             onClick={handleCloseRecipe}
             aria-label="close"
           >
             <CloseIcon />
           </IconButton>
-          <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-            {cardData[index].title}
-          </Typography>
         </Toolbar>
       </AppBar>
+      <SpeedDial
+        ariaLabel="SpeedDial Close Recipe"
+        sx={{ position: "absolute", bottom: 16, right: 16 }}
+        icon={<HighlightOffIcon onClick={handleCloseRecipe} />}
+      ></SpeedDial>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box
