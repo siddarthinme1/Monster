@@ -35,8 +35,6 @@ function BottomDrawer(props) {
     }
   };
 
-  // Conditionally define container based on window availability
-
   const container =
     typeof window !== "undefined" ? () => window.document.body : undefined;
 
@@ -45,8 +43,6 @@ function BottomDrawer(props) {
       <Global
         styles={{
           ".MuiDrawer-root > .MuiPaper-root": {
-            height: `calc(50% - ${56}px)`,
-
             overflow: "visible",
           },
         }}
@@ -56,24 +52,18 @@ function BottomDrawer(props) {
         container={container}
         anchor="bottom"
         open={props.isDrawerBottomOpen}
-        onClose={props.toggleBottomDrawer}
-        onOpen={props.toggleBottomDrawer}
+        onClose={props.closeBottomDrawer}
+        onOpen={props.openBottomDrawer}
         swipeAreaWidth={56}
-        disableSwipeToOpen={false}
         ModalProps={{ keepMounted: true }}
       >
         <StyledBox
           sx={{
             position: "absolute",
-
             top: -56,
-
             borderTopLeftRadius: 8,
-
             borderTopRightRadius: 8,
-
             right: 0,
-
             left: 0,
           }}
         >

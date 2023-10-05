@@ -81,8 +81,12 @@ function CardPage() {
   const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
 
-  const toggleBottomDrawer = (content) => {
-    setIsDrawerBottomOpen(!isDrawerBottomOpen);
+  const closeBottomDrawer = (content) => {
+    setIsDrawerBottomOpen(false);
+  };
+
+  const openBottomDrawer = (content) => {
+    setIsDrawerBottomOpen(true);
     setSelectedContent(content);
   };
 
@@ -289,10 +293,10 @@ function CardPage() {
                     </IconButton>
                     <IconButton>
                       <CommentIcon
-                        onClick={() => toggleBottomDrawer("comments")}
+                        onClick={() => openBottomDrawer("comments")}
                       />
                     </IconButton>
-                    <IconButton onClick={() => toggleBottomDrawer("share")}>
+                    <IconButton onClick={() => openBottomDrawer("share")}>
                       <ShareIcon />
                     </IconButton>
 
@@ -367,7 +371,8 @@ function CardPage() {
           </Grid>
           {renderMoreMenu}
           <BottomDrawer
-            toggleBottomDrawer={toggleBottomDrawer}
+            openBottomDrawer={openBottomDrawer}
+            closeBottomDrawer={closeBottomDrawer}
             isDrawerBottomOpen={isDrawerBottomOpen}
             drawerContent={selectedContent}
           />
