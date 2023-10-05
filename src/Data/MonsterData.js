@@ -140,8 +140,15 @@ export const cardData = [
     subheader: "September 20, 2022",
     image: require("./Images/spaghetti.jpg"),
     description:
-      "Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.",
-    procedure: "Cook",
+      "Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.",
+    procedure: [
+      "1. Boil a pot of water and cook the spaghetti according to package instructions.",
+      "2. While the spaghetti is cooking, heat a pan over medium heat and add diced pancetta. Cook until crispy.",
+      "3. In a bowl, whisk together eggs, grated pecorino cheese, and black pepper.",
+      "4. Drain the cooked spaghetti and immediately add it to the pan with crispy pancetta. Toss to combine.",
+      "5. Remove the pan from heat and quickly pour in the egg and cheese mixture. Stir continuously to create a creamy sauce.",
+      "6. Serve the Carbonara immediately, garnished with extra cheese and black pepper.",
+    ],
     ingredients: [
       "spaghetti",
       "eggs",
@@ -160,7 +167,15 @@ export const cardData = [
     image: require("./Images/stir-fry.jpg"),
     description:
       "Vegetable Stir-Fry is a quick and healthy dish made with a variety of colorful vegetables and a flavorful stir-fry sauce. It's perfect for a quick weeknight dinner.",
-    procedure: "Stir-fry",
+    procedure: [
+      "1. Prepare all the vegetables by chopping them into bite-sized pieces.",
+      "2. In a wok or large skillet, heat oil over high heat.",
+      "3. Add minced garlic and ginger, and stir-fry for about 30 seconds until fragrant.",
+      "4. Add the vegetables and stir-fry for 3-5 minutes until they start to become tender.",
+      "5. Pour in the stir-fry sauce and continue to cook for another 2-3 minutes until the sauce thickens and coats the vegetables.",
+      "6. Serve the Vegetable Stir-Fry hot over cooked rice or noodles.",
+    ],
+
     ingredients: [
       "bell peppers",
       "broccoli",
@@ -170,9 +185,60 @@ export const cardData = [
       "garlic",
     ],
   },
-
   {
     id: "3",
+    liked: false,
+    avatar: "RR",
+    title: "Spaghetti Carbonara",
+    subheader: "September 20, 2022",
+    image: require("./Images/spaghetti.jpg"),
+    description:
+      "Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.",
+    procedure: [
+      "1. Boil a pot of water and cook the spaghetti according to package instructions.",
+      "2. While the spaghetti is cooking, heat a pan over medium heat and add diced pancetta. Cook until crispy.",
+      "3. In a bowl, whisk together eggs, grated pecorino cheese, and black pepper.",
+      "4. Drain the cooked spaghetti and immediately add it to the pan with crispy pancetta. Toss to combine.",
+      "5. Remove the pan from heat and quickly pour in the egg and cheese mixture. Stir continuously to create a creamy sauce.",
+      "6. Serve the Carbonara immediately, garnished with extra cheese and black pepper.",
+    ],
+
+    ingredients: [
+      "spaghetti",
+      "eggs",
+      "pancetta",
+      "pecorino cheese",
+      "black pepper",
+    ],
+  },
+  {
+    id: "4",
+    liked: false,
+    avatar: "SK",
+    title: "Vegetable Stir-Fry",
+    subheader: "October 5, 2022",
+    image: require("./Images/stir-fry.jpg"),
+    description:
+      "Vegetable Stir-Fry is a quick and healthy dish made with a variety of colorful vegetables and a flavorful stir-fry sauce. It's perfect for a quick weeknight dinner.",
+    procedure: [
+      "1. Prepare all the vegetables by chopping them into bite-sized pieces.",
+      "2. In a wok or large skillet, heat oil over high heat.",
+      "3. Add minced garlic and ginger, and stir-fry for about 30 seconds until fragrant.",
+      "4. Add the vegetables and stir-fry for 3-5 minutes until they start to become tender.",
+      "5. Pour in the stir-fry sauce and continue to cook for another 2-3 minutes until the sauce thickens and coats the vegetables.",
+      "6. Serve the Vegetable Stir-Fry hot over cooked rice or noodles.",
+    ],
+    ingredients: [
+      "bell peppers",
+      "broccoli",
+      "carrots",
+      "soy sauce",
+      "ginger",
+      "garlic",
+    ],
+  },
+  {
+    id: "5",
     liked: false,
     avatar: "MG",
     title: "Homemade Pizza",
@@ -180,7 +246,16 @@ export const cardData = [
     image: require("./Images/pizza.jpg"),
     description:
       "Homemade Pizza is a customizable delight! Top your pizza dough with your favorite ingredients, sauce, and cheese for a personalized pizza experience.",
-    procedure: "Bake",
+    procedure: [
+      "1. Preheat your oven to the highest temperature setting (usually around 500°F or 260°C).",
+      "2. Roll out the pizza dough on a floured surface to your desired thickness.",
+      "3. Transfer the dough to a pizza stone or baking sheet.",
+      "4. Spread tomato sauce evenly over the dough, leaving a small border for the crust.",
+      "5. Sprinkle mozzarella cheese over the sauce and add your favorite toppings, such as pepperoni and bell peppers.",
+      "6. Bake the pizza in the preheated oven for 10-15 minutes or until the crust is golden and the cheese is bubbly.",
+      "7. Remove from the oven, slice, and enjoy your Homemade Pizza!",
+    ],
+
     ingredients: [
       "pizza dough",
       "tomato sauce",
@@ -189,9 +264,35 @@ export const cardData = [
       "bell peppers",
     ],
   },
-
   {
-    id: "4",
+    id: "6",
+    liked: false,
+    avatar: "MG",
+    title: "Homemade Pizza",
+    subheader: "November 10, 2022",
+    image: require("./Images/pizza.jpg"),
+    description:
+      "Homemade Pizza is a customizable delight! Top your pizza dough with your favorite ingredients, sauce, and cheese for a personalized pizza experience.",
+    procedure: [
+      "1. Preheat your oven to the highest temperature setting (usually around 500°F or 260°C).",
+      "2. Roll out the pizza dough on a floured surface to your desired thickness.",
+      "3. Transfer the dough to a pizza stone or baking sheet.",
+      "4. Spread tomato sauce evenly over the dough, leaving a small border for the crust.",
+      "5. Sprinkle mozzarella cheese over the sauce and add your favorite toppings, such as pepperoni and bell peppers.",
+      "6. Bake the pizza in the preheated oven for 10-15 minutes or until the crust is golden and the cheese is bubbly.",
+      "7. Remove from the oven, slice, and enjoy your Homemade Pizza!",
+    ],
+
+    ingredients: [
+      "pizza dough",
+      "tomato sauce",
+      "mozzarella cheese",
+      "pepperoni",
+      "bell peppers",
+    ],
+  },
+  {
+    id: "7",
     liked: false,
     avatar: "RR",
     title: "Chicken Alfredo",
@@ -199,7 +300,14 @@ export const cardData = [
     image: require("./Images/chicken-alfredo.jpg"),
     description:
       "Chicken Alfredo is a creamy pasta dish made with tender chicken breast, fettuccine pasta, and a rich Alfredo sauce. It's comfort food at its best.",
-    procedure: "Cook",
+    procedure: [
+      "1. Season chicken breast with salt and pepper.",
+      "2. In a large skillet, heat butter over medium-high heat and cook chicken until no longer pink, about 5 minutes per side. Remove and set aside.",
+      "3. In the same skillet, add heavy cream and bring to a simmer. Add grated parmesan cheese and stir until the sauce thickens.",
+      "4. Cook fettuccine pasta according to package instructions and drain.",
+      "5. Slice the cooked chicken breast and add it to the sauce.",
+      "6. Serve the Chicken Alfredo over cooked fettuccine pasta, garnished with more parmesan cheese.",
+    ],
     ingredients: [
       "chicken breast",
       "fettuccine pasta",
@@ -207,9 +315,8 @@ export const cardData = [
       "parmesan cheese",
     ],
   },
-
   {
-    id: "5",
+    id: "8",
     liked: false,
     avatar: "SK",
     title: "Greek Salad",
@@ -217,7 +324,13 @@ export const cardData = [
     image: require("./Images/greek-salad.jpg"),
     description:
       "Greek Salad is a refreshing salad made with cucumbers, tomatoes, olives, red onions, and feta cheese, drizzled with a Greek vinaigrette.",
-    procedure: "Prepare",
+    procedure: [
+      "1. In a large salad bowl, combine sliced cucumbers, diced tomatoes, kalamata olives, and thinly sliced red onions.",
+      "2. Crumble feta cheese over the vegetables.",
+      "3. In a small bowl, whisk together olive oil, red wine vinegar, dried oregano, salt, and pepper to make the dressing.",
+      "4. Drizzle the dressing over the salad and toss to combine.",
+      "5. Serve the Greek Salad immediately as a refreshing side dish.",
+    ],
     ingredients: [
       "cucumbers",
       "tomatoes",
@@ -226,84 +339,8 @@ export const cardData = [
       "feta cheese",
     ],
   },
-
-  {
-    id: "6",
-    liked: false,
-    avatar: "MG",
-    title: "Chocolate Brownies",
-    subheader: "February 5, 2023",
-    image: require("./Images/brownies.jpg"),
-    description:
-      "Chocolate Brownies are rich and fudgy dessert bars made with cocoa powder and chocolate chips. They are the perfect treat for chocolate lovers.",
-    procedure: "Bake",
-    ingredients: ["cocoa powder", "chocolate chips", "butter", "sugar", "eggs"],
-  },
-
-  {
-    id: "7",
-    liked: false,
-    avatar: "RR",
-    title: "Sushi Rolls",
-    subheader: "March 20, 2023",
-    image: require("./Images/sushi.jpg"),
-    description:
-      "Sushi Rolls are a Japanese delicacy made with vinegared rice, fresh fish, vegetables, and seaweed. They are served with soy sauce and wasabi.",
-    procedure: "Roll",
-    ingredients: [
-      "sushi rice",
-      "fresh fish",
-      "seaweed sheets",
-      "cucumber",
-      "avocado",
-    ],
-  },
-
-  {
-    id: "8",
-    liked: false,
-    avatar: "SK",
-    title: "Chicken Tacos",
-    subheader: "April 10, 2023",
-    image: require("./Images/tacos.jpg"),
-    description:
-      "Chicken Tacos are a Tex-Mex favorite! Seasoned grilled chicken is served in soft tortillas with toppings like salsa, lettuce, and cheese.",
-    procedure: "Grill",
-    ingredients: ["chicken thighs", "tortillas", "salsa", "lettuce", "cheese"],
-  },
-
   {
     id: "9",
-    liked: false,
-    avatar: "MG",
-    title: "Caprese Salad",
-    subheader: "May 5, 2023",
-    image: require("./Images/caprese-salad.jpg"),
-    description:
-      "Caprese Salad is a simple Italian salad made with fresh mozzarella, tomatoes, basil leaves, and drizzled with balsamic glaze and olive oil.",
-    procedure: "Prepare",
-    ingredients: [
-      "mozzarella cheese",
-      "tomatoes",
-      "basil leaves",
-      "balsamic glaze",
-    ],
-  },
-
-  {
-    id: "10",
-    liked: false,
-    avatar: "RR",
-    title: "Pancakes",
-    subheader: "June 15, 2023",
-    image: require("./Images/pancakes.jpg"),
-    description:
-      "Pancakes are a breakfast favorite! These fluffy and golden pancakes are perfect with maple syrup and a pat of butter.",
-    procedure: "Cook",
-    ingredients: ["flour", "milk", "eggs", "baking powder", "maple syrup"],
-  },
-  {
-    id: "11",
     liked: false,
     avatar: "RR",
     title: "Spaghetti Carbonara",
@@ -311,7 +348,14 @@ export const cardData = [
     image: require("./Images/spaghetti.jpg"),
     description:
       "Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.",
-    procedure: "Cook",
+    procedure: [
+      "1. Boil a pot of water and cook the spaghetti according to package instructions.",
+      "2. While the spaghetti is cooking, heat a pan over medium heat and add diced pancetta. Cook until crispy.",
+      "3. In a bowl, whisk together eggs, grated pecorino cheese, and black pepper.",
+      "4. Drain the cooked spaghetti and immediately add it to the pan with crispy pancetta. Toss to combine.",
+      "5. Remove the pan from heat and quickly pour in the egg and cheese mixture. Stir continuously to create a creamy sauce.",
+      "6. Serve the Carbonara immediately, garnished with extra cheese and black pepper.",
+    ],
     ingredients: [
       "spaghetti",
       "eggs",
@@ -322,7 +366,7 @@ export const cardData = [
   },
 
   {
-    id: "12",
+    id: "10",
     liked: false,
     avatar: "SK",
     title: "Vegetable Stir-Fry",
@@ -330,7 +374,15 @@ export const cardData = [
     image: require("./Images/stir-fry.jpg"),
     description:
       "Vegetable Stir-Fry is a quick and healthy dish made with a variety of colorful vegetables and a flavorful stir-fry sauce. It's perfect for a quick weeknight dinner.",
-    procedure: "Stir-fry",
+    procedure: [
+      "1. Prepare all the vegetables by chopping them into bite-sized pieces.",
+      "2. In a wok or large skillet, heat oil over high heat.",
+      "3. Add minced garlic and ginger, and stir-fry for about 30 seconds until fragrant.",
+      "4. Add the vegetables and stir-fry for 3-5 minutes until they start to become tender.",
+      "5. Pour in the stir-fry sauce and continue to cook for another 2-3 minutes until the sauce thickens and coats the vegetables.",
+      "6. Serve the Vegetable Stir-Fry hot over cooked rice or noodles.",
+    ],
+
     ingredients: [
       "bell peppers",
       "broccoli",
@@ -340,7 +392,58 @@ export const cardData = [
       "garlic",
     ],
   },
+  {
+    id: "11",
+    liked: false,
+    avatar: "RR",
+    title: "Spaghetti Carbonara",
+    subheader: "September 20, 2022",
+    image: require("./Images/spaghetti.jpg"),
+    description:
+      "Spaghetti Carbonara is a classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper. It's rich, creamy, and incredibly delicious.",
+    procedure: [
+      "1. Boil a pot of water and cook the spaghetti according to package instructions.",
+      "2. While the spaghetti is cooking, heat a pan over medium heat and add diced pancetta. Cook until crispy.",
+      "3. In a bowl, whisk together eggs, grated pecorino cheese, and black pepper.",
+      "4. Drain the cooked spaghetti and immediately add it to the pan with crispy pancetta. Toss to combine.",
+      "5. Remove the pan from heat and quickly pour in the egg and cheese mixture. Stir continuously to create a creamy sauce.",
+      "6. Serve the Carbonara immediately, garnished with extra cheese and black pepper.",
+    ],
 
+    ingredients: [
+      "spaghetti",
+      "eggs",
+      "pancetta",
+      "pecorino cheese",
+      "black pepper",
+    ],
+  },
+  {
+    id: "12",
+    liked: false,
+    avatar: "SK",
+    title: "Vegetable Stir-Fry",
+    subheader: "October 5, 2022",
+    image: require("./Images/stir-fry.jpg"),
+    description:
+      "Vegetable Stir-Fry is a quick and healthy dish made with a variety of colorful vegetables and a flavorful stir-fry sauce. It's perfect for a quick weeknight dinner.",
+    procedure: [
+      "1. Prepare all the vegetables by chopping them into bite-sized pieces.",
+      "2. In a wok or large skillet, heat oil over high heat.",
+      "3. Add minced garlic and ginger, and stir-fry for about 30 seconds until fragrant.",
+      "4. Add the vegetables and stir-fry for 3-5 minutes until they start to become tender.",
+      "5. Pour in the stir-fry sauce and continue to cook for another 2-3 minutes until the sauce thickens and coats the vegetables.",
+      "6. Serve the Vegetable Stir-Fry hot over cooked rice or noodles.",
+    ],
+    ingredients: [
+      "bell peppers",
+      "broccoli",
+      "carrots",
+      "soy sauce",
+      "ginger",
+      "garlic",
+    ],
+  },
   {
     id: "13",
     liked: false,
@@ -350,7 +453,16 @@ export const cardData = [
     image: require("./Images/pizza.jpg"),
     description:
       "Homemade Pizza is a customizable delight! Top your pizza dough with your favorite ingredients, sauce, and cheese for a personalized pizza experience.",
-    procedure: "Bake",
+    procedure: [
+      "1. Preheat your oven to the highest temperature setting (usually around 500°F or 260°C).",
+      "2. Roll out the pizza dough on a floured surface to your desired thickness.",
+      "3. Transfer the dough to a pizza stone or baking sheet.",
+      "4. Spread tomato sauce evenly over the dough, leaving a small border for the crust.",
+      "5. Sprinkle mozzarella cheese over the sauce and add your favorite toppings, such as pepperoni and bell peppers.",
+      "6. Bake the pizza in the preheated oven for 10-15 minutes or until the crust is golden and the cheese is bubbly.",
+      "7. Remove from the oven, slice, and enjoy your Homemade Pizza!",
+    ],
+
     ingredients: [
       "pizza dough",
       "tomato sauce",
@@ -359,9 +471,35 @@ export const cardData = [
       "bell peppers",
     ],
   },
-
   {
     id: "14",
+    liked: false,
+    avatar: "MG",
+    title: "Homemade Pizza",
+    subheader: "November 10, 2022",
+    image: require("./Images/pizza.jpg"),
+    description:
+      "Homemade Pizza is a customizable delight! Top your pizza dough with your favorite ingredients, sauce, and cheese for a personalized pizza experience.",
+    procedure: [
+      "1. Preheat your oven to the highest temperature setting (usually around 500°F or 260°C).",
+      "2. Roll out the pizza dough on a floured surface to your desired thickness.",
+      "3. Transfer the dough to a pizza stone or baking sheet.",
+      "4. Spread tomato sauce evenly over the dough, leaving a small border for the crust.",
+      "5. Sprinkle mozzarella cheese over the sauce and add your favorite toppings, such as pepperoni and bell peppers.",
+      "6. Bake the pizza in the preheated oven for 10-15 minutes or until the crust is golden and the cheese is bubbly.",
+      "7. Remove from the oven, slice, and enjoy your Homemade Pizza!",
+    ],
+
+    ingredients: [
+      "pizza dough",
+      "tomato sauce",
+      "mozzarella cheese",
+      "pepperoni",
+      "bell peppers",
+    ],
+  },
+  {
+    id: "15",
     liked: false,
     avatar: "RR",
     title: "Chicken Alfredo",
@@ -369,7 +507,14 @@ export const cardData = [
     image: require("./Images/chicken-alfredo.jpg"),
     description:
       "Chicken Alfredo is a creamy pasta dish made with tender chicken breast, fettuccine pasta, and a rich Alfredo sauce. It's comfort food at its best.",
-    procedure: "Cook",
+    procedure: [
+      "1. Season chicken breast with salt and pepper.",
+      "2. In a large skillet, heat butter over medium-high heat and cook chicken until no longer pink, about 5 minutes per side. Remove and set aside.",
+      "3. In the same skillet, add heavy cream and bring to a simmer. Add grated parmesan cheese and stir until the sauce thickens.",
+      "4. Cook fettuccine pasta according to package instructions and drain.",
+      "5. Slice the cooked chicken breast and add it to the sauce.",
+      "6. Serve the Chicken Alfredo over cooked fettuccine pasta, garnished with more parmesan cheese.",
+    ],
     ingredients: [
       "chicken breast",
       "fettuccine pasta",
@@ -377,9 +522,8 @@ export const cardData = [
       "parmesan cheese",
     ],
   },
-
   {
-    id: "15",
+    id: "16",
     liked: false,
     avatar: "SK",
     title: "Greek Salad",
@@ -387,7 +531,13 @@ export const cardData = [
     image: require("./Images/greek-salad.jpg"),
     description:
       "Greek Salad is a refreshing salad made with cucumbers, tomatoes, olives, red onions, and feta cheese, drizzled with a Greek vinaigrette.",
-    procedure: "Prepare",
+    procedure: [
+      "1. In a large salad bowl, combine sliced cucumbers, diced tomatoes, kalamata olives, and thinly sliced red onions.",
+      "2. Crumble feta cheese over the vegetables.",
+      "3. In a small bowl, whisk together olive oil, red wine vinegar, dried oregano, salt, and pepper to make the dressing.",
+      "4. Drizzle the dressing over the salad and toss to combine.",
+      "5. Serve the Greek Salad immediately as a refreshing side dish.",
+    ],
     ingredients: [
       "cucumbers",
       "tomatoes",
@@ -396,81 +546,101 @@ export const cardData = [
       "feta cheese",
     ],
   },
-
-  {
-    id: "16",
-    liked: false,
-    avatar: "MG",
-    title: "Chocolate Brownies",
-    subheader: "February 5, 2023",
-    image: require("./Images/brownies.jpg"),
-    description:
-      "Chocolate Brownies are rich and fudgy dessert bars made with cocoa powder and chocolate chips. They are the perfect treat for chocolate lovers.",
-    procedure: "Bake",
-    ingredients: ["cocoa powder", "chocolate chips", "butter", "sugar", "eggs"],
-  },
-
   {
     id: "17",
     liked: false,
-    avatar: "RR",
-    title: "Sushi Rolls",
-    subheader: "March 20, 2023",
-    image: require("./Images/sushi.jpg"),
+    avatar: "SK",
+    title: "Greek Salad",
+    subheader: "January 15, 2023",
+    image: require("./Images/greek-salad.jpg"),
     description:
-      "Sushi Rolls are a Japanese delicacy made with vinegared rice, fresh fish, vegetables, and seaweed. They are served with soy sauce and wasabi.",
-    procedure: "Roll",
+      "Greek Salad is a refreshing salad made with cucumbers, tomatoes, olives, red onions, and feta cheese, drizzled with a Greek vinaigrette.",
+    procedure: [
+      "1. In a large salad bowl, combine sliced cucumbers, diced tomatoes, kalamata olives, and thinly sliced red onions.",
+      "2. Crumble feta cheese over the vegetables.",
+      "3. In a small bowl, whisk together olive oil, red wine vinegar, dried oregano, salt, and pepper to make the dressing.",
+      "4. Drizzle the dressing over the salad and toss to combine.",
+      "5. Serve the Greek Salad immediately as a refreshing side dish.",
+    ],
     ingredients: [
-      "sushi rice",
-      "fresh fish",
-      "seaweed sheets",
-      "cucumber",
-      "avocado",
+      "cucumbers",
+      "tomatoes",
+      "kalamata olives",
+      "red onions",
+      "feta cheese",
     ],
   },
-
   {
     id: "18",
     liked: false,
     avatar: "SK",
-    title: "Chicken Tacos",
-    subheader: "April 10, 2023",
-    image: require("./Images/tacos.jpg"),
+    title: "Greek Salad",
+    subheader: "January 15, 2023",
+    image: require("./Images/greek-salad.jpg"),
     description:
-      "Chicken Tacos are a Tex-Mex favorite! Seasoned grilled chicken is served in soft tortillas with toppings like salsa, lettuce, and cheese.",
-    procedure: "Grill",
-    ingredients: ["chicken thighs", "tortillas", "salsa", "lettuce", "cheese"],
+      "Greek Salad is a refreshing salad made with cucumbers, tomatoes, olives, red onions, and feta cheese, drizzled with a Greek vinaigrette.",
+    procedure: [
+      "1. In a large salad bowl, combine sliced cucumbers, diced tomatoes, kalamata olives, and thinly sliced red onions.",
+      "2. Crumble feta cheese over the vegetables.",
+      "3. In a small bowl, whisk together olive oil, red wine vinegar, dried oregano, salt, and pepper to make the dressing.",
+      "4. Drizzle the dressing over the salad and toss to combine.",
+      "5. Serve the Greek Salad immediately as a refreshing side dish.",
+    ],
+    ingredients: [
+      "cucumbers",
+      "tomatoes",
+      "kalamata olives",
+      "red onions",
+      "feta cheese",
+    ],
   },
-
   {
     id: "19",
     liked: false,
-    avatar: "MG",
-    title: "Caprese Salad",
-    subheader: "May 5, 2023",
-    image: require("./Images/caprese-salad.jpg"),
+    avatar: "SK",
+    title: "Greek Salad",
+    subheader: "January 15, 2023",
+    image: require("./Images/greek-salad.jpg"),
     description:
-      "Caprese Salad is a simple Italian salad made with fresh mozzarella, tomatoes, basil leaves, and drizzled with balsamic glaze and olive oil.",
-    procedure: "Prepare",
+      "Greek Salad is a refreshing salad made with cucumbers, tomatoes, olives, red onions, and feta cheese, drizzled with a Greek vinaigrette.",
+    procedure: [
+      "1. In a large salad bowl, combine sliced cucumbers, diced tomatoes, kalamata olives, and thinly sliced red onions.",
+      "2. Crumble feta cheese over the vegetables.",
+      "3. In a small bowl, whisk together olive oil, red wine vinegar, dried oregano, salt, and pepper to make the dressing.",
+      "4. Drizzle the dressing over the salad and toss to combine.",
+      "5. Serve the Greek Salad immediately as a refreshing side dish.",
+    ],
     ingredients: [
-      "mozzarella cheese",
+      "cucumbers",
       "tomatoes",
-      "basil leaves",
-      "balsamic glaze",
+      "kalamata olives",
+      "red onions",
+      "feta cheese",
     ],
   },
-
   {
     id: "20",
     liked: false,
-    avatar: "RR",
-    title: "Pancakes",
-    subheader: "June 15, 2023",
-    image: require("./Images/pancakes.jpg"),
+    avatar: "SK",
+    title: "Greek Salad",
+    subheader: "January 15, 2023",
+    image: require("./Images/greek-salad.jpg"),
     description:
-      "Pancakes are a breakfast favorite! These fluffy and golden pancakes are perfect with maple syrup and a pat of butter.",
-    procedure: "Cook",
-    ingredients: ["flour", "milk", "eggs", "baking powder", "maple syrup"],
+      "Greek Salad is a refreshing salad made with cucumbers, tomatoes, olives, red onions, and feta cheese, drizzled with a Greek vinaigrette.",
+    procedure: [
+      "1. In a large salad bowl, combine sliced cucumbers, diced tomatoes, kalamata olives, and thinly sliced red onions.",
+      "2. Crumble feta cheese over the vegetables.",
+      "3. In a small bowl, whisk together olive oil, red wine vinegar, dried oregano, salt, and pepper to make the dressing.",
+      "4. Drizzle the dressing over the salad and toss to combine.",
+      "5. Serve the Greek Salad immediately as a refreshing side dish.",
+    ],
+    ingredients: [
+      "cucumbers",
+      "tomatoes",
+      "kalamata olives",
+      "red onions",
+      "feta cheese",
+    ],
   },
 ];
 

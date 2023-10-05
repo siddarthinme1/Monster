@@ -39,7 +39,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ReportIcon from "@mui/icons-material/Report";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -163,7 +162,7 @@ function CardPage() {
           ariaLabel="SpeedDial Close Recipe"
           sx={{ position: "fixed", bottom: 75, right: 16 }}
           icon={<CloseIcon />}
-        />
+        ></SpeedDial>
       </Tooltip>
       <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -194,10 +193,23 @@ function CardPage() {
         </Grid>
         <Grid item xs={12}>
           <CardContent>
-            <Typography variant="h6">Instructions</Typography>
+            <Typography variant="h6">Description</Typography>
             <Typography sx={{ mt: 2 }} paragraph>
               {cardData[index].description}
             </Typography>
+          </CardContent>
+        </Grid>
+        <Grid item xs={12}>
+          <CardContent>
+            <Typography variant="h6">Procedure</Typography>
+            <List>
+              {Array.isArray(cardData[index].procedure) &&
+                cardData[index].procedure.map((ingredient, index) => (
+                  <ListItem dense>
+                    <Typography variant="body1">{ingredient}</Typography>
+                  </ListItem>
+                ))}
+            </List>
           </CardContent>
         </Grid>
       </Grid>
