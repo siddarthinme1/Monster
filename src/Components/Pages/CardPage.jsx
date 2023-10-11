@@ -63,31 +63,27 @@ const CardWrapper = styled("div")(({ theme }) => ({
 }));
 
 function CardPage() {
-  const [checked, setChecked] = useState([1]);
+  const [checked, setChecked] = useState([]);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [isLoading, setIsLoading] = useState(true);
-  const [likedCards, setLikedCards] = useState(
-    Array(cardData.length).fill(false)
-  );
-
-  const [expandedIngredient, setExpandedIngredient] = useState(
-    Array(cardData.length).fill(false)
-  );
-
-  const [expandedComment, setExpandedComment] = useState(
-    Array(cardData.length).fill(false)
-  );
-
-  const [expandedShare, setExpandedShare] = useState(
-    Array(cardData.length).fill(false)
-  );
-
-  const [openRecipe, setOpenRecipe] = useState(
-    Array(cardData.length).fill(false)
-  );
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
+  const [likedCards, setLikedCards] = useState(
+    Array(cardData.length).fill(false)
+  );
+  const [expandedIngredient, setExpandedIngredient] = useState(
+    Array(cardData.length).fill(false)
+  );
+  const [expandedComment, setExpandedComment] = useState(
+    Array(cardData.length).fill(false)
+  );
+  const [expandedShare, setExpandedShare] = useState(
+    Array(cardData.length).fill(false)
+  );
+  const [openRecipe, setOpenRecipe] = useState(
+    Array(cardData.length).fill(false)
+  );
 
   const closeBottomDrawer = (content) => {
     setIsDrawerBottomOpen(false);
@@ -141,11 +137,11 @@ function CardPage() {
     );
   };
 
-  const handleToggleCheckbox = (value) => () => {
-    const currentIndex = checked.indexOf(value);
+  const handleToggleCheckbox = (index) => () => {
+    const currentIndex = checked.indexOf(index);
     const newChecked = [...checked];
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(index);
     } else {
       newChecked.splice(currentIndex, 1);
     }
