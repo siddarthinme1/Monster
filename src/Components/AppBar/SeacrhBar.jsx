@@ -71,11 +71,11 @@ function SeacrhBar() {
           borderRadius: "0px 24px 24px 0px",
         }}
       >
-        <SearchIcon />
-      </IconButton>
-      <IconButton size="large" color="inherit">
         <MicIcon />
       </IconButton>
+      {/* <IconButton size="large" color="inherit">
+        <MicIcon />
+      </IconButton> */}
     </>
   );
 }
