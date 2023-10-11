@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, SwipeableDrawer, Typography, useMediaQuery } from "@mui/material";
+import { Box, SwipeableDrawer, Typography } from "@mui/material";
 import SharePage from "../Pages/SharePage";
 import CommentsPage from "../Pages/CommentsPage";
 import styled from "styled-components";

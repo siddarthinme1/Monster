@@ -1,13 +1,4 @@
 import React, { useContext, useState } from "react";
-import SpeedDial from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
-import SpeedDialAction from "@mui/material/SpeedDialAction";
-import SaveIcon from "@mui/icons-material/Save";
-import PrintIcon from "@mui/icons-material/Print";
-import ShareIcon from "@mui/icons-material/Share";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-
 import {
   Slide,
   Dialog,
@@ -15,11 +6,16 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Box,
 } from "@mui/material";
 import AddForm from "../Pages/AddForm";
 import SharePage from "../Pages/SharePage";
-import CardPage from "../Pages/CardPage";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import SpeedDialAction from "@mui/material/SpeedDialAction";
+import PrintIcon from "@mui/icons-material/Print";
+import ShareIcon from "@mui/icons-material/Share";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
 import AppBarContext from "../../Context/AppBarContext";
 const actions = [
   { icon: <AddIcon />, name: "Add" },
