@@ -18,11 +18,28 @@ import SeacrhBar from "./SeacrhBar";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AppBarContext from "../../Context/AppBarContext";
 import SignIn from "../Login/SignIn";
+import styled from "styled-components";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  // transition: theme.transitions.create("transform", {
+  //   duration: theme.transitions.duration.shortest,
+  // }),
+}));
 
 function AppBarX() {
-  const { setSignInPopUp, trigger } = useContext(AppBarContext);
+  const { setSignInPopUp, trigger, setDarkMode, darkMode } =
+    useContext(AppBarContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [expand, setExpand] = useState(false);
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -76,6 +93,11 @@ function AppBarX() {
     </Menu>
   );
 
+  const handleExpand = () => {
+    setExpand(!expand);
+    setDarkMode(!darkMode);
+  };
+
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -102,8 +124,15 @@ function AppBarX() {
               <Box sx={{ flexGrow: 1 }} />
               <SeacrhBar />
               <Box sx={{ flexGrow: 1 }} />
+              <ExpandMore
+                expand={expand}
+                onClick={handleExpand}
+                aria-expanded={expand}
+                fontSize="medium"
+              >
+                {!expand ? <DarkModeIcon /> : <LightModeIcon />}
+              </ExpandMore>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <CreateContent />
                 <Notification />
                 <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
                 {SignInPop}

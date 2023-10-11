@@ -17,6 +17,7 @@ function SharePage() {
   const handleShare = (url) => {
     window.open(url);
   };
+
   return (
     <div>
       <Box
@@ -44,7 +45,7 @@ function SharePage() {
           padding: 2,
           display: "flex",
           alignItems: "center",
-          border: { xs: "none", sm: "1px solid black" },
+          // border: { xs: "none", sm: "1px solid black" },
         }}
       >
         <Typography
