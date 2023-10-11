@@ -20,12 +20,12 @@ const lightTheme = createTheme({});
 
 function App() {
   const { darkMode, showCardPage } = useContext(AppBarContext);
-  useEffect(() => {
-    function start() {
-      gapi.auth2.init({ clientId: clientId, scope: "" });
-    }
-    gapi.load("client:auth2", start);
-  });
+  // useEffect(() => {
+  //   function start() {
+  //     gapi.auth2.init({ clientId: clientId, scope: "" });
+  //   }
+  //   gapi.load("client:auth2", start);
+  // });
 
   // var accessToken = gapi.auth.getToken().access_token;
   return (

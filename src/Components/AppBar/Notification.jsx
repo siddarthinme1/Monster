@@ -100,7 +100,7 @@ function Notification() {
         size="large"
         color="inherit"
         aria-label="notification of current user"
-        aria-controls={notificationId}
+        // aria-controls={notificationId}
         aria-haspopup="true"
         onClick={handleNotificationOpen}
       >

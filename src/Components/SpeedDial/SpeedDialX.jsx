@@ -54,7 +54,7 @@ export default function SpeedDialX() {
       case "Save":
         return <div>Save Page Content</div>;
       case "Print":
-        return <Button onClick={() => window.print()}></Button>;
+        return <Button title="print" onClick={() => window.print()}></Button>;
       case "Share":
         return <SharePage />;
       default:
@@ -88,7 +88,9 @@ export default function SpeedDialX() {
           <DialogTitle>{currentPage}</DialogTitle>
           <DialogContent>{renderPage()}</DialogContent>
           <DialogActions>
-            <Button onClick={handleDialogClose}>Close</Button>
+            <Button title="closeCurrentPage" onClick={handleDialogClose}>
+              Close
+            </Button>
           </DialogActions>
         </Dialog>
       </div>

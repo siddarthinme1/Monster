@@ -20,7 +20,7 @@ function BottomDrawerMobile(props) {
         </Box>
       );
     } else if (props.drawerContent === "comments") {
-      return <CommentsPage />;
+      return <CommentsPage index={props.index} />;
     } else {
       return (
         <Typography variant="h6">

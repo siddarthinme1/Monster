@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import { Grid, TextField, Button, Chip, Stack } from "@mui/material";
+import { Grid, TextField, Button, Chip, Stack, Collapse } from "@mui/material";
 import styled from "styled-components";
 import UploadIcon from "@mui/icons-material/Upload";
 import { initialFieldValues } from "../../Data/MonsterData";
+import { TransitionGroup } from "react-transition-group";
 
 const FormWrapper = styled("form")(({ theme }) => ({
   marginTop: "20px",
@@ -47,7 +48,6 @@ function AddForm() {
     }
   };
 
-  console.log(ingredients);
   const handleDeleteIngredient = (index) => {
     const updatedIngredients = [...ingredients];
     updatedIngredients.splice(index, 1);
@@ -79,19 +79,22 @@ function AddForm() {
               onChange={(e) => setIngredientInput(e.target.value)}
             />
 
-            <Button onClick={handleAddIngredient} color="inherit">
+            <Button title="add" onClick={handleAddIngredient} color="inherit">
               <AddBoxIcon sx={{ m: 0.5 }} fontSize="large" />
             </Button>
           </Stack>
-
-          {ingredients.map((ingredient, index) => (
-            <Chip
-              key={index}
-              label={ingredient}
-              onDelete={() => handleDeleteIngredient(index)}
-              sx={{ margin: "5px" }}
-            />
-          ))}
+          <TransitionGroup>
+            {ingredients.map((ingredient, index) => (
+              <Collapse key={index}>
+                <Chip
+                  key={index}
+                  label={ingredient}
+                  onDelete={() => handleDeleteIngredient(index)}
+                  sx={{ margin: "5px" }}
+                />
+              </Collapse>
+            ))}
+          </TransitionGroup>
         </Grid>
 
         <Grid item xs={12}>
@@ -153,6 +156,7 @@ function AddForm() {
         <Grid item xs={12}>
           <Stack direction="row" spacing={2} alignItems="center">
             <Button
+              title="upload"
               component="label"
               variant="contained"
               startIcon={<UploadIcon />}
@@ -161,11 +165,16 @@ function AddForm() {
               <VisuallyHiddenInput type="file" />
             </Button>
 
-            <Button variant="contained" color="warning" onClick={resetForm}>
+            <Button
+              title="reset"
+              variant="contained"
+              color="warning"
+              onClick={resetForm}
+            >
               Reset
             </Button>
 
-            <Button variant="contained" color="success">
+            <Button title="add" variant="contained" color="success">
               Add Recipe
             </Button>
           </Stack>

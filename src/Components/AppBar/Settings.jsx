@@ -132,7 +132,9 @@ function Settings(props) {
         <Rating name="size-medium" defaultValue={2} size="large" />
       </DialogContent>
       <TextField multiline rows={4} sx={{ m: 2 }}></TextField>
-      <Button onClick={handleCloseRateUs}>Send Feedback</Button>
+      <Button title="Send Feedback" onClick={handleCloseRateUs}>
+        Send Feedback
+      </Button>
     </Dialog>
   );
 
@@ -323,7 +325,7 @@ function Settings(props) {
           size="large"
           color="inherit"
           aria-label="account of current user"
-          aria-controls={menuId}
+          // aria-controls={menuId}
           aria-haspopup="true"
           onClick={handleProfileMenuOpen}
         >

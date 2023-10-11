@@ -156,6 +156,7 @@ export const cardData = [
       "pecorino cheese",
       "black pepper",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
 
   {
@@ -184,6 +185,7 @@ export const cardData = [
       "ginger",
       "garlic",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "3",
@@ -210,6 +212,7 @@ export const cardData = [
       "pecorino cheese",
       "black pepper",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "4",
@@ -236,6 +239,7 @@ export const cardData = [
       "ginger",
       "garlic",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "5",
@@ -263,6 +267,7 @@ export const cardData = [
       "pepperoni",
       "bell peppers",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "6",
@@ -290,6 +295,7 @@ export const cardData = [
       "pepperoni",
       "bell peppers",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "7",
@@ -314,6 +320,7 @@ export const cardData = [
       "heavy cream",
       "parmesan cheese",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "8",
@@ -338,6 +345,7 @@ export const cardData = [
       "red onions",
       "feta cheese",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "9",
@@ -363,6 +371,7 @@ export const cardData = [
       "pecorino cheese",
       "black pepper",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
 
   {
@@ -391,6 +400,7 @@ export const cardData = [
       "ginger",
       "garlic",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "11",
@@ -417,6 +427,7 @@ export const cardData = [
       "pecorino cheese",
       "black pepper",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "12",
@@ -443,6 +454,7 @@ export const cardData = [
       "ginger",
       "garlic",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "13",
@@ -470,6 +482,7 @@ export const cardData = [
       "pepperoni",
       "bell peppers",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "14",
@@ -497,6 +510,7 @@ export const cardData = [
       "pepperoni",
       "bell peppers",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "15",
@@ -521,6 +535,7 @@ export const cardData = [
       "heavy cream",
       "parmesan cheese",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "16",
@@ -545,6 +560,7 @@ export const cardData = [
       "red onions",
       "feta cheese",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "17",
@@ -569,6 +585,7 @@ export const cardData = [
       "red onions",
       "feta cheese",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "18",
@@ -593,6 +610,7 @@ export const cardData = [
       "red onions",
       "feta cheese",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "19",
@@ -617,6 +635,7 @@ export const cardData = [
       "red onions",
       "feta cheese",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
   {
     id: "20",
@@ -641,6 +660,7 @@ export const cardData = [
       "red onions",
       "feta cheese",
     ],
+    comments: ["Very Delicious", "Okay Okay", "Vahh Vahh"],
   },
 ];
 

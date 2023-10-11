@@ -63,6 +63,7 @@ const CardWrapper = styled("div")(({ theme }) => ({
 }));
 
 function CardPage() {
+  const [indexComments, setIndexComments] = useState(0);
   const [checked, setChecked] = useState([]);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [isLoading, setIsLoading] = useState(true);
@@ -85,6 +86,11 @@ function CardPage() {
     Array(cardData.length).fill(false)
   );
 
+  // useEffect(() => {
+  //   localStorage.setItem("items", JSON.stringify(items));
+  //   console.log(items);
+  // }, [items]);
+
   const closeBottomDrawer = (content) => {
     setIsDrawerBottomOpen(false);
   };
@@ -93,6 +99,7 @@ function CardPage() {
     if (isMobile) {
       setIsDrawerBottomOpen(true);
       setSelectedContent(content);
+      setIndexComments(index);
     } else {
       setExpandedFunction((prevStates) =>
         prevStates.map((state, i) => (i === index ? !state : false))
@@ -379,8 +386,8 @@ function CardPage() {
                     }
                     action={
                       <Tooltip title="More">
-                        <IconButton>
-                          <MoreVertIcon onClick={handleMoreOpen} />
+                        <IconButton onClick={handleMoreOpen}>
+                          <MoreVertIcon />
                         </IconButton>
                       </Tooltip>
                     }
@@ -465,7 +472,7 @@ function CardPage() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <CommentsPage />
+                    <CommentsPage index={index} />
                   </Collapse>
 
                   <Collapse
@@ -487,6 +494,7 @@ function CardPage() {
             closeBottomDrawer={closeBottomDrawer}
             isDrawerBottomOpen={isDrawerBottomOpen}
             drawerContent={selectedContent}
+            index={indexComments}
           />
         </CardWrapper>
       )}

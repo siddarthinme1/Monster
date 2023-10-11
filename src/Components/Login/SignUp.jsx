@@ -140,6 +140,7 @@ function SignUp() {
                 </Grid>
               </Grid>
               <Button
+                title="signUp"
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -160,7 +161,6 @@ function SignUp() {
           <Copyright sx={{ mb: 3 }} />
         </Container>
       </Dialog>
-      
     </>
   );
 }

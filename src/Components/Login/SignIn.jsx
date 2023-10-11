@@ -112,6 +112,7 @@ function SignIn() {
                 label="Remember me"
               />
               <Button
+                title="signIn"
                 type="submit"
                 fullWidth
                 variant="contained"
