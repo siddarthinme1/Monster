@@ -85,9 +85,7 @@ function CardPage() {
   const [openRecipe, setOpenRecipe] = useState(
     Array(cardData.length).fill(false)
   );
-  const [expandedIndex, setExpandedIndex] = useState(null);
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-
   const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
 
@@ -102,6 +100,9 @@ function CardPage() {
     } else {
       setExpandedFunction((prevStates) =>
         prevStates.map((state, i) => (i === index ? !state : false))
+      );
+      setExpandedIngredient((prevStates) =>
+        prevStates.map((state, i) => (i === index ? false : state))
       );
     }
   };
@@ -121,7 +122,7 @@ function CardPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
