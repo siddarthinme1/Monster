@@ -40,6 +40,7 @@ import ReportIcon from "@mui/icons-material/Report";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
 import CommentsPage from "./CommentsPage";
+import SharePage from "./SharePage";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -69,30 +70,52 @@ function CardPage() {
     Array(cardData.length).fill(false)
   );
 
-  const [expandedStates, setExpandedStates] = useState(
+  const [expandedIngredient, setExpandedIngredient] = useState(
+    Array(cardData.length).fill(false)
+  );
+
+  const [expandedComment, setExpandedComment] = useState(
+    Array(cardData.length).fill(false)
+  );
+
+  const [expandedShare, setExpandedShare] = useState(
     Array(cardData.length).fill(false)
   );
 
   const [openRecipe, setOpenRecipe] = useState(
     Array(cardData.length).fill(false)
   );
-
+  const [expandedIndex, setExpandedIndex] = useState(null);
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
 
   const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
 
   const closeBottomDrawer = (content) => {
-    // if (isMobile) {
     setIsDrawerBottomOpen(false);
-    // }
   };
 
-  const openBottomDrawer = (content) => {
-    // if (isMobile) {
-    setIsDrawerBottomOpen(true);
-    setSelectedContent(content);
-    // }
+  const handleOpenDrawer = (content, index, setExpandedFunction) => {
+    if (isMobile) {
+      setIsDrawerBottomOpen(true);
+      setSelectedContent(content);
+    } else {
+      setExpandedFunction((prevStates) =>
+        prevStates.map((state, i) => (i === index ? !state : false))
+      );
+    }
+  };
+
+  const handleExpandClick = (index) => {
+    setExpandedIngredient((prevStates) =>
+      prevStates.map((state, i) => (i === index ? !state : false))
+    );
+    setExpandedComment((prevStates) =>
+      prevStates.map((state, i) => (i === index ? false : state))
+    );
+    setExpandedShare((prevStates) =>
+      prevStates.map((state, i) => (i === index ? false : state))
+    );
   };
 
   useEffect(() => {
@@ -102,12 +125,6 @@ function CardPage() {
 
     return () => clearTimeout(timer);
   }, []);
-
-  const handleExpandClick = (index) => {
-    setExpandedStates((prevStates) =>
-      prevStates.map((state, i) => (i === index ? !state : false))
-    );
-  };
 
   const handleOpenRecipe = (index) => {
     setSelectedCardIndex(index);
@@ -219,9 +236,7 @@ function CardPage() {
 
   const moreId = "more-option-for-card";
   const [cardAnchorEl, setCardAnchorEl] = useState(null);
-
   const isMoreOpen = Boolean(cardAnchorEl);
-
   const handleMoreOpen = (event) => {
     setCardAnchorEl(event.currentTarget);
   };
@@ -244,11 +259,9 @@ function CardPage() {
         <ListItemButton>
           <DeleteIcon />
         </ListItemButton>
-
         <ListItemButton>
           <ReportIcon />
         </ListItemButton>
-
         <ListItemButton>
           <NotInterestedIcon />
         </ListItemButton>
@@ -408,41 +421,62 @@ function CardPage() {
                         <FavoriteIcon />
                       </IconButton>
                     </Tooltip>
+
                     <Tooltip title="Comment">
-                      <IconButton>
-                        <CommentIcon
-                          onClick={() => openBottomDrawer("comments")}
-                        />
+                      <IconButton
+                        onClick={() =>
+                          handleOpenDrawer(
+                            "comments",
+                            index,
+                            setExpandedComment
+                          )
+                        }
+                      >
+                        <CommentIcon />
                       </IconButton>
                     </Tooltip>
+
                     <Tooltip title="Share">
-                      <IconButton onClick={() => openBottomDrawer("share")}>
+                      <IconButton
+                        onClick={() =>
+                          handleOpenDrawer("share", index, setExpandedShare)
+                        }
+                      >
                         <ShareIcon />
                       </IconButton>
                     </Tooltip>
-                    {/* <Collapse
-                      in={isDrawerBottomOpen}
-                      timeout="auto"
-                      unmountOnExit
-                    >
-                      {<CommentsPage />}
-                    </Collapse> */}
-
                     <ExpandMore
-                      expand={expandedStates[index]}
+                      expand={expandedIngredient[index]}
                       onClick={() => handleExpandClick(index)}
-                      aria-expanded={expandedStates[index]}
+                      aria-expanded={expandedIngredient[index]}
                     >
                       <ExpandMoreIcon />
                     </ExpandMore>
                   </CardActions>
 
                   <Collapse
-                    in={expandedStates[index]}
+                    in={expandedIngredient[index]}
+                    timeout="auto"
+                    unmountOnExit
+                    direction="up"
+                  >
+                    {RenderIngredients(card, index)}
+                  </Collapse>
+
+                  <Collapse
+                    in={expandedComment[index]}
                     timeout="auto"
                     unmountOnExit
                   >
-                    {RenderIngredients(card, index)}
+                    <CommentsPage />
+                  </Collapse>
+
+                  <Collapse
+                    in={expandedShare[index]}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    <SharePage />
                   </Collapse>
                 </Card>
                 {selectedCardIndex === index && <RecipeDialog index={index} />}
@@ -452,7 +486,7 @@ function CardPage() {
           {renderMoreMenu}
 
           <BottomDrawerMobile
-            openBottomDrawer={openBottomDrawer}
+            handleOpenDrawer={handleOpenDrawer}
             closeBottomDrawer={closeBottomDrawer}
             isDrawerBottomOpen={isDrawerBottomOpen}
             drawerContent={selectedContent}

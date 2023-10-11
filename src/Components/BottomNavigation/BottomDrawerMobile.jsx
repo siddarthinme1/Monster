@@ -48,7 +48,7 @@ function BottomDrawerMobile(props) {
         anchor="bottom"
         open={props.isDrawerBottomOpen}
         onClose={props.closeBottomDrawer}
-        onOpen={props.openBottomDrawer}
+        onOpen={props.handleOpenDrawer}
         swipeAreaWidth={56}
         disableSwipeToOpen={true}
         ModalProps={{ keepMounted: true }}

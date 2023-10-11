@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
@@ -7,7 +7,6 @@ import PrintIcon from "@mui/icons-material/Print";
 import ShareIcon from "@mui/icons-material/Share";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import AppBarContext from "../../Context/AppBarContext";
 
 import {
   Slide,
@@ -16,22 +15,23 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  Box,
 } from "@mui/material";
 import AddForm from "../Pages/AddForm";
 import SharePage from "../Pages/SharePage";
-
+import CardPage from "../Pages/CardPage";
+import AppBarContext from "../../Context/AppBarContext";
 const actions = [
   { icon: <AddIcon />, name: "Add" },
-  { icon: <SaveIcon />, name: "Save" },
   { icon: <PrintIcon />, name: "Print" },
   { icon: <ShareIcon />, name: "Share" },
 ];
 
 export default function SpeedDialX() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("default");
   const [dialogOpen, setDialogOpen] = useState(false);
-  const { trigger } = React.useContext(AppBarContext);
+  const { trigger } = useContext(AppBarContext);
 
   const handleOpen = () => {
     setOpen(true);
@@ -43,6 +43,7 @@ export default function SpeedDialX() {
 
   const handlePageChange = (pageName) => {
     setCurrentPage(pageName);
+
     setDialogOpen(true);
   };
 
@@ -57,7 +58,7 @@ export default function SpeedDialX() {
       case "Save":
         return <div>Save Page Content</div>;
       case "Print":
-        return <div>Print Page Content</div>;
+        return <Button onClick={() => window.print()}></Button>;
       case "Share":
         return <SharePage />;
       default:
@@ -86,7 +87,8 @@ export default function SpeedDialX() {
             />
           ))}
         </SpeedDial>
-        <Dialog open={dialogOpen} /*onClose={handleDialogClose}*/>
+
+        <Dialog open={dialogOpen}>
           <DialogTitle>{currentPage}</DialogTitle>
           <DialogContent>{renderPage()}</DialogContent>
           <DialogActions>
