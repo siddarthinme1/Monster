@@ -6,6 +6,9 @@ import { gapi } from "gapi-script";
 import LabelBottomNavigation from "../Components/BottomNavigation/BottomNavigation";
 import CardPage from "../Components/Pages/CardPage";
 import AboutPage from "../Components/Pages/AboutPage";
+import Splitwise from "../Components/Pages/Splitwise";
+import { Route, Routes } from "react-router-dom";
+import Home from "../Components/Pages/Home";
 
 const clientId =
   "650114961683-4quord8pl0v8n0gpnvp8funhja8ijcf8.apps.googleusercontent.com";
@@ -33,7 +36,12 @@ function App() {
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
         <AppBarX />
-        {showCardPage ? <CardPage /> : <AboutPage />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recipe" element={<CardPage />} />
+          <Route path="/splitwise" element={<Splitwise />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
         <LabelBottomNavigation />
       </ThemeProvider>
     </>

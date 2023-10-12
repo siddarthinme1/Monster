@@ -42,7 +42,7 @@ function SharePage() {
       <Box
         sx={{
           borderRadius: 4,
-          padding: 2,
+          padding: 1,
           display: "flex",
           alignItems: "center",
           // border: { xs: "none", sm: "1px solid black" },

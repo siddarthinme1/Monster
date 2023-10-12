@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App/App";
 import reportWebVitals from "./reportWebVitals";
 import AppBarStateProvider from "./Context/AppBarStateProvider";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AppBarStateProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </AppBarStateProvider>
   </React.StrictMode>
 );
