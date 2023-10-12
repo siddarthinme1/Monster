@@ -5,6 +5,7 @@ import {
   Menu,
   Slide,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import React, { useState, useContext } from "react";
@@ -24,11 +25,26 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
-
-  return <IconButton {...other} />;
+  return (
+    <Tooltip title={expand ? "Light" : "Dark"}>
+      <IconButton {...other} />
+    </Tooltip>
+  );
 })(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  transform: `rotate(${expand ? 180 : 0}deg)`,
   marginLeft: "auto",
+  transition: "transform 0.3s",
+  "&:hover": {
+    animation: "rotate 2s linear infinite",
+  },
+  "@keyframes rotate": {
+    "0%": {
+      transform: "rotate(0deg)",
+    },
+    "100%": {
+      transform: "rotate(360deg)",
+    },
+  },
 }));
 
 function AppBarX() {
@@ -121,6 +137,7 @@ function AppBarX() {
               <Box sx={{ flexGrow: 1 }} />
               <SeacrhBar />
               <Box sx={{ flexGrow: 1 }} />
+
               <ExpandMore
                 expand={expand}
                 onClick={handleExpand}
