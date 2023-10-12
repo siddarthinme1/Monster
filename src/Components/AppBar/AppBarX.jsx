@@ -29,9 +29,6 @@ const ExpandMore = styled((props) => {
 })(({ theme, expand }) => ({
   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
   marginLeft: "auto",
-  // transition: theme.transitions.create("transform", {
-  //   duration: theme.transitions.duration.shortest,
-  // }),
 }));
 
 function AppBarX() {
@@ -128,9 +125,13 @@ function AppBarX() {
                 expand={expand}
                 onClick={handleExpand}
                 aria-expanded={expand}
-                fontSize="medium"
+                fontSize="large"
               >
-                {!expand ? <DarkModeIcon /> : <LightModeIcon />}
+                {!expand ? (
+                  <DarkModeIcon sx={{ color: "#FFFF8A" }} />
+                ) : (
+                  <LightModeIcon />
+                )}
               </ExpandMore>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 <Notification />
