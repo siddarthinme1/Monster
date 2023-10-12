@@ -31,7 +31,6 @@ const ExpandMore = styled((props) => {
     </Tooltip>
   );
 })(({ theme, expand }) => ({
-  transform: `rotate(${expand ? 180 : 0}deg)`,
   marginLeft: "auto",
   transition: "transform 0.3s",
   "&:hover": {
