@@ -17,37 +17,8 @@ function Home() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>SK</Avatar>
-          <Typography component="h1" variant="h5">
-            Siddarood Karachuri
-          </Typography>
-          <Typography variant="subtitle1">Key Expertise:</Typography>
-          <Typography variant="body2">
-            B.E in Electrical and Electronics, with 1.9 years of experience in
-            Embedded Technologies. Offer various programming languages such as
-            C, python. Currently working as Engineer in L&T Technology Services
-            Ltd, Mysore from November 2021 to till date.
-          </Typography>
-          <Typography variant="subtitle1">Experience and Skills:</Typography>
-          <Typography variant="body2">
-            ➢ Worked in BOSE Puffin project as a support Microcontroller
-            Platform Engineer.
-            <br />
-            ➢ Flashing and debugging of software to the P33A and P13C
-            amplifiers.
-            <br />
-            ➢ Hands-on and conceptual knowledge in programming languages like C,
-            Python.
-            <br />
-            ➢ Conceptual knowledge of communication protocols like SPI, I2C,
-            UART, and RS232.
-            <br />
-            ➢ Experience in source code management and revision control using
-            SVN.
-            <br />
-            ➢ Good Knowledge in Windows and Linux.
-            <br />➢ Good written and oral communication skills.
-          </Typography>
+          <Typography variant="h1"> Welcome to Plate Pallete</Typography>
+          <Typography variant="56"> All in one smart app</Typography>
         </Box>
       </Grid>
     </div>
