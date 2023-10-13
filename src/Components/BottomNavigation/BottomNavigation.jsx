@@ -50,7 +50,7 @@ function LabelBottomNavigation() {
             onClick={handleShowHome}
             label="Home"
             icon={<HomeIcon />}
-            onClick={() => navigate("")}
+            onClick={() => navigate("home")}
           />
           <BottomNavigationAction
             label="Favorites"
