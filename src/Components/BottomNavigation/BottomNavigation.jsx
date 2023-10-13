@@ -1,31 +1,44 @@
 import React, { useContext, useState } from "react";
+
 import BottomNavigation from "@mui/material/BottomNavigation";
+
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+
 import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import { Paper, Slide } from "@mui/material";
+
 import AppBarContext from "../../Context/AppBarContext";
+
 import HomeIcon from "@mui/icons-material/Home";
+
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+
 import InfoIcon from "@mui/icons-material/Info";
+
 import SpeedDialX from "../SpeedDial/SpeedDialX";
+
+import FoodBankIcon from "@mui/icons-material/FoodBank";
+
 import { useNavigate } from "react-router-dom";
 
 function LabelBottomNavigation() {
   const navigate = useNavigate();
+
   const { trigger, setShowCardPage } = useContext(AppBarContext);
 
   const [value, setValue] = useState(0);
 
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
-
   const handleShowHome = () => {
     setShowCardPage(true);
+
+    navigate("home");
   };
 
   const handleShowAbout = () => {
     setShowCardPage(false);
+
+    navigate("about");
   };
 
   return (
@@ -47,29 +60,30 @@ function LabelBottomNavigation() {
           }}
         >
           <BottomNavigationAction
-            onClick={handleShowHome}
             label="Home"
             icon={<HomeIcon />}
-            onClick={() => navigate("home")}
+            onClick={handleShowHome}
           />
+
           <BottomNavigationAction
-            label="Favorites"
-            icon={<FavoriteIcon />}
-            LinkComponent={"/recipe"}
+            label="Recipe"
+            icon={<FoodBankIcon />}
             onClick={() => navigate("recipe")}
           />
+
           <BottomNavigationAction
             label="Library"
             icon={<LibraryBooksIcon />}
             onClick={() => navigate("splitwise")}
           />
+
           <BottomNavigationAction
-            onClick={handleShowAbout}
             label="About"
             icon={<InfoIcon />}
-            onClick={() => navigate("about")}
+            onClick={handleShowAbout}
           />
         </BottomNavigation>
+
         <SpeedDialX />
       </Paper>
     </Slide>
