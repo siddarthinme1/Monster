@@ -50,7 +50,7 @@ export default function SpeedDialX() {
   const renderPage = () => {
     switch (currentPage) {
       case "Add":
-        return <AddForm />;
+        return <AddForm handleDialogClose={handleDialogClose} />;
       case "Save":
         return <div>Save Page Content</div>;
       case "Print":

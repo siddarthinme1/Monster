@@ -22,7 +22,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-function AddForm() {
+function AddForm(props) {
   const [ingredients, setIngredients] = useState([]);
   const [ingredientInput, setIngredientInput] = useState("");
   const [values, setValues] = useState(initialFieldValues);
@@ -55,8 +55,27 @@ function AddForm() {
     console.log(ingredients);
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const repsponse = await fetch(
+      "https://monsterapp-9b272-default-rtdb.firebaseio.com/recipes.json",
+      {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(values),
+      }
+    );
+    console.log("Submit Form", repsponse);
+    if (repsponse) {
+      resetForm();
+      props.handleDialogClose();
+    } else {
+      alert("Failed to add data");
+    }
+  };
+
   return (
-    <FormWrapper>
+    <FormWrapper method="POST" onSubmit={handleSubmit}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <TextField
@@ -174,7 +193,12 @@ function AddForm() {
               Reset
             </Button>
 
-            <Button title="add" variant="contained" color="success">
+            <Button
+              title="add"
+              variant="contained"
+              color="success"
+              type="submit"
+            >
               Add Recipe
             </Button>
           </Stack>

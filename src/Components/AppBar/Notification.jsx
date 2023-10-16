@@ -27,21 +27,6 @@ const NotificationWrapper = styled("div")(({ theme }) => ({
   overflow: "auto",
 }));
 
-const NotificationIconWrapper = styled("div")(({ theme }) => ({
-  transition: "transform 0.3s",
-  "&:hover": {
-    animation: "rotate 1s",
-  },
-  "@keyframes rotate": {
-    "0%": {
-      transform: "rotate(0deg)",
-    },
-    "100%": {
-      transform: "rotate(30deg)",
-    },
-  },
-}));
-
 // const ExpandMore = styled((props) => {
 //   const { expand, ...other } = props;
 //   return (
@@ -134,20 +119,18 @@ function Notification() {
 
   return (
     <>
-      <NotificationIconWrapper>
-        <IconButton
-          size="large"
-          color="inherit"
-          aria-label="notification of current user"
-          // aria-controls={notificationId}
-          aria-haspopup="true"
-          onClick={handleNotificationOpen}
-        >
-          <Badge badgeContent={notifications.length} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-      </NotificationIconWrapper>
+      <IconButton
+        size="large"
+        color="inherit"
+        aria-label="notification of current user"
+        // aria-controls={notificationId}
+        aria-haspopup="true"
+        onClick={handleNotificationOpen}
+      >
+        <Badge badgeContent={notifications.length} color="error">
+          <NotificationsIcon />
+        </Badge>
+      </IconButton>
       {renderNotification}
     </>
   );

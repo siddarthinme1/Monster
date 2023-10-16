@@ -5,6 +5,8 @@ import AppBarContext from "./AppBarContext";
 import { useScrollTrigger } from "@mui/material";
 
 const AppBarStateProvider = (props) => {
+  const [cardData, setCardData] = useState([]);
+
   const trigger = useScrollTrigger();
   const [state, setState] = useState({
     darkMode: false,
@@ -16,6 +18,7 @@ const AppBarStateProvider = (props) => {
     isAuthenticated: false,
     showCardPage: true,
     showAboutPage: false,
+    cardData: [],
   });
 
   const value = {
@@ -31,6 +34,7 @@ const AppBarStateProvider = (props) => {
       setState({ ...state, isAuthenticated }),
     setShowCardPage: (showCardPage) => setState({ ...state, showCardPage }),
     setShowAboutPage: (showAboutPage) => setState({ ...state, showAboutPage }),
+    setCardData: (cardData) => setState({ ...state, cardData }),
   };
 
   return (

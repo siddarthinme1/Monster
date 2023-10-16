@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   Avatar,
@@ -34,13 +34,14 @@ import ShareIcon from "@mui/icons-material/Share";
 import CloseIcon from "@mui/icons-material/Close";
 import CommentIcon from "@mui/icons-material/Comment";
 import { styled } from "@mui/material/styles";
-import { cardData } from "../../Data/MonsterData";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReportIcon from "@mui/icons-material/Report";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
 import CommentsPage from "./CommentsPage";
 import SharePage from "./SharePage";
+import axios from "axios";
+import AppBarContext from "../../Context/AppBarContext";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -63,6 +64,7 @@ const CardWrapper = styled("div")(({ theme }) => ({
 }));
 
 function CardPage() {
+  const [cardData, setCardData] = useState([]);
   const [indexComments, setIndexComments] = useState(0);
   const [checked, setChecked] = useState([]);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -70,26 +72,40 @@ function CardPage() {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
-  const [likedCards, setLikedCards] = useState(
-    Array(cardData.length).fill(false)
-  );
-  const [expandedIngredient, setExpandedIngredient] = useState(
-    Array(cardData.length).fill(false)
-  );
-  const [expandedComment, setExpandedComment] = useState(
-    Array(cardData.length).fill(false)
-  );
-  const [expandedShare, setExpandedShare] = useState(
-    Array(cardData.length).fill(false)
-  );
-  const [openRecipe, setOpenRecipe] = useState(
-    Array(cardData.length).fill(false)
-  );
+
+  const [likedCards, setLikedCards] = useState(false);
+  // const [expandedIngredient, setExpandedIngredient] = useState(false);
+  // const [expandedComment, setExpandedComment] = useState(false);
+  // const [expandedShare, setExpandedShare] = useState(false);
+  const [openRecipe, setOpenRecipe] = useState(false);
+
+  const [expandedIngredient, setExpandedIngredient] = useState([]);
+  const [expandedComment, setExpandedComment] = useState([]);
+  const [expandedShare, setExpandedShare] = useState([]);
 
   // useEffect(() => {
   //   localStorage.setItem("items", JSON.stringify(items));
   //   console.log(items);
   // }, [items]);
+
+  const url =
+    "https://monsterapp-9b272-default-rtdb.firebaseio.com/recipes.json";
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const response = await axios.get(url);
+        setCardData(response.data);
+        setExpandedIngredient(Array(response.data.length).fill(false));
+        setExpandedComment(Array(response.data.length).fill(false));
+        setExpandedShare(Array(response.data.length).fill(false));
+      } catch (error) {
+        console.error("Failed to make request: ", error.message);
+      }
+    };
+
+    fetchRecipes();
+  }, []);
 
   const closeBottomDrawer = (content) => {
     setIsDrawerBottomOpen(false);
@@ -125,23 +141,18 @@ function CardPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleOpenRecipe = (index) => {
     setSelectedCardIndex(index);
-    setOpenRecipe((prevStates) =>
-      prevStates.map((state, i) => (i === index ? true : false))
-    );
+    setOpenRecipe(true);
   };
 
   const handleCloseRecipe = () => {
-    setSelectedCardIndex(null);
-    setOpenRecipe((prevStates) =>
-      prevStates.map((state, i) => (i === selectedCardIndex ? false : state))
-    );
+    setOpenRecipe(false);
   };
 
   const handleToggleCheckbox = (index) => () => {
@@ -161,12 +172,14 @@ function CardPage() {
     setLikedCards(updatedCardData);
   };
 
-  const RecipeDialog = ({ index }) => (
-    <Dialog fullScreen open={openRecipe[index]} onClose={handleCloseRecipe}>
+  // console.log("data", data);
+
+  const RecipeDialog = ({ card }) => (
+    <Dialog fullScreen open={openRecipe} onClose={handleCloseRecipe}>
       <AppBar sx={{ position: "relative" }}>
         <Toolbar>
           <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-            {cardData[index].title}
+            {card.title}
           </Typography>
           <IconButton
             edge="end"
@@ -199,15 +212,15 @@ function CardPage() {
               padding: "10px",
             }}
             alt="Recipe Image"
-            src={cardData[index].image}
+            src={require("../../Data/Images/spaghetti.jpg")}
           />
         </Grid>
         <Grid item xs={12}>
           <CardContent>
             <Typography variant="h6">Ingredients:</Typography>
             <List>
-              {Array.isArray(cardData[index].ingredients) &&
-                cardData[index].ingredients.map((ingredient, index) => (
+              {Array.isArray(card.ingredients) &&
+                card.ingredients.map((ingredient, index) => (
                   <ListItem dense>{ingredient}</ListItem>
                 ))}
             </List>
@@ -217,7 +230,7 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Description</Typography>
             <Typography sx={{ mt: 2 }} paragraph>
-              {cardData[index].description}
+              {card.description}
             </Typography>
           </CardContent>
         </Grid>
@@ -225,12 +238,11 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Procedure</Typography>
             <List>
-              {Array.isArray(cardData[index].procedure) &&
-                cardData[index].procedure.map((ingredient, index) => (
-                  <ListItem dense>
-                    <Typography variant="body1">{ingredient}</Typography>
-                  </ListItem>
-                ))}
+              {card.procedure.map((ingredient) => (
+                <ListItem dense>
+                  <Typography variant="body1">{ingredient}</Typography>
+                </ListItem>
+              ))}
             </List>
           </CardContent>
         </Grid>
@@ -273,11 +285,10 @@ function CardPage() {
     </Popover>
   );
 
-  const RenderIngredients = (card, index) => {
+  const RenderIngredients = (card) => {
     return (
       <CardContent>
         <Typography variant="h6">Ingredients:</Typography>
-
         <Box>
           <List
             sx={{
@@ -398,7 +409,7 @@ function CardPage() {
                     <CardMedia
                       component="img"
                       height="194"
-                      image={card.image}
+                      image={require("../../Data/Images/spaghetti.jpg")}
                       alt={card.title}
                       sx={{
                         "&:hover": { transform: "scale3d(1.05, 1.05, 1)" },
@@ -483,7 +494,7 @@ function CardPage() {
                     <SharePage />
                   </Collapse>
                 </Card>
-                {selectedCardIndex === index && <RecipeDialog index={index} />}
+                {selectedCardIndex === index && <RecipeDialog card={card} />}
               </Grid>
             ))}
           </Grid>

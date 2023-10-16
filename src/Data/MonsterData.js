@@ -665,15 +665,16 @@ export const cardData = [
 ];
 
 export const initialFieldValues = {
+  id: "",
   liked: false,
-  recipeName: "",
-  ingredients: [],
-  instructions: "",
-  preperationTime: "",
-  cookingTime: "",
-  servings: "",
-  calories: "",
+  avatar: "",
+  title: "",
+  subheader: "",
   image: "",
+  description: "",
+  procedure: [],
+  ingredients: [],
+  comments: [],
 };
 
 export const shareIcons = [
