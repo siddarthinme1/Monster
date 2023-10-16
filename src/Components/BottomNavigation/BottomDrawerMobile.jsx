@@ -11,6 +11,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 function BottomDrawerMobile(props) {
   // const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  console.log(props.cardData[props.index].comments);
 
   const renderContent = () => {
     if (props.drawerContent === "share") {
@@ -20,7 +21,12 @@ function BottomDrawerMobile(props) {
         </Box>
       );
     } else if (props.drawerContent === "comments") {
-      return <CommentsPage index={props.index} />;
+      return (
+        <CommentsPage
+          index={props.index}
+          comments={props.cardData[props.index].comments}
+        />
+      );
     } else {
       return (
         <Typography variant="h6">

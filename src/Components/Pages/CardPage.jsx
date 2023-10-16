@@ -41,7 +41,6 @@ import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
 import CommentsPage from "./CommentsPage";
 import SharePage from "./SharePage";
 import axios from "axios";
-import AppBarContext from "../../Context/AppBarContext";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -113,6 +112,7 @@ function CardPage() {
       setIsDrawerBottomOpen(true);
       setSelectedContent(content);
       setIndexComments(index);
+      console.log(indexComments);
     } else {
       setExpandedFunction((prevStates) =>
         prevStates.map((state, i) => (i === index ? !state : false))
@@ -496,13 +496,13 @@ function CardPage() {
             ))}
           </Grid>
           {renderMoreMenu}
-
           <BottomDrawerMobile
             handleOpenDrawer={handleOpenDrawer}
             closeBottomDrawer={closeBottomDrawer}
             isDrawerBottomOpen={isDrawerBottomOpen}
             drawerContent={selectedContent}
             index={indexComments}
+            cardData={cardData}
           />
         </CardWrapper>
       )}
