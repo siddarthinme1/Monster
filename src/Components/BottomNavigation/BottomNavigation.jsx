@@ -32,7 +32,7 @@ function LabelBottomNavigation() {
   const handleShowHome = () => {
     setShowCardPage(true);
 
-    navigate("home");
+    navigate("/");
   };
 
   const handleShowAbout = () => {

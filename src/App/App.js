@@ -37,7 +37,7 @@ function App() {
         <CssBaseline />
         <AppBarX />
         <Routes>
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/recipe" element={<CardPage />} />
           <Route path="/splitwise" element={<Splitwise />} />
           <Route path="/about" element={<AboutPage />} />
