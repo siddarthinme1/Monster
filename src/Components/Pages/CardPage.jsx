@@ -73,12 +73,8 @@ function CardPage() {
   const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
 
-  const [likedCards, setLikedCards] = useState(false);
-  // const [expandedIngredient, setExpandedIngredient] = useState(false);
-  // const [expandedComment, setExpandedComment] = useState(false);
-  // const [expandedShare, setExpandedShare] = useState(false);
+  const [likedCards, setLikedCards] = useState([]);
   const [openRecipe, setOpenRecipe] = useState(false);
-
   const [expandedIngredient, setExpandedIngredient] = useState([]);
   const [expandedComment, setExpandedComment] = useState([]);
   const [expandedShare, setExpandedShare] = useState([]);
@@ -99,6 +95,7 @@ function CardPage() {
         setExpandedIngredient(Array(response.data.length).fill(false));
         setExpandedComment(Array(response.data.length).fill(false));
         setExpandedShare(Array(response.data.length).fill(false));
+        setLikedCards(Array(response.data.length).fill(false));
       } catch (error) {
         console.error("Failed to make request: ", error.message);
       }
@@ -483,7 +480,7 @@ function CardPage() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <CommentsPage index={index} />
+                    <CommentsPage index={index} comments={card.comments} />
                   </Collapse>
 
                   <Collapse

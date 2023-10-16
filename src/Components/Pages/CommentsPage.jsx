@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import { TransitionGroup } from "react-transition-group";
 
-import { cardData } from "../../Data/MonsterData";
-
 import {
   Avatar,
   Box,
@@ -17,19 +15,19 @@ import {
 } from "@mui/material";
 
 function CommentsPage(props) {
-  const [comments, setComments] = useState(cardData[props.index].comments);
+  const { comments } = props;
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const [avatar] = useState(cardData[props.index].avatar);
+  // const [avatar] = useState(cardData[props.index].avatar);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [newComment, setNewComment] = useState("");
 
   const handleCommentChange = (e) => setNewComment(e.target.value);
 
   const handleCommentSubmit = () => {
-    if (newComment.trim() !== "") {
-      setComments([...comments, newComment]);
-      setNewComment("");
-    }
+    // if (newComment.trim() !== "") {
+    //   setComments([...comments, newComment]);
+    //   setNewComment("");
+    // }
   };
 
   const handleShowCommentButton = () => setIsButtonVisible(true);
@@ -51,7 +49,7 @@ function CommentsPage(props) {
       )}
       <Box sx={{ display: "flex", m: 1 }}>
         <Avatar sx={{ bgcolor: "secondary", m: 1 }} aria-label="recipe">
-          {avatar}
+          {/* {avatar} */}
         </Avatar>
 
         <TextField
@@ -96,6 +94,7 @@ function CommentsPage(props) {
                 }}
               >
                 {comment}
+                {console.log(comment)}
               </Box>
             </Collapse>
           ))}
