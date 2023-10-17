@@ -24,7 +24,6 @@ function CommentsPage(props) {
   const handleCommentChange = (e) => setNewComment(e.target.value);
 
   const handleCommentSubmit = () => {
-    
     // if (newComment.trim() !== "") {
     //   setComments([...comments, newComment]);
     //   setNewComment("");

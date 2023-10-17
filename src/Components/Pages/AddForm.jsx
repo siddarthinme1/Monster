@@ -57,7 +57,6 @@ function AddForm(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(values);
     const repsponse = await fetch(
       "https://monsterapp-9b272-default-rtdb.firebaseio.com/recipe.json",
       {

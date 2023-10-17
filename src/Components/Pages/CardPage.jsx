@@ -96,7 +96,6 @@ function CardPage() {
       setIsDrawerBottomOpen(true);
       setSelectedContent(content);
       setIndexComments(index);
-      console.log(indexComments);
     } else {
       setExpandedFunction((prevStates) =>
         prevStates.map((state, i) => (i === index ? !state : false))
@@ -152,8 +151,6 @@ function CardPage() {
     updatedCardData[index] = !updatedCardData[index];
     setLikedCards(updatedCardData);
   };
-
-  // console.log("data", data);
 
   const RecipeDialog = ({ card }) => (
     <Dialog fullScreen open={openRecipe} onClose={handleCloseRecipe}>

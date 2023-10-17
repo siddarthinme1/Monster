@@ -25,17 +25,15 @@ import { useNavigate } from "react-router-dom";
 function LabelBottomNavigation() {
   const navigate = useNavigate();
 
-  const { trigger, setShowCardPage } = useContext(AppBarContext);
+  const { trigger } = useContext(AppBarContext);
 
   const [value, setValue] = useState(0);
 
   const handleShowHome = () => {
-    setShowCardPage(true);
     navigate("/");
   };
 
   const handleShowAbout = () => {
-    setShowCardPage(false);
     navigate("about");
   };
 

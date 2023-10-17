@@ -55,8 +55,6 @@ function Splitwise() {
                 <ListItem>
                   <ListItemText primary="User 3" secondary="-$20.00" />
                 </ListItem>
-
-                {/* Add more users and their balances */}
               </List>
             </Paper>
           </Grid>
