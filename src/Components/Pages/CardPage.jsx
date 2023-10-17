@@ -40,7 +40,7 @@ import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
 import CommentsPage from "./CommentsPage";
 import SharePage from "./SharePage";
-import axios from "axios";
+import useMonsterServices from "../../Services/MonsterServices";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -63,7 +63,10 @@ const CardWrapper = styled("div")(({ theme }) => ({
 }));
 
 function CardPage() {
-  const [cardData, setCardData] = useState([]);
+  const { useAllRecipes } = useMonsterServices();
+  const cardData = useAllRecipes();
+  const length = cardData.length;
+
   const [indexComments, setIndexComments] = useState(0);
   const [checked, setChecked] = useState([]);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -71,39 +74,20 @@ function CardPage() {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
-
-  const [likedCards, setLikedCards] = useState([]);
   const [openRecipe, setOpenRecipe] = useState(false);
+  const [likedCards, setLikedCards] = useState([]);
   const [expandedIngredient, setExpandedIngredient] = useState([]);
   const [expandedComment, setExpandedComment] = useState([]);
   const [expandedShare, setExpandedShare] = useState([]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("items", JSON.stringify(items));
-  //   console.log(items);
-  // }, [items]);
-
-  const url =
-    "https://monsterapp-9b272-default-rtdb.firebaseio.com/recipes.json";
-
   useEffect(() => {
-    const fetchRecipes = async () => {
-      try {
-        const response = await axios.get(url);
-        setCardData(response.data);
-        setExpandedIngredient(Array(response.data.length).fill(false));
-        setExpandedComment(Array(response.data.length).fill(false));
-        setExpandedShare(Array(response.data.length).fill(false));
-        setLikedCards(Array(response.data.length).fill(false));
-      } catch (error) {
-        console.error("Failed to make request: ", error.message);
-      }
-    };
+    setLikedCards(Array(length).fill(false));
+    setExpandedIngredient(Array(length).fill(false));
+    setExpandedComment(Array(length).fill(false));
+    setExpandedShare(Array(length).fill(false));
+  }, [cardData, length]);
 
-    fetchRecipes();
-  }, []);
-
-  const closeBottomDrawer = (content) => {
+  const closeBottomDrawer = () => {
     setIsDrawerBottomOpen(false);
   };
 

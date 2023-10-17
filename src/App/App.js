@@ -39,7 +39,6 @@ function App() {
         <AppBarX />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route exact path="/signinsignup" element={<SignInSignUp />} /> */}
           <Route path="/recipe" element={<CardPage />} />
           <Route path="/splitwise" element={<Splitwise />} />
           <Route path="/about" element={<AboutPage />} />

@@ -1,23 +1,32 @@
 import axios from "axios";
+import { useState, useEffect } from "react";
 
-import React, { useEffect, useState } from "react";
+const useMonsterServices = () => {
+  const useAllRecipes = () => {
+    const [recipes, setRecipes] = useState([]);
 
-const MonsterServices = () => {
-  const [country, setCountry] = useState("");
-  const getGeoLocation = async () => {
-    try {
-      const response = await axios.get("https://ipinfo.io/json", {});
-      const { country } = response.data;
-      setCountry(country);
-    } catch (error) {
-      console.error("Failed to make request: ", error.message);
-    }
+    const url =
+      "https://monsterapp-9b272-default-rtdb.firebaseio.com/recipes.json";
 
-    return country;
+    useEffect(() => {
+      const fetchRecipes = async () => {
+        try {
+          const response = await axios.get(url);
+          setRecipes(response.data);
+        } catch (error) {
+          console.error("Failed to make request: ", error.message);
+        }
+      };
+
+      fetchRecipes();
+    }, []);
+
+    return recipes;
   };
+
   return {
-    getGeoLocation,
+    useAllRecipes,
   };
 };
 
-export default MonsterServices;
+export default useMonsterServices;
