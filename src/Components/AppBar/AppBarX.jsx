@@ -22,6 +22,8 @@ import AppBarContext from "../../Context/AppBarContext";
 import styled from "styled-components";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import FirebaseContext from "../../Context/FirebaseContext";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -49,6 +51,7 @@ const ExpandMore = styled((props) => {
 function AppBarX() {
   const { setSignInSignUpPopUp, trigger, setDarkMode, darkMode, user } =
     useContext(AppBarContext);
+  const { signOutWithGoogle } = useContext(FirebaseContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const [expand, setExpand] = useState(false);
@@ -70,7 +73,9 @@ function AppBarX() {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleLogout = () => {};
+  const handleSignOut = () => {
+    signOutWithGoogle();
+  };
 
   const SignInSignUpPop = (
     <>
@@ -79,9 +84,8 @@ function AppBarX() {
           <PermIdentityIcon />
         </IconButton>
       ) : (
-        <IconButton size="large" color="inherit" onClick={handleLogout}>
-          <Avatar fontSize="small" src={user?.photoURL}></Avatar>
-          {console.log(user?.photoURL)}
+        <IconButton size="large" color="inherit" onClick={handleSignOut}>
+          <LogoutIcon />
         </IconButton>
       )}
     </>

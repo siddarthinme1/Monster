@@ -230,10 +230,10 @@ function Settings(props) {
         onChange={handleChangeProfile("panel1")}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{user?.displayName}</Typography>
+          <Typography>Personal Details</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Siddarood Karachuri</Typography>
+          <Typography>{user?.displayName}</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -241,10 +241,11 @@ function Settings(props) {
         onChange={handleChangeProfile("panel2")}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>Profile Details</Typography>
+          <Typography>Contact Details</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Siddarood</Typography>
+          <Typography>{user?.email}</Typography>
+          <Typography>{user?.phoneNumber}</Typography>
         </AccordionDetails>
       </Accordion>
     </Drawer>
