@@ -3,17 +3,20 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App/App";
 import reportWebVitals from "./reportWebVitals";
-import AppBarStateProvider from "./Context/AppBarStateProvider";
+import AppBarContextProvider from "./Context/AppBarContextProvider";
 import { HashRouter } from "react-router-dom";
+import FirebaseContextProvider from "./Context/FirebaseContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppBarStateProvider>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </AppBarStateProvider>
+    <FirebaseContextProvider>
+      <AppBarContextProvider>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </AppBarContextProvider>
+    </FirebaseContextProvider>
   </React.StrictMode>
 );
 

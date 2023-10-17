@@ -19,9 +19,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Copyright from "./Copyright";
 import AppBarContext from "../../Context/AppBarContext";
-import GoogleSignOut from "./GoogleSignOut";
-import GoogleSignIn from "./GoogleSignIn";
-import SignUp from "../etc/SignUp";
+import FirebaseContext from "../../Context/FirebaseContext";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Zoom ref={ref} {...props} />;
@@ -29,6 +27,14 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 function SignInSignUp() {
   const { signInSignUpPopUp, setSignInSignUpPopUp } = useContext(AppBarContext);
+  const {
+    signInUserWithEmailAndPassword,
+    signUpUserWithEmailAndPassword,
+    putData,
+    signUpWithGoogle,
+    signOutWithGoogle,
+    firebaseAuth,
+  } = useContext(FirebaseContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
@@ -38,10 +44,16 @@ function SignInSignUp() {
     setAgree(!agree);
   };
 
-  const handleSubmit = () => {
-    if (isSignIn) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+    if (!isSignIn) {
+      signInUserWithEmailAndPassword(email, password);
     } else {
+      signUpUserWithEmailAndPassword(email, password);
     }
+    setEmail("");
+    setPassword("");
   };
 
   const handleChangePage = () => {
@@ -50,6 +62,14 @@ function SignInSignUp() {
 
   const handleDialogClose = () => {
     setSignInSignUpPopUp(false);
+  };
+
+  const handleSignUpWithGoogle = () => {
+    signUpWithGoogle();
+  };
+
+  const handleSignOut = () => {
+    signOutWithGoogle();
   };
 
   const SignInPage = (
@@ -79,12 +99,7 @@ function SignInSignUp() {
             <LockOutlinedIcon />
           </Avatar>
 
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mb: 3 }}
-          >
+          <Box component="form" noValidate sx={{ mb: 3 }}>
             <TextField
               margin="normal"
               required
@@ -120,14 +135,19 @@ function SignInSignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               disabled={!password || !email}
+              onClick={handleSubmit}
             >
               Sign In
             </Button>
 
             <Grid container>
               <Grid item sm={12} sx={{ m: 1 }}>
-                <GoogleSignIn />
+                <Button onClick={handleSignUpWithGoogle}>
+                  SignUp with Google
+                </Button>
+                <Button onClick={handleSignOut}>SigOut with Google</Button>
               </Grid>
+
               <Grid item>
                 <Link href="#" variant="body2">
                   Forgot Password
@@ -173,12 +193,7 @@ function SignInSignUp() {
           <Avatar sx={{ mb: 1, mt: 0, backgroundColor: "purple" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 1.5, mb: 3 }}
-          >
+          <Box component="form" noValidate sx={{ mt: 1.5, mb: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -203,23 +218,30 @@ function SignInSignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  margin="normal"
                   required
                   fullWidth
                   id="email"
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  autoFocus
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  margin="normal"
                   required
                   fullWidth
                   name="password"
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -243,6 +265,7 @@ function SignInSignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               disabled={!agree}
+              onClick={handleSubmit}
             >
               Sign Up
             </Button>

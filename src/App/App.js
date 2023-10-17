@@ -10,9 +10,8 @@ import Splitwise from "../Components/Pages/Splitwise";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Home";
 import SignInSignUp from "../Components/Login/SignInSignUp";
-
-const clientId =
-  "650114961683-4quord8pl0v8n0gpnvp8funhja8ijcf8.apps.googleusercontent.com";
+import { onAuthStateChanged } from "firebase/auth";
+import FirebaseContext from "../Context/FirebaseContext";
 
 const darkTheme = createTheme({
   palette: {
@@ -23,15 +22,21 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({});
 
 function App() {
-  const { darkMode } = useContext(AppBarContext);
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.auth2.init({ clientId: clientId, scope: "" });
-  //   }
-  //   gapi.load("client:auth2", start);
-  // });
+  const { darkMode, setUser, user } = useContext(AppBarContext);
+  const { firebaseAuth } = useContext(FirebaseContext);
 
-  // var accessToken = gapi.auth.getToken().access_token;
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (user) => {
+      if (user) {
+        console.log("Welcome ", user);
+        setUser(user);
+      } else {
+        setUser(null);
+        console.log("You are logged out");
+      }
+    });
+  }, [onAuthStateChanged]);
+
   return (
     <>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>

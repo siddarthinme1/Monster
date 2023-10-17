@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Avatar,
   Box,
   IconButton,
   Menu,
@@ -46,7 +47,7 @@ const ExpandMore = styled((props) => {
 }));
 
 function AppBarX() {
-  const { setSignInSignUpPopUp, trigger, setDarkMode, darkMode } =
+  const { setSignInSignUpPopUp, trigger, setDarkMode, darkMode, user } =
     useContext(AppBarContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -69,11 +70,20 @@ function AppBarX() {
     setMobileMoreAnchorEl(null);
   };
 
+  const handleLogout = () => {};
+
   const SignInSignUpPop = (
     <>
-      <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
-        <PermIdentityIcon />
-      </IconButton>
+      {user === null ? (
+        <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
+          <PermIdentityIcon />
+        </IconButton>
+      ) : (
+        <IconButton size="large" color="inherit" onClick={handleLogout}>
+          <Avatar fontSize="small" src={user?.photoURL}></Avatar>
+          {console.log(user?.photoURL)}
+        </IconButton>
+      )}
     </>
   );
 

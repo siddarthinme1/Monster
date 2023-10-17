@@ -41,6 +41,7 @@ import BottomDrawerMobile from "../BottomNavigation/BottomDrawerMobile";
 import CommentsPage from "./CommentsPage";
 import SharePage from "./SharePage";
 import useMonsterServices from "../../Services/MonsterServices";
+import axios from "axios";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -146,10 +147,15 @@ function CardPage() {
     setChecked(newChecked);
   };
 
-  const handleFavoriteClick = (index) => {
-    const updatedCardData = [...likedCards];
-    updatedCardData[index] = !updatedCardData[index];
-    setLikedCards(updatedCardData);
+  const handleFavoriteClick = async (index) => {
+    const url =
+      "https://monsterapp-9b272-default-rtdb.firebaseio.com/recipes.json";
+    try {
+      const response = await axios.get(`${url}/${index}`);
+      console.log("", response);
+    } catch (error) {
+      console.error("Failed to make request : ", error.message);
+    }
   };
 
   const RecipeDialog = ({ card }) => (
@@ -408,7 +414,7 @@ function CardPage() {
                   <CardActions disableSpacing>
                     <Tooltip title="Like">
                       <IconButton
-                        color={likedCards[index] ? "secondary" : "default"}
+                        color={card.liked ? "secondary" : "default"}
                         onClick={() => handleFavoriteClick(index)}
                       >
                         <FavoriteIcon />

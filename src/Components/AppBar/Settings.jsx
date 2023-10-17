@@ -33,7 +33,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 function Settings(props) {
   const { window, setMobileMoreAnchorEl } = props;
 
-  const { setDarkMode, settings, setSettings } = useContext(AppBarContext);
+  const { setDarkMode, settings, setSettings, user } =
+    useContext(AppBarContext);
   const [anchorElProfile, setAnchorElProfile] = useState(null);
 
   const [profile, setProfile] = useState(false);
@@ -229,7 +230,7 @@ function Settings(props) {
         onChange={handleChangeProfile("panel1")}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>Personal Details</Typography>
+          <Typography>{user?.displayName}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>Siddarood Karachuri</Typography>
