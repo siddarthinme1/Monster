@@ -20,6 +20,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Copyright from "./Copyright";
 import AppBarContext from "../../Context/AppBarContext";
 import FirebaseContext from "../../Context/FirebaseContext";
+import GoogleIcon from "@mui/icons-material/Google";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Zoom ref={ref} {...props} />;
@@ -142,10 +143,13 @@ function SignInSignUp() {
 
             <Grid container>
               <Grid item sm={12} sx={{ m: 1 }}>
-                <Button onClick={handleSignUpWithGoogle}>
-                  SignUp with Google
-                </Button>
-                <Button onClick={handleSignOut}>SigOut with Google</Button>
+                <IconButton
+                  size="large"
+                  color="inherit"
+                  onClick={handleSignUpWithGoogle}
+                >
+                  <GoogleIcon />
+                </IconButton>
               </Grid>
 
               <Grid item>
