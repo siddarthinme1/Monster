@@ -18,7 +18,6 @@ import CreateContent from "./CreateContent";
 import SeacrhBar from "./SeacrhBar";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AppBarContext from "../../Context/AppBarContext";
-import SignIn from "../Login/SignIn";
 import styled from "styled-components";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -47,7 +46,7 @@ const ExpandMore = styled((props) => {
 }));
 
 function AppBarX() {
-  const { setSignInPopUp, trigger, setDarkMode, darkMode } =
+  const { setSignInSignUpPopUp, trigger, setDarkMode, darkMode } =
     useContext(AppBarContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -56,7 +55,7 @@ function AppBarX() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleSignInOpen = () => {
-    setSignInPopUp(true);
+    setSignInSignUpPopUp(true);
   };
 
   const handleDrawerToggle = () => {
@@ -70,12 +69,11 @@ function AppBarX() {
     setMobileMoreAnchorEl(null);
   };
 
-  const SignInPop = (
+  const SignInSignUpPop = (
     <>
       <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
         <PermIdentityIcon />
       </IconButton>
-      <SignIn />
     </>
   );
 
@@ -100,7 +98,7 @@ function AppBarX() {
           <Notification />
           <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
         </>
-        {SignInPop}
+        {SignInSignUpPop}
       </Box>
     </Menu>
   );
@@ -152,7 +150,7 @@ function AppBarX() {
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 <Notification />
                 <Settings setMobileMoreAnchorEl={setMobileMoreAnchorEl} />
-                {SignInPop}
+                {SignInSignUpPop}
               </Box>
               <Box sx={{ display: { xs: "flex", md: "none" } }}>
                 <IconButton

@@ -31,13 +31,11 @@ function LabelBottomNavigation() {
 
   const handleShowHome = () => {
     setShowCardPage(true);
-
     navigate("/");
   };
 
   const handleShowAbout = () => {
     setShowCardPage(false);
-
     navigate("about");
   };
 

@@ -9,6 +9,7 @@ import AboutPage from "../Components/Pages/AboutPage";
 import Splitwise from "../Components/Pages/Splitwise";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Home";
+import SignInSignUp from "../Components/Login/SignInSignUp";
 
 const clientId =
   "650114961683-4quord8pl0v8n0gpnvp8funhja8ijcf8.apps.googleusercontent.com";
@@ -22,7 +23,7 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({});
 
 function App() {
-  const { darkMode, showCardPage } = useContext(AppBarContext);
+  const { darkMode } = useContext(AppBarContext);
   // useEffect(() => {
   //   function start() {
   //     gapi.auth2.init({ clientId: clientId, scope: "" });
@@ -38,10 +39,12 @@ function App() {
         <AppBarX />
         <Routes>
           <Route exact path="/" element={<Home />} />
+          {/* <Route exact path="/signinsignup" element={<SignInSignUp />} /> */}
           <Route path="/recipe" element={<CardPage />} />
           <Route path="/splitwise" element={<Splitwise />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
+        <SignInSignUp />
         <LabelBottomNavigation />
       </ThemeProvider>
     </>
