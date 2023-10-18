@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { TransitionGroup } from "react-transition-group";
 
@@ -13,21 +13,41 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import FirebaseContext from "../../Context/FirebaseContext";
 
 function CommentsPage(props) {
   const { comments } = props;
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const { user, pushData, updateData } = useContext(FirebaseContext);
+
   // const [avatar] = useState(cardData[props.index].avatar);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [newComment, setNewComment] = useState("");
+  const [commentKey, setCommentKey] = useState("");
 
   const handleCommentChange = (e) => setNewComment(e.target.value);
 
-  const handleCommentSubmit = () => {
-    // if (newComment.trim() !== "") {
-    //   setComments([...comments, newComment]);
-    //   setNewComment("");
-    // }
+  // const handleCommentSubmit = () => {
+  //   // if (newComment.trim() !== "") {
+  //   //   setComments([...comments, newComment]);
+  //   //   setNewComment("");
+  //   // }
+  // };
+
+  // useEffect(() => {
+  //   setCommentKey(props.commentKey);
+  // });
+
+  const handleCommentSubmit = async (event) => {
+    console.log(newComment);
+    event.preventDefault();
+    const repsponse = updateData("recipe/comments", {
+      newComment,
+      user: user.email,
+      addedDate: Date(),
+      avatarURL: user?.photoURL,
+    });
+    console.log("Submit Form", repsponse);
   };
 
   const handleShowCommentButton = () => setIsButtonVisible(true);
@@ -82,7 +102,7 @@ function CommentsPage(props) {
 
       <Box sx={{ maxHeight: "150px", overflowY: "auto" }}>
         <TransitionGroup>
-          {comments.map((comment, index) => (
+          {comments?.map((comment, index) => (
             <Collapse key={index}>
               <Divider />
               <Box

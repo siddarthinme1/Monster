@@ -65,9 +65,11 @@ function AddForm(props) {
     event.preventDefault();
     const repsponse = pushData("recipe", {
       ...values,
+      ingredients,
       user: user.email,
       addedDate: Date(),
       avatarURL: user?.photoURL,
+      comments: [],
     });
     console.log("Submit Form", repsponse);
     if (repsponse) {
@@ -83,6 +85,7 @@ function AddForm(props) {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <TextField
+            required
             label="Recipe Name"
             variant="outlined"
             fullWidth
@@ -122,6 +125,7 @@ function AddForm(props) {
 
         <Grid item xs={12}>
           <TextField
+            required
             label="Instructions"
             variant="outlined"
             fullWidth
@@ -135,6 +139,7 @@ function AddForm(props) {
 
         <Grid item xs={12}>
           <TextField
+            required
             label="Preparation Time"
             variant="outlined"
             fullWidth
@@ -146,6 +151,7 @@ function AddForm(props) {
 
         <Grid item xs={12}>
           <TextField
+            required
             label="Cooking Time"
             variant="outlined"
             fullWidth
@@ -157,6 +163,7 @@ function AddForm(props) {
 
         <Grid item xs={12}>
           <TextField
+            required
             label="Servings"
             variant="outlined"
             fullWidth
@@ -168,6 +175,7 @@ function AddForm(props) {
 
         <Grid item xs={12}>
           <TextField
+            required
             label="Calories"
             variant="outlined"
             fullWidth

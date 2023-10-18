@@ -81,6 +81,7 @@ function CardPage() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
   const [isDrawerBottomOpen, setIsDrawerBottomOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
   const [openRecipe, setOpenRecipe] = useState(false);
@@ -88,6 +89,7 @@ function CardPage() {
   const [expandedIngredient, setExpandedIngredient] = useState([]);
   const [expandedComment, setExpandedComment] = useState([]);
   const [expandedShare, setExpandedShare] = useState([]);
+  const [commentKey, setCommentKey] = useState("");
 
   useEffect(() => {
     setLikedCards(Array(length).fill(false));
@@ -107,13 +109,14 @@ function CardPage() {
       });
       setCardData(recipes);
     });
-  }, [cardData]);
+  }, [1]);
 
   const closeBottomDrawer = () => {
     setIsDrawerBottomOpen(false);
   };
 
-  const handleOpenDrawer = (content, index, setExpandedFunction) => {
+  const handleOpenDrawer = (content, index, setExpandedFunction, card) => {
+    setCommentKey(card.key);
     if (isMobile) {
       setIsDrawerBottomOpen(true);
       setSelectedContent(content);
@@ -128,7 +131,9 @@ function CardPage() {
     }
   };
 
-  const handleExpandClick = (index) => {
+  const handleExpandClick = (index, card) => {
+    console.log("card", card);
+    setCommentKey(card.key);
     setExpandedIngredient((prevStates) =>
       prevStates.map((state, i) => (i === index ? !state : false))
     );
@@ -148,7 +153,8 @@ function CardPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleOpenRecipe = (index) => {
+  const handleOpenRecipe = (index, card) => {
+    setSelectedCard(card);
     setSelectedCardIndex(index);
     setOpenRecipe(true);
   };
@@ -168,6 +174,8 @@ function CardPage() {
     setChecked(newChecked);
   };
 
+  console.log("commentKey == ", commentKey);
+
   const handleFavoriteClick = async (index) => {
     const url =
       "https://monsterapp-9b272-default-rtdb.firebaseio.com/recipes.json";
@@ -179,12 +187,12 @@ function CardPage() {
     }
   };
 
-  const RecipeDialog = ({ card }) => (
+  const RecipeDialog = () => (
     <Dialog fullScreen open={openRecipe} onClose={handleCloseRecipe}>
       <AppBar sx={{ position: "relative" }}>
         <Toolbar>
           <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-            {card.data.title}
+            {selectedCard.data.title}
           </Typography>
           <IconButton
             edge="end"
@@ -224,8 +232,8 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Ingredients:</Typography>
             <List>
-              {Array.isArray(card.data.ingredients) &&
-                card.data.ingredients.map((ingredient, index) => (
+              {Array.isArray(selectedCard?.ingredients) &&
+                selectedCard?.ingredients.map((ingredient, index) => (
                   <ListItem dense>{ingredient}</ListItem>
                 ))}
             </List>
@@ -235,7 +243,7 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Description</Typography>
             <Typography sx={{ mt: 2 }} paragraph>
-              {card.data.description}
+              {selectedCard?.data.description}
             </Typography>
           </CardContent>
         </Grid>
@@ -243,7 +251,7 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Procedure</Typography>
             <List>
-              {card.data.procedure.map((ingredient) => (
+              {selectedCard.data.ingredients.map((ingredient) => (
                 <ListItem dense>
                   <Typography variant="body1">{ingredient}</Typography>
                 </ListItem>
@@ -308,8 +316,8 @@ function CardPage() {
             }}
             subheader={<li />}
           >
-            {Array.isArray(card.data.ingredients) &&
-              card.data.ingredients.map((ingredient, index) => {
+            {Array.isArray(card.ingredients) &&
+              card.ingredients.map((ingredient, index) => {
                 const labelId = `checkbox-list-secondary-label-${index}`;
 
                 return (
@@ -348,7 +356,7 @@ function CardPage() {
       {isLoading ? (
         <CardWrapper>
           <Grid container spacing="auto" justifyContent="center">
-            {Array.from({ length: cardData?.length }).map((_, index) => (
+            {Array.from({ length: cardData.length }).map((_, index) => (
               <Grid item key={index}>
                 <Card sx={{ m: "10px", maxWidth: "345px" }}>
                   <CardHeader
@@ -413,7 +421,7 @@ function CardPage() {
                     title={card.data.user}
                     subheader={card.data.addedDate}
                   />
-                  <CardActionArea onClick={() => handleOpenRecipe(index)}>
+                  <CardActionArea onClick={() => handleOpenRecipe(index, card)}>
                     <CardMedia
                       component="img"
                       height="194"
@@ -429,6 +437,9 @@ function CardPage() {
                         height: 100,
                       }}
                     >
+                      <Typography variant="h6" color="text.secondary">
+                        {card.data.recipeName}
+                      </Typography>
                       <Typography variant="body2" color="text.secondary">
                         {card.data.description}
                       </Typography>
@@ -451,7 +462,8 @@ function CardPage() {
                           handleOpenDrawer(
                             "comments",
                             index,
-                            setExpandedComment
+                            setExpandedComment,
+                            card
                           )
                         }
                       >
@@ -462,7 +474,12 @@ function CardPage() {
                     <Tooltip title="Share">
                       <IconButton
                         onClick={() =>
-                          handleOpenDrawer("share", index, setExpandedShare)
+                          handleOpenDrawer(
+                            "share",
+                            index,
+                            setExpandedShare,
+                            card
+                          )
                         }
                       >
                         <ShareIcon />
@@ -470,12 +487,13 @@ function CardPage() {
                     </Tooltip>
                     <ExpandMore
                       expand={expandedIngredient[index]}
-                      onClick={() => handleExpandClick(index)}
+                      onClick={() => handleExpandClick(index, card)}
                       aria-expanded={expandedIngredient[index]}
                     >
                       <ExpandMoreIcon />
                     </ExpandMore>
                   </CardActions>
+                  {console.log("commentkey =", commentKey)}
 
                   <Collapse
                     in={expandedIngredient[index]}
@@ -483,7 +501,7 @@ function CardPage() {
                     unmountOnExit
                     direction="up"
                   >
-                    {RenderIngredients(card, index)}
+                    {RenderIngredients(card.data, index)}
                   </Collapse>
 
                   <Collapse
@@ -491,7 +509,11 @@ function CardPage() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <CommentsPage index={index} comments={card.data.comments} />
+                    <CommentsPage
+                      index={card.key}
+                      comments={card.data?.comments}
+                      commentKey={commentKey}
+                    />
                   </Collapse>
 
                   <Collapse
@@ -502,7 +524,8 @@ function CardPage() {
                     <SharePage />
                   </Collapse>
                 </Card>
-                {selectedCardIndex === index && <RecipeDialog card={card} />}
+                {selectedCardIndex === index && <RecipeDialog />}
+                {console.log("selectedCardIndex", selectedCardIndex)}
               </Grid>
             ))}
           </Grid>

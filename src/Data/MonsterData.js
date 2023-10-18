@@ -667,14 +667,13 @@ export const cardData = [
 export const initialFieldValues = {
   id: "",
   liked: false,
+  recipeName: "",
   avatar: "",
   title: "",
   subheader: "",
   image: "",
   description: "",
   procedure: [],
-  ingredients: [],
-  comments: [],
 };
 
 export const shareIcons = [
