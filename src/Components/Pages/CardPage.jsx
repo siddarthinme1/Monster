@@ -243,7 +243,7 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Description</Typography>
             <Typography sx={{ mt: 2 }} paragraph>
-              {selectedCard?.data.description}
+              {selectedCard.data?.description}
             </Typography>
           </CardContent>
         </Grid>
@@ -251,11 +251,10 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Procedure</Typography>
             <List>
-              {selectedCard.data.ingredients.map((ingredient) => (
-                <ListItem dense>
+              {Array.isArray(selectedCard?.ingredients) &&
+                selectedCard?.ingredients.map((ingredient, index) => (
                   <Typography variant="body1">{ingredient}</Typography>
-                </ListItem>
-              ))}
+                ))}
             </List>
           </CardContent>
         </Grid>
@@ -316,8 +315,8 @@ function CardPage() {
             }}
             subheader={<li />}
           >
-            {Array.isArray(card.ingredients) &&
-              card.ingredients.map((ingredient, index) => {
+            {Array.isArray(card?.ingredients) &&
+              card?.ingredients.map((ingredient, index) => {
                 const labelId = `checkbox-list-secondary-label-${index}`;
 
                 return (
