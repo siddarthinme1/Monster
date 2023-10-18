@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import AppBarX from "../Components/AppBar/AppBarX";
 import AppBarContext from "../Context/AppBarContext";
-import { gapi } from "gapi-script";
 import LabelBottomNavigation from "../Components/BottomNavigation/BottomNavigation";
 import CardPage from "../Components/Pages/CardPage";
 import AboutPage from "../Components/Pages/AboutPage";
@@ -10,7 +9,6 @@ import Splitwise from "../Components/Pages/Splitwise";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Home";
 import SignInSignUp from "../Components/Login/SignInSignUp";
-import { onAuthStateChanged } from "firebase/auth";
 import FirebaseContext from "../Context/FirebaseContext";
 
 const darkTheme = createTheme({
@@ -22,8 +20,8 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({});
 
 function App() {
-  const { darkMode, setUser } = useContext(AppBarContext);
-  const { firebaseAuth, user, isLoggedIn } = useContext(FirebaseContext);
+  const { darkMode } = useContext(AppBarContext);
+  const { isLoggedIn } = useContext(FirebaseContext);
 
   return (
     <>

@@ -13,6 +13,7 @@ import {
   ListSubheader,
   Popover,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { styled } from "styled-components";
@@ -78,7 +79,7 @@ function Notification() {
         onClose={handleNotificationClose}
       >
         <div
-          style={{
+          sx={{
             position: "sticky",
             top: 0,
             zIndex: 1,
@@ -111,6 +112,20 @@ function Notification() {
                 </IconButton>
               </ListItemButton>
             ))}
+            <ListSubheader sx={{ bgcolor: "background.paper" }}>
+              Yesterday
+            </ListSubheader>
+            {notifications.map((notification) => (
+              <ListItemButton disableRipple key={notification.id}>
+                <ListItemAvatar>
+                  <Avatar>{notification.avatar}</Avatar>
+                </ListItemAvatar>
+                <ListItemText>{notification.title}</ListItemText>
+                <IconButton>
+                  <MoreVertRoundedIcon />
+                </IconButton>
+              </ListItemButton>
+            ))}
           </List>
         </NotificationWrapper>
       </Popover>
@@ -119,18 +134,20 @@ function Notification() {
 
   return (
     <>
-      <IconButton
-        size="large"
-        color="inherit"
-        aria-label="notification of current user"
-        // aria-controls={notificationId}
-        aria-haspopup="true"
-        onClick={handleNotificationOpen}
-      >
-        <Badge badgeContent={notifications.length} color="error">
-          <NotificationsIcon />
-        </Badge>
-      </IconButton>
+      <Tooltip title="Notifications">
+        <IconButton
+          size="large"
+          color="inherit"
+          aria-label="notification of current user"
+          // aria-controls={notificationId}
+          aria-haspopup="true"
+          onClick={handleNotificationOpen}
+        >
+          <Badge badgeContent={notifications.length} color="error">
+            <NotificationsIcon />
+          </Badge>
+        </IconButton>
+      </Tooltip>
       {renderNotification}
     </>
   );

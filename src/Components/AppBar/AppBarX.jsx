@@ -82,13 +82,17 @@ function AppBarX() {
   const SignInSignUpPop = (
     <>
       {!isLoggedIn ? (
-        <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
-          <PermIdentityIcon />
-        </IconButton>
+        <Tooltip title="Login">
+          <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
+            <PermIdentityIcon />
+          </IconButton>
+        </Tooltip>
       ) : (
-        <IconButton size="large" color="inherit" onClick={handleSignOut}>
-          <LogoutIcon />
-        </IconButton>
+        <Tooltip title="Sign Out">
+          <IconButton size="large" color="inherit" onClick={handleSignOut}>
+            <LogoutIcon />
+          </IconButton>
+        </Tooltip>
       )}
     </>
   );

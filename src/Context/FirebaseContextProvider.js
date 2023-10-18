@@ -20,7 +20,6 @@ const firebaseConfig = {
   storageBucket: "monsterapp-9b272.appspot.com",
   messagingSenderId: "28325181629",
   appId: "1:28325181629:web:20a4ccd6dc4647e541dfd4",
-  databaseURL: "https://monsterapp-9b272-default-rtdb.firebaseio.com/",
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -43,7 +42,7 @@ const FirebaseContextProvider = (props) => {
         setIsLoggedIn(false);
       }
     });
-  }, [onAuthStateChanged]);
+  }, []);
 
   const signInUserWithEmailAndPassword = (email, password) => {
     return signInWithEmailAndPassword(firebaseAuth, email, password);
