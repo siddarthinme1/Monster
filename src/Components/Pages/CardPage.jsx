@@ -397,9 +397,11 @@ function CardPage() {
                 <Card sx={{ m: "10px", maxWidth: "345px" }}>
                   <CardHeader
                     avatar={
-                      <Avatar sx={{ bgcolor: "secondary" }} aria-label="recipe">
-                        {card.data.avatarURL}
-                      </Avatar>
+                      <Avatar
+                        sx={{ bgcolor: "secondary" }}
+                        aria-label="recipe"
+                        src={card.data.avatarURL}
+                      />
                     }
                     action={
                       <Tooltip title="More">
