@@ -56,11 +56,11 @@ const FirebaseContextProvider = (props) => {
   const putData = (key, data) => set(ref(database, key), data);
 
   const signUpWithGoogle = () => {
-    signInWithPopup(firebaseAuth, provider);
+    return signInWithPopup(firebaseAuth, provider);
   };
 
   const signOutWithGoogle = () => {
-    signOut(firebaseAuth);
+    return signOut(firebaseAuth);
   };
 
   const value = {

@@ -63,7 +63,6 @@ function LabelBottomNavigation() {
             />
           ))}
         </BottomNavigation>
-
         <SpeedDialX />
       </Paper>
     </Slide>

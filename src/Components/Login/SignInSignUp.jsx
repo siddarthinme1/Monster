@@ -44,33 +44,38 @@ function SignInSignUp() {
   const handleTermsAndCond = () => {
     setAgree(!agree);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email, password);
-    if (!isSignIn) {
-      signInUserWithEmailAndPassword(email, password);
-    } else {
-      signUpUserWithEmailAndPassword(email, password);
-    }
-    setEmail("");
-    setPassword("");
-  };
-
   const handleChangePage = () => {
     setIsSignIn(!isSignIn);
   };
 
   const handleDialogClose = () => {
     setSignInSignUpPopUp(false);
+    setIsSignIn(false);
   };
 
-  const handleSignUpWithGoogle = () => {
-    signUpWithGoogle();
+  const handleSignUpWithGoogle = async () => {
+    await signUpWithGoogle();
+    handleDialogClose();
   };
 
   const handleSignOut = () => {
     signOutWithGoogle();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+    if (!isSignIn) {
+      const response = signInUserWithEmailAndPassword(email, password);
+      console.log(response);
+      handleDialogClose();
+    } else {
+      const response = signUpUserWithEmailAndPassword(email, password);
+      console.log(response);
+      handleDialogClose();
+    }
+    setEmail("");
+    setPassword("");
   };
 
   const SignInPage = (
