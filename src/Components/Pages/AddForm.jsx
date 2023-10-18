@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { Grid, TextField, Button, Chip, Stack, Collapse } from "@mui/material";
 import styled from "styled-components";
 import UploadIcon from "@mui/icons-material/Upload";
 import { initialFieldValues } from "../../Data/MonsterData";
 import { TransitionGroup } from "react-transition-group";
+import FirebaseContext from "../../Context/FirebaseContext";
+import { getDatabase, ref, set } from "firebase/database";
 
 const FormWrapper = styled("form")(({ theme }) => ({
   marginTop: "20px",
@@ -23,6 +25,8 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 function AddForm(props) {
+  const { user, pushData } = useContext(FirebaseContext);
+
   const [ingredients, setIngredients] = useState([]);
   const [ingredientInput, setIngredientInput] = useState("");
   const [values, setValues] = useState(initialFieldValues);
@@ -55,16 +59,16 @@ function AddForm(props) {
     console.log(ingredients);
   };
 
+  console.log(user);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const repsponse = await fetch(
-      "https://monsterapp-9b272-default-rtdb.firebaseio.com/recipe.json",
-      {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(values),
-      }
-    );
+    const repsponse = pushData("recipe", {
+      ...values,
+      user: user.email,
+      addedDate: Date(),
+      avatarURL: user?.photoURL,
+    });
     console.log("Submit Form", repsponse);
     if (repsponse) {
       resetForm();

@@ -42,8 +42,16 @@ import CommentsPage from "./CommentsPage";
 import SharePage from "./SharePage";
 import useMonsterServices from "../../Services/MonsterServices";
 import axios from "axios";
-import SpeedDialX from "../SpeedDial/SpeedDialX";
+import {
+  getDatabase,
+  ref,
+  set,
+  push,
+  update,
+  onValue,
+} from "firebase/database";
 
+import FirebaseContext from "../../Context/FirebaseContext";
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
 
@@ -65,10 +73,9 @@ const CardWrapper = styled("div")(({ theme }) => ({
 }));
 
 function CardPage() {
-  const { useAllRecipes } = useMonsterServices();
-  const cardData = useAllRecipes();
-  const length = cardData.length;
-
+  const { database } = useContext(FirebaseContext);
+  const [cardData, setCardData] = useState([]);
+  const length = cardData?.length;
   const [indexComments, setIndexComments] = useState(0);
   const [checked, setChecked] = useState([]);
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -88,6 +95,19 @@ function CardPage() {
     setExpandedComment(Array(length).fill(false));
     setExpandedShare(Array(length).fill(false));
   }, [cardData, length]);
+
+  useEffect(() => {
+    const refDatabase = ref(database, "recipe");
+    onValue(refDatabase, (snapshot) => {
+      let recipes = [];
+      snapshot.forEach((childSnapshot) => {
+        let keyName = childSnapshot.key;
+        let data = childSnapshot.val();
+        recipes.push({ key: keyName, data: data });
+      });
+      setCardData(recipes);
+    });
+  }, [cardData]);
 
   const closeBottomDrawer = () => {
     setIsDrawerBottomOpen(false);
@@ -164,7 +184,7 @@ function CardPage() {
       <AppBar sx={{ position: "relative" }}>
         <Toolbar>
           <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-            {card.title}
+            {card.data.title}
           </Typography>
           <IconButton
             edge="end"
@@ -204,8 +224,8 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Ingredients:</Typography>
             <List>
-              {Array.isArray(card.ingredients) &&
-                card.ingredients.map((ingredient, index) => (
+              {Array.isArray(card.data.ingredients) &&
+                card.data.ingredients.map((ingredient, index) => (
                   <ListItem dense>{ingredient}</ListItem>
                 ))}
             </List>
@@ -215,7 +235,7 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Description</Typography>
             <Typography sx={{ mt: 2 }} paragraph>
-              {card.description}
+              {card.data.description}
             </Typography>
           </CardContent>
         </Grid>
@@ -223,7 +243,7 @@ function CardPage() {
           <CardContent>
             <Typography variant="h6">Procedure</Typography>
             <List>
-              {card.procedure.map((ingredient) => (
+              {card.data.procedure.map((ingredient) => (
                 <ListItem dense>
                   <Typography variant="body1">{ingredient}</Typography>
                 </ListItem>
@@ -288,8 +308,8 @@ function CardPage() {
             }}
             subheader={<li />}
           >
-            {Array.isArray(card.ingredients) &&
-              card.ingredients.map((ingredient, index) => {
+            {Array.isArray(card.data.ingredients) &&
+              card.data.ingredients.map((ingredient, index) => {
                 const labelId = `checkbox-list-secondary-label-${index}`;
 
                 return (
@@ -328,7 +348,7 @@ function CardPage() {
       {isLoading ? (
         <CardWrapper>
           <Grid container spacing="auto" justifyContent="center">
-            {Array.from({ length: cardData.length }).map((_, index) => (
+            {Array.from({ length: cardData?.length }).map((_, index) => (
               <Grid item key={index}>
                 <Card sx={{ m: "10px", maxWidth: "345px" }}>
                   <CardHeader
@@ -373,11 +393,12 @@ function CardPage() {
           <Grid container spacing="auto" justifyContent="center">
             {cardData.map((card, index) => (
               <Grid item key={index}>
+                {/* {console.log(card)} */}
                 <Card sx={{ m: "10px", maxWidth: "345px" }}>
                   <CardHeader
                     avatar={
                       <Avatar sx={{ bgcolor: "secondary" }} aria-label="recipe">
-                        {card.avatar}
+                        {card.data.avatarURL}
                       </Avatar>
                     }
                     action={
@@ -387,15 +408,15 @@ function CardPage() {
                         </IconButton>
                       </Tooltip>
                     }
-                    title={card.title}
-                    subheader={card.subheader}
+                    title={card.data.user}
+                    subheader={card.data.addedDate}
                   />
                   <CardActionArea onClick={() => handleOpenRecipe(index)}>
                     <CardMedia
                       component="img"
                       height="194"
                       image={require("../../Data/Images/spaghetti.jpg")}
-                      alt={card.title}
+                      alt={card.data.title}
                       sx={{
                         "&:hover": { transform: "scale3d(1.05, 1.05, 1)" },
                       }}
@@ -407,7 +428,7 @@ function CardPage() {
                       }}
                     >
                       <Typography variant="body2" color="text.secondary">
-                        {card.description}
+                        {card.data.description}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -415,7 +436,7 @@ function CardPage() {
                   <CardActions disableSpacing>
                     <Tooltip title="Like">
                       <IconButton
-                        color={card.liked ? "secondary" : "default"}
+                        color={card.data.liked ? "secondary" : "default"}
                         onClick={() => handleFavoriteClick(index)}
                       >
                         <FavoriteIcon />
@@ -468,7 +489,7 @@ function CardPage() {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <CommentsPage index={index} comments={card.comments} />
+                    <CommentsPage index={index} comments={card.data.comments} />
                   </Collapse>
 
                   <Collapse

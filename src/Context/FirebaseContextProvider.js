@@ -7,8 +7,9 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, push, update } from "firebase/database";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const provider = new GoogleAuthProvider();
 
@@ -27,6 +28,8 @@ const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
 
 const database = getDatabase(firebaseApp);
+
+const firestore = getFirestore(firebaseApp);
 
 const FirebaseContextProvider = (props) => {
   const [user, setUser] = useState(null);
@@ -53,6 +56,8 @@ const FirebaseContextProvider = (props) => {
   };
 
   const putData = (key, data) => set(ref(database, key), data);
+  const pushData = (key, data) => push(ref(database, key), data);
+  const updateData = (key, data) => update(ref(database, key), data);
 
   const signUpWithGoogle = () => {
     return signInWithPopup(firebaseAuth, provider);
@@ -66,11 +71,15 @@ const FirebaseContextProvider = (props) => {
     signInUserWithEmailAndPassword,
     signUpUserWithEmailAndPassword,
     putData,
+    pushData,
+    updateData,
     signUpWithGoogle,
     signOutWithGoogle,
     firebaseAuth,
     user,
     isLoggedIn,
+    firestore,
+    database,
   };
 
   return (

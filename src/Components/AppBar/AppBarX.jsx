@@ -60,6 +60,8 @@ function AppBarX() {
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  console.log(user);
+
   const handleSignInOpen = () => {
     setSignInSignUpPopUp(true);
   };
