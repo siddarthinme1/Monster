@@ -54,7 +54,8 @@ function SignInSignUp() {
   };
 
   const handleSignUpWithGoogle = async () => {
-    await signUpWithGoogle();
+    const response = await signUpWithGoogle();
+    console.log(response);
     handleDialogClose();
   };
 
