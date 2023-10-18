@@ -21,21 +21,15 @@ import SpeedDialX from "../SpeedDial/SpeedDialX";
 import FoodBankIcon from "@mui/icons-material/FoodBank";
 
 import { useNavigate } from "react-router-dom";
+import FirebaseContext from "../../Context/FirebaseContext";
 
 function LabelBottomNavigation() {
   const navigate = useNavigate();
+  const { isLoggedIn } = useContext(FirebaseContext);
 
   const { trigger } = useContext(AppBarContext);
 
   const [value, setValue] = useState(0);
-
-  const handleShowHome = () => {
-    navigate("/");
-  };
-
-  const handleShowAbout = () => {
-    navigate("about");
-  };
 
   return (
     <Slide appear={false} direction="up" in={!trigger}>
@@ -58,25 +52,28 @@ function LabelBottomNavigation() {
           <BottomNavigationAction
             label="Home"
             icon={<HomeIcon />}
-            onClick={handleShowHome}
+            onClick={() => navigate("/")}
           />
 
           <BottomNavigationAction
             label="Recipe"
             icon={<FoodBankIcon />}
             onClick={() => navigate("recipe")}
+            disabled={!isLoggedIn ? true : false}
           />
 
           <BottomNavigationAction
             label="Library"
             icon={<LibraryBooksIcon />}
             onClick={() => navigate("splitwise")}
+            disabled={!isLoggedIn ? true : false}
           />
 
           <BottomNavigationAction
             label="About"
             icon={<InfoIcon />}
-            onClick={handleShowAbout}
+            onClick={() => navigate("about")}
+            disabled={!isLoggedIn ? true : false}
           />
         </BottomNavigation>
 

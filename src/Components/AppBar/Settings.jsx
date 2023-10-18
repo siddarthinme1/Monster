@@ -29,12 +29,14 @@ import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AppBarContext from "../../Context/AppBarContext";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FirebaseContext from "../../Context/FirebaseContext";
 
 function Settings(props) {
   const { window, setMobileMoreAnchorEl } = props;
 
-  const { setDarkMode, settings, setSettings, user } =
-    useContext(AppBarContext);
+  const { setDarkMode, settings, setSettings } = useContext(AppBarContext);
+  const { user } = useContext(FirebaseContext);
+
   const [anchorElProfile, setAnchorElProfile] = useState(null);
 
   const [profile, setProfile] = useState(false);

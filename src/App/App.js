@@ -22,20 +22,8 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({});
 
 function App() {
-  const { darkMode, setUser, user } = useContext(AppBarContext);
-  const { firebaseAuth } = useContext(FirebaseContext);
-
-  useEffect(() => {
-    onAuthStateChanged(firebaseAuth, (user) => {
-      if (user) {
-        console.log("Welcome ", user);
-        setUser(user);
-      } else {
-        setUser(null);
-        console.log("You are logged out");
-      }
-    });
-  }, [onAuthStateChanged]);
+  const { darkMode, setUser } = useContext(AppBarContext);
+  const { firebaseAuth, user, isLoggedIn } = useContext(FirebaseContext);
 
   return (
     <>
@@ -44,9 +32,15 @@ function App() {
         <AppBarX />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/recipe" element={<CardPage />} />
-          <Route path="/splitwise" element={<Splitwise />} />
-          <Route path="/about" element={<AboutPage />} />
+          {isLoggedIn ? (
+            <>
+              <Route path="/recipe" element={<CardPage />} />
+              <Route path="/splitwise" element={<Splitwise />} />
+              <Route path="/about" element={<AboutPage />} />
+            </>
+          ) : (
+            ""
+          )}
         </Routes>
         <SignInSignUp />
         <LabelBottomNavigation />

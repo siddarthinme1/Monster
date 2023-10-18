@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Box, Typography } from "@mui/material";
-import AppBarContext from "../../Context/AppBarContext";
+import FirebaseContext from "../../Context/FirebaseContext";
 function Home() {
-  const { user } = useContext(AppBarContext);
+  const { user } = useContext(FirebaseContext);
   return (
     <div>
       <Box

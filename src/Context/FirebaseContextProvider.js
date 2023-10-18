@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FirebaseContext from "./FirebaseContext";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
@@ -29,6 +30,21 @@ const firebaseAuth = getAuth(firebaseApp);
 const database = getDatabase(firebaseApp);
 
 const FirebaseContextProvider = (props) => {
+  const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (user) => {
+      if (user) {
+        setUser(user);
+        setIsLoggedIn(true);
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    });
+  }, [onAuthStateChanged]);
+
   const signInUserWithEmailAndPassword = (email, password) => {
     return signInWithEmailAndPassword(firebaseAuth, email, password);
   };
@@ -54,6 +70,8 @@ const FirebaseContextProvider = (props) => {
     signUpWithGoogle,
     signOutWithGoogle,
     firebaseAuth,
+    user,
+    isLoggedIn,
   };
 
   return (

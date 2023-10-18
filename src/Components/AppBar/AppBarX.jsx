@@ -49,8 +49,10 @@ const ExpandMore = styled((props) => {
 }));
 
 function AppBarX() {
-  const { setSignInSignUpPopUp, trigger, setDarkMode, darkMode, user } =
+  const { setSignInSignUpPopUp, trigger, setDarkMode, darkMode } =
     useContext(AppBarContext);
+  const { firebaseAuth, user, isLoggedIn } = useContext(FirebaseContext);
+
   const { signOutWithGoogle } = useContext(FirebaseContext);
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -79,7 +81,7 @@ function AppBarX() {
 
   const SignInSignUpPop = (
     <>
-      {user === null ? (
+      {!isLoggedIn ? (
         <IconButton size="large" color="inherit" onClick={handleSignInOpen}>
           <PermIdentityIcon />
         </IconButton>
